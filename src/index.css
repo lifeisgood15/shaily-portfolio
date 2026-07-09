@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    /* Subtle paper texture effect */
+    background-image: radial-gradient(#e8e4d9 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-color: #f9f6ef;
+  }
+}
+
+/* Hide default cursor on devices with a mouse */
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
+@layer utilities {
+  .bg-paper-texture {
+    background-image: radial-gradient(#e8e4d9 1px, transparent 1px);
+    background-size: 20px 20px;
+    background-color: #f9f6ef;
+  }
+
+  .scrapbook-border {
+    @apply border-2 border-paper-dark rounded-md bg-white;
+  }
+
+  .tape-pink {
+    @apply relative before:absolute before:-top-3 before:-left-3 before:w-12 before:h-6 before:bg-tape-pink before:-rotate-6 before:opacity-80 before:z-10;
+  }
+
+  .tape-blue {
+    @apply relative before:absolute before:-top-3 before:left-1/2 before:-translate-x-1/2 before:w-16 before:h-6 before:bg-tape-blue before:rotate-3 before:opacity-80 before:z-10;
+  }
+
+  .tape-yellow {
+    @apply relative before:absolute before:-bottom-3 before:-right-3 before:w-12 before:h-6 before:bg-tape-yellow before:-rotate-12 before:opacity-80 before:z-10;
+  }
+
+  /* Vertical text for side tabs */
+  .vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  .nav-tab {
+    @apply flex items-center justify-center gap-2 py-6 px-2 text-white font-medium text-sm transition-all hover:-translate-x-1 cursor-pointer;
+    border-radius: 8px 0 0 8px;
+    box-shadow: -2px 0px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .animate-marquee {
+    animation: marquee 80s linear infinite;
+  }
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
