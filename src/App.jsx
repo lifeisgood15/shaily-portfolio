@@ -26,12 +26,15 @@ function App() {
           <Projects projects={portfolioData.projects} />
         </div>
 
-        {/* <div id="toolkit" className="space-y-8 scrapbook-border p-6 md:p-8 tape-yellow shadow-scrapbook bg-white scroll-mt-24">
+        <div
+          id="toolkit"
+          className="space-y-8 scrapbook-border p-6 md:p-8 tape-yellow shadow-scrapbook bg-white scroll-mt-24"
+        >
           <h2 className="text-2xl font-bold text-ink-dark border-b-2 border-paper-dark pb-2 inline-block">
             {portfolioData.toolkit.title}
           </h2>
           <Toolkit toolkit={portfolioData.toolkit} />
-        </div> */}
+        </div>
 
         <div id="moments" className="scroll-mt-24">
           <Highlights highlights={portfolioData.highlights} />

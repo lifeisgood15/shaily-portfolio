@@ -54,7 +54,39 @@
   }
 
   .animate-marquee {
-    animation: marquee 80s linear infinite;
+    animation: marquee 300s linear infinite;
+  }
+
+  /* ── Toolkit tiles ── */
+  .toolkit-strip {
+    @apply w-full;
+  }
+
+  .toolkit-scroll-track {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .toolkit-tile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7px 18px;
+    border-radius: 10px;
+    border: 1.5px solid rgba(139, 90, 60, 0.28);
+    background: rgba(255, 253, 248, 0.85);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: #3d2b1f;
+    letter-spacing: 0.025em;
+    white-space: nowrap;
+    box-shadow:
+      0 2px 6px rgba(139, 90, 60, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.7);
+    /* jiggle animation — delay set inline per tile */
+    animation: tile-jiggle 0.55s ease-in-out infinite alternate;
+    transform-origin: center bottom;
   }
 }
 
@@ -65,5 +97,28 @@
 
   100% {
     transform: translateX(-50%);
+  }
+}
+
+/* iPhone-style jiggle — alternates between -2° and +2° with a tiny vertical nudge */
+@keyframes tile-jiggle {
+  0% {
+    transform: rotate(-1.8deg) translateY(0px);
+  }
+
+  25% {
+    transform: rotate(-1.8deg) translateY(-1px);
+  }
+
+  50% {
+    transform: rotate(0deg) translateY(0px);
+  }
+
+  75% {
+    transform: rotate(1.8deg) translateY(-1px);
+  }
+
+  100% {
+    transform: rotate(1.8deg) translateY(0px);
   }
 }
