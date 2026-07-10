@@ -7,6 +7,7 @@ const Navigation = ({ portfoliodata }) => {
   const links = [
     { name: "About", id: "about", icon: User },
     { name: "Projects", id: "projects", icon: Folder },
+    { name: "My Toolkit", id: "toolkit", icon: Folder },
     { name: "Moments", id: "moments", icon: Camera },
     { name: "Journey", id: "journey", icon: MapPin },
     { name: "Contact", id: "contact", icon: Mail },

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Pen } from 'lucide-react';
+import React, { useEffect, useState } from "react";
+import { Pen } from "lucide-react";
 
 const CustomCursor = () => {
   const [position, setPosition] = useState({ x: -100, y: -100 });
@@ -8,21 +8,34 @@ const CustomCursor = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    let rafId = null;
+    let latestEvent = null;
+
+    const processMove = () => {
+      if (!latestEvent) return;
+      const e = latestEvent;
+      latestEvent = null;
+      rafId = null;
+
       setPosition({ x: e.clientX, y: e.clientY });
       setIsVisible(true);
-      
+
       const target = e.target;
-      const style = window.getComputedStyle(target);
-      const cursorStyle = style.getPropertyValue('cursor');
-      
+      const cursorStyle = window
+        .getComputedStyle(target)
+        .getPropertyValue("cursor");
       setIsPointer(
-        cursorStyle === 'pointer' ||
-        target.tagName.toLowerCase() === 'a' ||
-        target.tagName.toLowerCase() === 'button' ||
-        target.closest('a') ||
-        target.closest('button')
+        cursorStyle === "pointer" ||
+          target.tagName.toLowerCase() === "a" ||
+          target.tagName.toLowerCase() === "button" ||
+          target.closest("a") ||
+          target.closest("button"),
       );
+    };
+
+    const handleMouseMove = (e) => {
+      latestEvent = e;
+      if (!rafId) rafId = requestAnimationFrame(processMove);
     };
 
     const handleMouseDown = () => setIsClicked(true);
@@ -30,22 +43,26 @@ const CustomCursor = () => {
     const handleMouseLeave = () => setIsVisible(false);
     const handleMouseEnter = () => setIsVisible(true);
 
-    window.addEventListener('mousemove', handleMouseMove);
-    window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('mouseup', handleMouseUp);
-    document.addEventListener('mouseleave', handleMouseLeave);
-    document.addEventListener('mouseenter', handleMouseEnter);
+    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousedown", handleMouseDown);
+    window.addEventListener("mouseup", handleMouseUp);
+    document.addEventListener("mouseleave", handleMouseLeave);
+    document.addEventListener("mouseenter", handleMouseEnter);
 
     return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-      window.removeEventListener('mousedown', handleMouseDown);
-      window.removeEventListener('mouseup', handleMouseUp);
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      document.removeEventListener('mouseenter', handleMouseEnter);
+      if (rafId) cancelAnimationFrame(rafId);
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mousedown", handleMouseDown);
+      window.removeEventListener("mouseup", handleMouseUp);
+      document.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("mouseenter", handleMouseEnter);
     };
   }, []);
 
-  if (typeof window !== 'undefined' && window.matchMedia('(hover: none)').matches) {
+  if (
+    typeof window !== "undefined" &&
+    window.matchMedia("(hover: none)").matches
+  ) {
     return null;
   }
 
@@ -57,10 +74,10 @@ const CustomCursor = () => {
     <>
       {/* Trailing Dots */}
       {dots.map((_, index) => (
-        <div 
+        <div
           key={index}
           className="fixed top-0 left-0 bg-[#60a5fa] rounded-full pointer-events-none z-[9998] ease-out"
-          style={{ 
+          style={{
             width: `${8 - index}px`, // Get smaller as they trail
             height: `${8 - index}px`,
             // Add transition delay so they follow sequentially
@@ -68,22 +85,22 @@ const CustomCursor = () => {
             transitionDelay: `${index * 30}ms`,
             // Center the dot relative to the mouse pointer
             transform: `translate3d(${position.x - (8 - index) / 2}px, ${position.y - (8 - index) / 2}px, 0)`,
-            opacity: isVisible && !isClicked ? (1 - index * 0.15) : 0
+            opacity: isVisible && !isClicked ? 1 - index * 0.15 : 0,
           }}
         />
       ))}
 
       {/* Main Sketchpen */}
-      <div 
+      <div
         className="fixed top-0 left-0 pointer-events-none z-[10000] flex items-center justify-center transition-transform duration-75 ease-out"
-        style={{ 
+        style={{
           // The Pen tip points roughly bottom-left
           transform: `translate3d(${position.x - 4}px, ${position.y - 16}px, 0) scale(${isClicked ? 0.8 : isPointer ? 1.2 : 1})`,
-          opacity: isVisible ? 1 : 0
+          opacity: isVisible ? 1 : 0,
         }}
       >
-        <Pen 
-          className="w-5 h-5 text-[#2563eb] fill-[#dbeafe] transition-all duration-200" 
+        <Pen
+          className="w-5 h-5 text-[#2563eb] fill-[#dbeafe] transition-all duration-200"
           strokeWidth={2}
         />
       </div>

@@ -39,10 +39,10 @@ const Projects = ({ projects }) => {
     <div className="py-8">
       <div className="flex items-center gap-4 mb-8">
         <h2 className="text-2xl font-bold text-ink-dark border-b-2 border-paper-dark pb-2">
-          Selected Projects
+          Case Studies
         </h2>
         <div className="text-sm text-ink-light italic bg-white px-3 py-1 rounded shadow-sm border border-paper-dark/20 rotate-1">
-          "Projects that solve real problems."
+          "Each project was once a problem that needed to be solved"
         </div>
       </div>
 
@@ -69,6 +69,8 @@ const Projects = ({ projects }) => {
                   <img
                     src={imageSrc}
                     alt={`Screenshot of ${project.title}`}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover mix-blend-multiply opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
                   />
                 ) : (

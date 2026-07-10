@@ -1,171 +1,167 @@
 {
-    "name": "Shaily Pandey",
-    "role": "Product Manager",
-    "tagline": "Make epic products.",
-    "about": {
-        "para": "I combine my deep user empathy with my problem-solving mindset to build products that I am proud of. I am complementing my background in IT with MBA, developing skills to bridge gap between business goals and user needs. ",
-        "timeline": [
-            {
-                "org/school": "CBSE, DAV International School, Navi Mumbai",
-                "icon": "school",
-                "role": "Class XII - PCM with Computer Science",
-                "year": "2016",
-                "skill_gained": "This is where I  learned to code. Started with C++ but the most important skill I learned was to use the OG debugger - a notebook and pen."
-            },
-            {
-                "org/school": "Mumbai University, DMCE, Navi Mumbai",
-                "role": "Bachelor of Engineering - Information Technology",
-                "icon": "school",
-                "year": "2016-2020",
-                "skill_gained": "Engineering taught me a lot of things. I gained my theoretical knowledge from here and applied on multiple projects I worked on during this."
-            },
-            {
-                "org/school": "Mastertech, Thane",
-                "role": "Search Engine Optimization (SEO) Intern",
-                "icon": "work",
-                "year": "2019-2019",
-                "skill_gained": "With epic product, you need an epic visibility. This is where I learned how to opmitize a website for SEO."
-            },
-            {
-                "org/school": "Tata Consultancy Services (TCS)",
-                "role": "IT Analyst",
-                "icon": "work",
-                "year": "2020-2025",
-                "skill_gained": "Started as a junior salesforce developer working with a fortune 500 banking client to translate their user needs into creative salesforce solutions. I participated in product backlog refinement sessions, contributing my technical expertise and aligning development effort with business goals."
-            },
-            {
-                "org/school": "IIM Lucknow (Noida Campus)",
-                "role": "MBA-Sustainable Management",
-                "icon": "school",
-                "year": "2025-2027",
-                "skill_gained": "I understood how important sustainability is if we want to progress at the same speed with tech and AI innovations. I am learning business with a sustainability lens."
-            },
-            {
-                "org/school": "Ernst&Young - Government and Public Sector",
-                "role": "Business Consulting Intern",
-                "icon": "work",
-                "year": "2026-2026",
-                "skill_gained": "I worked on EY projects with the state government, calculating bankability of projects, building sample dashboards to show to our clients."
-            }
-        ]
+  "name": "Shaily Pandey",
+  "role": "Product Manager",
+  "tagline": "Make epic products.",
+  "about": {
+    "para": "I combine my deep user empathy with my problem-solving mindset to build products that I am proud of. I am complementing my background in IT with MBA, developing skills to bridge gap between business goals and user needs. ",
+    "timeline": [
+      {
+        "org/school": "CBSE, DAV International School, Navi Mumbai",
+        "icon": "school",
+        "role": "Class XII - PCM with Computer Science",
+        "year": "2016",
+        "skill_gained": "This is where I  learned to code. Started with C++ but the most important skill I learned was to use the OG debugger - a notebook and pen."
+      },
+      {
+        "org/school": "Mumbai University, DMCE, Navi Mumbai",
+        "role": "Bachelor of Engineering - Information Technology",
+        "icon": "school",
+        "year": "2016-2020",
+        "skill_gained": "Engineering taught me a lot of things. I gained my theoretical knowledge from here and applied on multiple projects I worked on during this."
+      },
+      {
+        "org/school": "Mastertech, Thane",
+        "role": "Search Engine Optimization (SEO) Intern",
+        "icon": "work",
+        "year": "2019-2019",
+        "skill_gained": "With epic product, you need an epic visibility. This is where I learned how to opmitize a website for SEO."
+      },
+      {
+        "org/school": "Tata Consultancy Services (TCS)",
+        "role": "IT Analyst",
+        "icon": "work",
+        "year": "2020-2025",
+        "skill_gained": "Started as a junior salesforce developer working with a fortune 500 banking client to translate their user needs into creative salesforce solutions. I participated in product backlog refinement sessions, contributing my technical expertise and aligning development effort with business goals."
+      },
+      {
+        "org/school": "IIM Lucknow (Noida Campus)",
+        "role": "MBA-Sustainable Management",
+        "icon": "school",
+        "year": "2025-2027",
+        "skill_gained": "I understood how important sustainability is if we want to progress at the same speed with tech and AI innovations. I am learning business with a sustainability lens."
+      },
+      {
+        "org/school": "Ernst&Young - Government and Public Sector",
+        "role": "Business Consulting Intern",
+        "icon": "work",
+        "year": "2026-2026",
+        "skill_gained": "I worked on EY projects with the state government, calculating bankability of projects, building sample dashboards to show to our clients."
+      }
+    ]
+  },
+  "projects": [
+    {
+      "title": "Students no longer miss deadlines",
+      "role": "Personal Project",
+      "image": "iiml-deadlines.png",
+      "summary": "Designed a Google Workspace Flow which automatically checks emails for deadlines and creates google calendar events to track effectively.",
+      "impact": "No more missed deadlines",
+      "show-demo": false,
+      "shor-read-more": false,
+      "read-more-url": ""
     },
-    "projects": [
-        {
-            "title": "Students no longer miss deadlines",
-            "role": "Personal Project",
-            "image": "iiml-deadlines.png",
-            "summary": "Designed a Google Workspace Flow which automatically checks emails for deadlines and creates google calendar events to track effectively.",
-            "impact": "No more missed deadlines",
-            "show-demo": false,
-            "shor-read-more": false,
-            "read-more-url": ""
-        },
-        {
-            "title": "Pay for what you eat",
-            "role": "Group - Class Project",
-            "image": "iiml-mess.png",
-            "summary": "Created a prototype for a College MEss Management portal where students only pay for what they want to eat. Mess management analyzes students' attendance data over time and plan better.",
-            "impact": "Reduced food wastage.",
-            "show-demo": true,
-            "shor-read-more": false,
-            "demo-url": "https://iiml-campus-mess.lovable.app/",
-            "read-more-url": ""
-        }
-    ],
-    "toolkit": {
-        "title": "My Product Toolkit",
-        "list-of-tools": [
-            {
-                "name": "User research",
-                "examples": [
-                    "Interviews",
-                    "Surveys",
-                    "Jobs-to-be-Done",
-                    "Surveys",
-                    "Usability Testing"
-                ]
-            },
-            {
-                "name": "Ideation",
-                "examples": [
-                    "Brainstorming",
-                    "Storyboarding",
-                    "User Journey Mapping",
-                    "Surveys",
-                    "Usability Testing"
-                ]
-            },
-            {
-                "name": "Prototyping & Testing",
-                "examples": [
-                    "Prototyping",
-                    "Surveys",
-                    "Usability Testing"
-                ]
-            }
-        ]
-    },
-    "highlights": [
-        {
-            "title": "Volunteering - Code Club @EY",
-            "image": "codeclubEY.jpeg"
-        },
-        {
-            "title": "Volunteering - Career guidance @EY",
-            "image": "VidyaSchoolEY.jpeg"
-        },
-        {
-            "title": "Volunteering - Sustainable Practices @EY",
-            "image": "SustainabilityEY.jpeg"
-        },
-        {
-            "title": "Prakriti 2026",
-            "image": "Prakriti2026.jpeg"
-        },
-        {
-            "title": "Bharat Electricity Summit 2026",
-            "image": "BES2026.jpeg"
-        },
-        {
-            "title": "AI Summit",
-            "image": "AISummit2026.jpeg"
-        },
-        {
-            "title": "Vedanta Delhi Half Marathon",
-            "image": "VedantaDel2026.jpeg"
-        },
-        {
-            "title": "College Cricket Tournament Winners",
-            "image": "Cricket2025.jpeg"
-        },
-        {
-            "title": "Volunteering - Inter Special School Athletic Meet @TCS",
-            "image": "InterSpecialSchoolAthleticMeet2024.jpeg"
-        },
-        {
-            "title": "Volunteering - Donation Drive @TCS",
-            "image": "DonationDrive.jpeg"
-        }
-    ],
-    "contact": {
-        "tagline": "Let's talk over [insert your favourite beverage]",
-        "methods": [
-            {
-                "platform": "Email",
-                "handle": "shailypandey414@gmail.com"
-            },
-            {
-                "platform": "GitHub",
-                "handle": "https://github.com/lifeisgood15"
-            },
-            {
-                "platform": "LinkedIn",
-                "handle": "https://www.linkedin.com/in/shaily-pandey/"
-            },
-            {
-                "platform": "Schedule a Google meet",
-                "handle": "https://calendar.app.google/kZVcQzn9Pgna8XDd7"
-            }
-        ]
+    {
+      "title": "Pay for what you eat",
+      "role": "Group - Class Project",
+      "image": "iiml-mess.png",
+      "summary": "Created a prototype for a College Mess Management portal where students only pay for what they want to eat. Mess management analyzes students' attendance data over time and plan better.",
+      "impact": "Reduced food wastage.",
+      "show-demo": true,
+      "shor-read-more": false,
+      "demo-url": "https://iiml-campus-mess.lovable.app/",
+      "read-more-url": ""
     }
+  ],
+  "toolkit": {
+    "title": "My Product Toolkit",
+    "list-of-tools": [
+      {
+        "name": "JIRA"
+      },
+      {
+        "name": "Visio"
+      },
+      {
+        "name": "Prototyping & Testing"
+      },
+      {
+        "name": "Stakeholder Management"
+      },
+      {
+        "name": "Development"
+      },
+      {
+        "name": "Agile Methodologies"
+      },
+      {
+        "name": "Data Analysis"
+      },
+      {
+        "name": "Salesforce"
+      }
+    ]
+  },
+  "highlights": [
+    {
+      "title": "Volunteering - Code Club @EY",
+      "image": "codeclubEY.jpeg"
+    },
+    {
+      "title": "Volunteering - Career guidance @EY",
+      "image": "VidyaSchoolEY.jpeg"
+    },
+    {
+      "title": "Volunteering - Sustainable Practices @EY",
+      "image": "SustainabilityEY.jpeg"
+    },
+    {
+      "title": "Prakriti 2026",
+      "image": "Prakriti2026.jpeg"
+    },
+    {
+      "title": "Bharat Electricity Summit 2026",
+      "image": "BES2026.jpeg"
+    },
+    {
+      "title": "AI Summit",
+      "image": "AISummit2026.jpeg"
+    },
+    {
+      "title": "Vedanta Delhi Half Marathon",
+      "image": "VedantaDel2026.jpeg"
+    },
+    {
+      "title": "College Cricket Tournament Winners",
+      "image": "Cricket2025.jpeg"
+    },
+    {
+      "title": "Volunteering - Inter Special School Athletic Meet @TCS",
+      "image": "InterSpecialSchoolAthleticMeet2024.jpeg"
+    },
+    {
+      "title": "Volunteering - Donation Drive @TCS",
+      "image": "DonationDrive.jpeg"
+    }
+  ],
+  "contact": {
+    "tagline": "Let's talk over [insert your favourite beverage]",
+    "methods": [
+      {
+        "platform": "Email",
+        "handle": "shailypandey414@gmail.com"
+      },
+      {
+        "platform": "GitHub",
+        "handle": "https://github.com/lifeisgood15"
+      },
+      {
+        "platform": "LinkedIn",
+        "handle": "https://www.linkedin.com/in/shaily-pandey/"
+      },
+      {
+        "platform": "Schedule a Google meet",
+        "handle": "https://calendar.app.google/kZVcQzn9Pgna8XDd7"
+      }
+    ]
+  }
 }

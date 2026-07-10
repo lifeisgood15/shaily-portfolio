@@ -1,34 +1,35 @@
-import React from 'react';
-import { Search, PenTool, Layers } from 'lucide-react';
+import React, { useMemo } from "react";
+
+// Pre-computed stagger offsets so tiles never jiggle in lockstep.
+// Each tile gets a unique animation-delay and a slight initial rotation offset.
+const STAGGER_COUNT = 12;
+const staggerOffsets = Array.from({ length: STAGGER_COUNT }, (_, i) => ({
+  delay: `${(i * 0.09).toFixed(2)}s`,
+  // alternating direction per tile — odd tiles start rotated the other way
+  direction: i % 2 === 0 ? "normal" : "reverse",
+}));
 
 const Toolkit = ({ toolkit }) => {
-  const getIcon = (name) => {
-    const lowerName = name.toLowerCase();
-    if (lowerName.includes('research')) return <Search className="w-8 h-8 text-ink-dark mb-3" strokeWidth={1.5} />;
-    if (lowerName.includes('ideation')) return <PenTool className="w-8 h-8 text-ink-dark mb-3" strokeWidth={1.5} />;
-    return <Layers className="w-8 h-8 text-ink-dark mb-3" strokeWidth={1.5} />;
-  };
+  const tools = toolkit["list-of-tools"];
 
   return (
-    <div className="w-full pt-4">
-      {/* Main Horizontal Bank */}
-      <div className="flex flex-row overflow-x-auto no-scrollbar w-full">
-        {toolkit['list-of-tools'].map((category, index) => (
-          <div 
-            key={index} 
-            className={`flex flex-col items-center justify-start text-center flex-1 min-w-[160px] px-4 ${index !== toolkit['list-of-tools'].length - 1 ? 'border-r-2 border-paper-dark/20' : ''}`}
-          >
-            <div className="hover:-translate-y-1 transition-transform cursor-default">
-              {getIcon(category.name)}
-            </div>
-            <h3 className="text-sm font-bold text-ink-dark mb-2">{category.name}</h3>
-            
-            {/* Displaying examples as small tags or comma-separated list */}
-            <p className="text-[11px] text-ink-light leading-snug">
-               {category.examples.join(', ')}
-            </p>
-          </div>
-        ))}
+    <div className="toolkit-strip">
+      <div className="toolkit-scroll-track">
+        {tools.map((tool, index) => {
+          const stagger = staggerOffsets[index % STAGGER_COUNT];
+          return (
+            <span
+              key={index}
+              className="toolkit-tile"
+              style={{
+                animationDelay: stagger.delay,
+                animationDirection: stagger.direction,
+              }}
+            >
+              {tool.name}
+            </span>
+          );
+        })}
       </div>
     </div>
   );
