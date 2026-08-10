@@ -8,6 +8,7 @@ import {
   CalendarDays,
   ExternalLink,
   Heart,
+  FileText,
 } from "lucide-react";
 
 // Map platform names to icons
@@ -78,7 +79,7 @@ const Header = ({ data }) => {
       </div>
 
       {/* Bottom row: Contact buttons — horizontal, full width */}
-      {contactMethods.length > 0 && (
+      {(contactMethods.length > 0 || (data.resume && data.resume.url)) && (
         <div className="flex flex-row flex-wrap gap-3 justify-center md:justify-start">
           {contactMethods.map((method, index) => {
             const isEmail = method.platform.toLowerCase() === "email";
@@ -96,6 +97,17 @@ const Header = ({ data }) => {
               </a>
             );
           })}
+          {data.resume && data.resume.url && (
+            <a
+              href={data.resume.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-4 py-2 rounded-full shadow-sm hover:-translate-y-0.5 transition-all text-sm font-medium bg-amber-50 border border-amber-200 text-amber-700 hover:bg-amber-100"
+            >
+              <FileText className="w-4 h-4" />
+              {data.resume.label || "Resume"}
+            </a>
+          )}
         </div>
       )}
     </section>
