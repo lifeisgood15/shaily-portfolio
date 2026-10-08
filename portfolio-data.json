@@ -1,10 +1,17 @@
 {
   "name": "Shaily Pandey",
   "role": "Product Manager",
-  "tagline": "Make epic products.",
+  "tagline": "I build epic products.",
   "about": {
     "para": "I combine my deep user empathy with my problem-solving mindset to build products that I am proud of. I am complementing my background in IT with MBA, developing skills to bridge gap between business goals and user needs. ",
     "timeline": [
+      {
+        "org/school": "Digitomics.ai",
+        "role": "AI Product Manager Intern",
+        "icon": "work",
+        "year": "2026-present",
+        "skill_gained": "Co-led founding team in launch of AI FinOps platform, owning the 0→1 product roadmap & UI/UX strategy. I am heavily involved in the feature discovery and prioritization of the efforts."
+      },
       {
         "org/school": "Ernst&Young - Government and Public Sector",
         "role": "Business Consulting Intern",
@@ -58,23 +65,36 @@
   },
   "projects": [
     {
+      "title": "Giving relationship managers their time back",
+      "role": "@TCS | Global Banking Client",
+      "image": "genaipoc.png",
+      "problem": "RMs serving high-net-worth and senior clients lose hours to routine requests, which caps how many clients they can serve well.",
+      "key decision": "Prioritized the usecases to be implemented in the MVP based on the time saved for RMs.",
+      "impact": "PoC led to a new $5M engagement.",
+      "show-demo": false,
+      "show-read-more": false,
+      "read-more-url": ""
+    },
+    {
       "title": "Students no longer miss deadlines",
       "role": "Personal Project",
       "image": "iiml-deadlines.png",
-      "summary": "Designed a Google Workspace Flow which automatically checks emails for deadlines and creates google calendar events to track effectively.",
-      "impact": "No more missed deadlines",
+      "problem": "Missed deadlines and lack of visibility for assignment and test dates",
+      "key decision": "Designed a Google Workspace Flow which automatically checks emails for deadlines and creates google calendar events to track effectively.",
+      "impact": "Deadlines tracked more effectively",
       "show-demo": false,
-      "shor-read-more": false,
+      "show-read-more": false,
       "read-more-url": ""
     },
     {
       "title": "Pay for what you eat",
       "role": "Group - Class Project",
       "image": "iiml-mess.png",
-      "summary": "Created a prototype for a College MEss Management portal where students only pay for what they want to eat. Mess management analyzes students' attendance data over time and plan better.",
+      "problem": "Students had to pay for mess food even if they didn't eat, leading to food wastage and paying for more.",
+      "key decision": "Created a prototype for a College Mess Management portal where students only pay for what they want to eat. Mess management analyzes students' attendance data over time and plan better.",
       "impact": "Reduced food wastage.",
       "show-demo": true,
-      "shor-read-more": false,
+      "show-read-more": false,
       "demo-url": "https://iiml-campus-mess.lovable.app/",
       "read-more-url": ""
     }
@@ -83,13 +103,34 @@
     "title": "My Product Toolkit",
     "list-of-tools": [
       {
+        "name": "User journey mapping"
+      },
+      {
+        "name": "Agentic AI"
+      },
+      {
+        "name": "Python"
+      },
+      {
+        "name": "SQL"
+      },
+      {
+        "name": "User empathy"
+      },
+      {
+        "name": "Feature prioritization"
+      },
+      {
         "name": "JIRA"
       },
       {
-        "name": "Visio"
+        "name": "Salesforce"
       },
       {
-        "name": "Prototyping & Testing"
+        "name": "Product strategy"
+      },
+      {
+        "name": "AI Prototyping & Testing"
       },
       {
         "name": "Stakeholder Management"
@@ -170,5 +211,9 @@
         "handle": "https://calendar.app.google/kZVcQzn9Pgna8XDd7"
       }
     ]
+  },
+  "resume": {
+    "label": "Check out my resume",
+    "url": "https://drive.google.com/drive/folders/1VcjpPcBJRPSTwluvAhofxSi669JvTg5f?usp=sharing"
   }
 }

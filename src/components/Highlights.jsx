@@ -20,12 +20,12 @@ const PhotoCard = ({ highlight, index, keyProp }) => {
     <div
       key={keyProp}
       className={`
-        bg-white p-2 pb-6 border-2 border-paper-dark/20 shadow-photo relative group hover:z-10 hover:scale-110 transition-transform flex-shrink-0 w-44
+        bg-white p-2 pb-6 border-2 border-paper-dark/20 shadow-photo relative group hover:z-10 hover:scale-110 transition-transform flex-shrink-0 w-[260px]
         ${index % 2 === 0 ? "rotate-[-3deg]" : "rotate-[3deg]"}
       `}
     >
       {/* Tape strip */}
-      <div className="absolute -top-2 left-1/2 -translate-x-1/2 w-8 h-3 bg-paper-dark/40 rotate-1"></div>
+      <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-9 h-3.5 bg-paper-dark/40 rotate-1"></div>
 
       <div className="aspect-square bg-paper-dark/10 w-full mb-3 flex items-center justify-center overflow-hidden border border-paper-dark/10">
         {src ? (
@@ -37,7 +37,7 @@ const PhotoCard = ({ highlight, index, keyProp }) => {
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
           />
         ) : (
-          <ImageIcon className="w-8 h-8 text-ink-light/40" />
+          <ImageIcon className="w-9 h-9 text-ink-light/40" />
         )}
       </div>
 
@@ -56,10 +56,10 @@ const Highlights = ({ highlights }) => {
     <div className="py-8">
       <div className="flex items-center gap-4 mb-8">
         <h2 className="text-2xl font-bold text-ink-dark border-b-2 border-paper-dark pb-2">
-          Highlights
+          Highlights &amp; Moments
         </h2>
         <div className="text-sm text-ink-light italic bg-white px-3 py-1 rounded shadow-sm border border-paper-dark/20 rotate-1">
-          "A few key moments ..."
+          "A few memorable snapshots..."
         </div>
       </div>
 

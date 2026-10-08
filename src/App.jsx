@@ -7,6 +7,8 @@ import Toolkit from "./components/Toolkit";
 import Highlights from "./components/Highlights";
 import Navigation from "./components/Navigation";
 import CustomCursor from "./components/CustomCursor";
+import Contact from "./components/Contact";
+import { Heart } from "lucide-react";
 
 function App() {
   return (
@@ -51,47 +53,21 @@ function App() {
         </div>
       </main>
 
-      <footer id="contact" className="mt-20 pb-12 scroll-mt-24 w-full">
-        {/* Contact strip */}
-        <div className="border-t-2 border-paper-dark pt-8 w-full">
-          <p className="text-xs font-semibold uppercase tracking-widest text-ink-light mb-4">
-            Get in touch
-          </p>
-          <div className="flex flex-row flex-wrap items-center gap-x-6 gap-y-3">
-            <h1 className="text-sm font-medium text-ink-dark">
-              Lets talk over your{" "}
-              <span style={{ color: "#8a4e54", fontWeight: "bold" }}>
-                [insert favourite beverage]
-              </span>
-            </h1>
-            <span className="text-paper-dark/40 hidden sm:inline">—</span>
-            {portfolioData.contact.methods.map((method, index) => {
-              const isEmail = method.platform.toLowerCase() === "email";
-              const displayText = isEmail ? method.handle : method.platform;
-              const linkHref = isEmail
-                ? `mailto:${method.handle}`
-                : method.handle;
-              return (
-                <a
-                  key={index}
-                  href={linkHref}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-ink-dark hover:text-[#8a4e54] border-b border-paper-dark/40 hover:border-[#8a4e54] transition-colors pb-0.5"
-                >
-                  {displayText}
-                </a>
-              );
-            })}
-          </div>
+      <Contact
+        contactData={portfolioData.contact}
+        name={portfolioData.name}
+        resumeData={portfolioData.resume}
+      />
 
-          <div className="mt-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 text-xs text-ink-light">
-            <p>
-              © {portfolioData.name} {new Date().getFullYear()}
-            </p>
-            <p>Made with 💗 by {portfolioData.name.split(" ")[0]}</p>
-          </div>
-        </div>
+      <footer className="mt-8 pb-12 w-full text-xs text-ink-light flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 border-t border-paper-dark/20 pt-4">
+        <p>
+          © {portfolioData.name} {new Date().getFullYear()}
+        </p>
+        <p className="flex items-center gap-1">
+          Made with{" "}
+          <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500 inline" />{" "}
+          by {portfolioData.name.split(" ")[0]}
+        </p>
       </footer>
     </div>
   );
