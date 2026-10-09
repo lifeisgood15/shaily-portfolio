@@ -7,6 +7,8 @@ import {
   ChevronUp,
   PlayCircle,
   ImageOff,
+  AlertCircle,
+  BookOpen,
 } from "lucide-react";
 
 // Import all images from project-backdrops at build time (Vite requirement for src/ assets)
@@ -49,8 +51,23 @@ const Projects = ({ projects }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-10">
         {displayedProjects.map((project, index) => {
           const imageSrc = getImageSrc(project.image);
-          const showDemo = project["show-demo"] === true;
-          const showReadMore = project["show-read-more"] === true;
+          const showDemo =
+            project["show-demo"] === true ||
+            project.showDemo === true ||
+            project["show_demo"] === true;
+          const showReadMore =
+            project["show-read-more"] === true ||
+            project["shor-read-more"] === true ||
+            project.showReadMore === true ||
+            project["show_read_more"] === true;
+          const demoUrl = project["demo-url"] || project.demoUrl || "";
+          const readMoreUrl =
+            project["read-more-url"] || project.readMoreUrl || "";
+          const keyDecision =
+            project["key decision"] ||
+            project.keyDecision ||
+            project["key-decision"] ||
+            "";
           const hasButtons = showDemo || showReadMore;
 
           return (
@@ -89,53 +106,96 @@ const Projects = ({ projects }) => {
                 <h3 className="text-xl font-bold text-ink-dark mb-1 leading-tight">
                   {project.title}
                 </h3>
-                <p className="text-sm font-medium text-ink-light mb-6">
+                <p className="text-xs font-semibold uppercase tracking-wider text-ink-light/80 mb-5 inline-block px-2.5 py-1 rounded bg-white/60 border border-paper-dark/10 w-fit">
                   {project.role}
                 </p>
 
                 <div className="space-y-4 flex-1">
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <Lightbulb className="w-4 h-4 text-ink-dark" />
-                      <h4 className="text-sm font-bold text-ink-dark">
-                        Summary
-                      </h4>
+                  {/* Problem */}
+                  {project.problem && (
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <AlertCircle className="w-4 h-4 text-amber-700" />
+                        <h4 className="text-xs font-bold uppercase tracking-wide text-ink-dark">
+                          Problem
+                        </h4>
+                      </div>
+                      <p className="text-sm text-ink leading-relaxed border-l-2 border-amber-700/40 pl-3 ml-2">
+                        {project.problem}
+                      </p>
                     </div>
-                    <p className="text-sm text-ink leading-relaxed border-l-2 border-paper-dark/30 pl-3 ml-2">
-                      {project.summary}
-                    </p>
-                  </div>
+                  )}
 
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <TrendingUp className="w-4 h-4 text-ink-dark" />
-                      <h4 className="text-sm font-bold text-ink-dark">
-                        Impact
-                      </h4>
+                  {/* Key Decision */}
+                  {keyDecision && (
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <Lightbulb className="w-4 h-4 text-amber-600" />
+                        <h4 className="text-xs font-bold uppercase tracking-wide text-ink-dark">
+                          Key Decision
+                        </h4>
+                      </div>
+                      <p className="text-sm text-ink leading-relaxed border-l-2 border-amber-600/40 pl-3 ml-2">
+                        {keyDecision}
+                      </p>
                     </div>
-                    <p className="text-sm text-ink leading-relaxed border-l-2 border-paper-dark/30 pl-3 ml-2">
-                      {project.impact}
-                    </p>
-                  </div>
+                  )}
+
+                  {/* Impact */}
+                  {project.impact && (
+                    <div>
+                      <div className="flex items-center gap-2 mb-1">
+                        <TrendingUp className="w-4 h-4 text-emerald-700" />
+                        <h4 className="text-xs font-bold uppercase tracking-wide text-ink-dark">
+                          Impact
+                        </h4>
+                      </div>
+                      <p className="text-sm text-ink leading-relaxed border-l-2 border-emerald-700/40 pl-3 ml-2 font-medium">
+                        {project.impact}
+                      </p>
+                    </div>
+                  )}
                 </div>
 
-                {/* Conditional Buttons */}
+                {/* Conditional Action Buttons */}
                 {hasButtons && (
                   <div className="mt-8 pt-4 border-t border-paper-dark/10 flex flex-col sm:flex-row gap-3">
                     {showDemo && (
                       <button
-                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-ink-dark text-white rounded-md text-sm font-bold shadow hover:bg-ink transition-colors group/btn"
                         onClick={() =>
-                          window.open(project["demo-url"], "_blank")
+                          demoUrl &&
+                          window.open(demoUrl, "_blank", "noopener,noreferrer")
                         }
+                        disabled={!demoUrl}
+                        className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-md text-sm font-bold shadow transition-all group/btn ${
+                          demoUrl
+                            ? "bg-ink-dark text-white hover:bg-ink cursor-pointer active:scale-95"
+                            : "bg-ink-dark/40 text-white/70 cursor-not-allowed"
+                        }`}
                       >
                         <PlayCircle className="w-4 h-4 group-hover/btn:scale-110 transition-transform" />
-                        Watch Demo
+                        Show Demo
                       </button>
                     )}
                     {showReadMore && (
-                      <button className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-white rounded-md border border-paper-dark/20 text-sm font-bold text-ink-dark hover:bg-paper-dark/5 transition-colors group/read">
-                        Read story
+                      <button
+                        onClick={() =>
+                          readMoreUrl &&
+                          window.open(
+                            readMoreUrl,
+                            "_blank",
+                            "noopener,noreferrer",
+                          )
+                        }
+                        disabled={!readMoreUrl}
+                        className={`flex-1 flex items-center justify-center gap-2 px-4 py-2.5 rounded-md border text-sm font-bold transition-all group/read ${
+                          readMoreUrl
+                            ? "bg-white border-paper-dark/20 text-ink-dark hover:bg-paper-dark/10 cursor-pointer active:scale-95"
+                            : "bg-white/50 border-paper-dark/10 text-ink-light/50 cursor-not-allowed"
+                        }`}
+                      >
+                        <BookOpen className="w-4 h-4" />
+                        Show Read More
                         <ArrowRight className="w-4 h-4 group-hover/read:translate-x-1 transition-transform" />
                       </button>
                     )}
