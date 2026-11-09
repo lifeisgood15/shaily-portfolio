@@ -73,13 +73,18 @@ function App() {
           </div>
         </div>
 
+        {/* ── Primary Skills: Full screen width ── */}
+        {/* <div id="primary-skills" className="w-full scroll-mt-24 px-3 sm:px-6 md:px-10 lg:px-16">
+          <PrimarySkills data={portfolioData['primary-skills']} />
+        </div> */}
+
         <div className="max-w-5xl mx-auto px-4 md:px-8 lg:px-16">
           <div id="toolkit" className="scroll-mt-24">
             <Toolkit toolkit={portfolioData.toolkit} />
           </div>
         </div>
 
-        <div className="max-w-5xl mx-auto px-4 md:px-8 lg:px-16">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
           <div id="projects" className="scroll-mt-24">
             <Projects projects={portfolioData.projects} />
           </div>
