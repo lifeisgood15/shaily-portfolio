@@ -1,83 +1,207 @@
-import React, { useState } from "react";
-import { User, MapPin, Folder, Camera, Mail, Menu, X } from "lucide-react";
+import React, { useState, useEffect, useRef } from 'react';
+import { ChevronDown, ExternalLink } from 'lucide-react';
 
-const Navigation = ({ portfoliodata }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Navigation = ({ portfolioData, portfoliodata }) => {
+  const data = portfolioData || portfoliodata;
+  const [activeSection, setActiveSection] = useState('about');
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
+  const targetSectionRef = useRef(null);
+  const timeoutRef = useRef(null);
+  const mobileMenuRef = useRef(null);
 
   const links = [
-    { name: "About", id: "about", icon: User },
-    { name: "Projects", id: "projects", icon: Folder },
-    { name: "My Toolkit", id: "toolkit", icon: Folder },
-    { name: "Moments", id: "moments", icon: Camera },
-    { name: "Journey", id: "journey", icon: MapPin },
-    { name: "Contact", id: "contact", icon: Mail },
+    { name: 'About', id: 'about' },
+    { name: 'Skills', id: 'primary-skills' },
+    { name: 'Work', id: 'projects' },
+    { name: 'Moments', id: 'moments' },
+    { name: 'Journey', id: 'journey' },
+    { name: 'Contact', id: 'contact' },
+    { name: 'Resume', id: 'resume' },
   ];
 
+  // Scroll spy to highlight current active section
+  useEffect(() => {
+    const handleScrollSpy = () => {
+      // If navigating to a clicked destination, do not allow any intermediate button to activate
+      if (targetSectionRef.current) {
+        const targetEl = document.getElementById(targetSectionRef.current);
+        if (targetEl) {
+          const targetTop = targetEl.offsetTop - 100;
+          // Once destination is reached, release the navigation lock
+          if (Math.abs(window.scrollY - targetTop) < 60) {
+            targetSectionRef.current = null;
+          }
+        }
+        return;
+      }
+
+      const scrollPosition = window.scrollY + 140;
+      for (let i = links.length - 1; i >= 0; i--) {
+        const section = document.getElementById(links[i].id);
+        if (section && scrollPosition >= section.offsetTop) {
+          setActiveSection(links[i].id);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScrollSpy, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', handleScrollSpy);
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, [links]);
+
+  // Close mobile dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+        setIsMobileOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    document.addEventListener('touchstart', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, []);
+
   const handleScroll = (id) => {
+    // Lock navigation exclusively to destination button
+    targetSectionRef.current = id;
+    setActiveSection(id);
+    setIsMobileOpen(false);
+
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+
     const element = document.getElementById(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsOpen(false);
+      const yOffset = -90;
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
     }
+
+    // Safety timeout to release lock even if scroll was interrupted
+    timeoutRef.current = setTimeout(() => {
+      targetSectionRef.current = null;
+    }, 1500);
   };
 
   return (
-    <div
-      className="fixed top-0 left-0 right-0 z-50 bg-paper-texture shadow-sm border-b border-paper-dark/20"
-      style={{ height: "3.5rem" }}
-    >
-      <div className="max-w-5xl mx-auto px-4 md:px-8 lg:px-16 flex justify-between items-start md:items-center h-16">
-        {/* Empty space or Logo for mobile alignment */}
-        <div className="flex items-center h-full">
-          <span className="font-bold text-ink-dark text-lg md:hidden">
-            Shaily Pandey
-          </span>
-        </div>
-
-        {/* Desktop Navigation - Hanging tabs */}
-        <nav className="hidden md:flex h-full items-start">
-          {links.map((link) => (
-            <button
-              key={link.id}
-              onClick={() => handleScroll(link.id)}
-              className="bg-[#8a4e54] text-white/90 hover:text-white px-5 py-2.5 font-medium text-sm transition-all hover:pt-4 rounded-b-xl shadow-md border-l border-r border-b border-[#6d3c41] ml-1"
-              style={{
-                fontFamily:
-                  "'Caveat', 'Kalam', 'Patrick Hand', cursive, sans-serif",
-              }}
-            >
-              {link.name}
-            </button>
-          ))}
-        </nav>
-
-        {/* Mobile Hamburger Button */}
+    <header className="fixed top-3 left-3 sm:top-4 sm:left-6 md:left-8 z-50 max-w-[calc(100vw-1.5rem)]">
+      {/* ── Desktop Navigation: Full horizontal left-aligned bar ── */}
+      <nav
+        aria-label="Desktop Navigation"
+        className="hidden md:inline-flex items-center gap-2 p-1.5 sm:p-2 rounded-full navbar-checkered backdrop-blur-md"
+      >
+        {/* Left circular brand / monogram avatar */}
         <button
-          className="md:hidden flex items-center h-full text-ink-dark"
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => handleScroll('about')}
+          title={data?.name || 'Shaily Pandey'}
+          aria-label="Go to About / Home"
+          className="w-8 h-8 rounded-full bg-white border border-pink-300 text-pink-900 font-bold text-xs flex items-center justify-center shadow-xs hover:scale-105 active:scale-95 transition-transform flex-shrink-0"
         >
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          <span>SP</span>
         </button>
-      </div>
 
-      {/* Mobile Navigation Menu */}
-      {isOpen && (
-        <div className="md:hidden bg-paper-texture border-t border-paper-dark/10 shadow-lg absolute left-0 right-0 top-16">
-          <nav className="flex flex-col p-4">
-            {links.map((link) => (
+        {/* Left-aligned navigation items */}
+        <div className="flex items-center gap-1.5">
+          {links.map((link) => {
+            const isActive = activeSection === link.id;
+            const isResume = link.id === 'resume';
+            const btnClass = `whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold select-none border inline-flex items-center gap-1 ${isActive
+                ? 'bg-[#fbcfe8] text-pink-950 border-pink-400 shadow-xs transition-colors duration-200'
+                : 'bg-white text-neutral-800 hover:text-pink-950 hover:bg-pink-50 border-neutral-200/90 hover:border-pink-300 transition-none'
+              }`;
+
+            if (isResume) {
+              return (
+                <a
+                  key={link.id}
+                  href={data?.resume?.url || '#'}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={btnClass}
+                >
+                  {link.name}
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              );
+            }
+
+            return (
               <button
                 key={link.id}
                 onClick={() => handleScroll(link.id)}
-                className="flex items-center gap-3 px-4 py-3 text-ink hover:bg-paper rounded-md transition-colors text-left font-medium"
+                className={btnClass}
               >
-                <link.icon className="w-5 h-5 text-ink-light" />
                 {link.name}
               </button>
-            ))}
-          </nav>
+            );
+          })}
         </div>
-      )}
-    </div>
+      </nav>
+
+      {/* ── Mobile Navigation: Collapsed SP logo button with dropdown ── */}
+      <div className="md:hidden relative" ref={mobileMenuRef}>
+        <button
+          onClick={() => setIsMobileOpen((prev) => !prev)}
+          aria-label="Toggle navigation menu"
+          aria-expanded={isMobileOpen}
+          className="flex items-center gap-1.5 p-1.5 rounded-full navbar-checkered backdrop-blur-md shadow-md active:scale-95 transition-transform"
+        >
+          <div className="w-8 h-8 rounded-full bg-white border border-pink-300 text-pink-900 font-bold text-xs flex items-center justify-center shadow-xs">
+            <span>SP</span>
+          </div>
+          <ChevronDown
+            className={`w-3.5 h-3.5 text-pink-900 mr-1 transition-transform duration-200 ${isMobileOpen ? 'rotate-180' : ''
+              }`}
+          />
+        </button>
+
+        {/* Mobile Dropdown Popover */}
+        {isMobileOpen && (
+          <div className="absolute top-full left-0 mt-2 w-44 p-2 rounded-2xl navbar-checkered backdrop-blur-md shadow-xl border border-pink-300/60 z-50 flex flex-col gap-1.5 animate-in fade-in zoom-in-95 duration-150">
+            {links.map((link) => {
+              const isActive = activeSection === link.id;
+              const isResume = link.id === 'resume';
+              const mobileClass = `w-full text-left px-3.5 py-2 rounded-xl text-xs font-semibold select-none border transition-colors inline-flex items-center gap-1 ${isActive
+                  ? 'bg-[#fbcfe8] text-pink-950 border-pink-400 shadow-xs'
+                  : 'bg-white text-neutral-800 hover:text-pink-950 hover:bg-pink-50 border-neutral-200/90'
+                }`;
+
+              if (isResume) {
+                return (
+                  <a
+                    key={link.id}
+                    href={data?.resume?.url || '#'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => setIsMobileOpen(false)}
+                    className={mobileClass}
+                  >
+                    {link.name}
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                );
+              }
+
+              return (
+                <button
+                  key={link.id}
+                  onClick={() => handleScroll(link.id)}
+                  className={mobileClass}
+                >
+                  {link.name}
+                </button>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    </header>
   );
 };
 

@@ -1,47 +1,57 @@
-import React from "react";
-import { Image as ImageIcon } from "lucide-react";
+import React from 'react';
+import { Image as ImageIcon } from 'lucide-react';
+import SectionHeader from './elements/SectionHeader';
 
-// Import all images from the highlights folder at build time (Vite requires this for src/ assets)
-const highlightImages = import.meta.glob("../resources/highlights/*", {
-  eager: true,
-});
+// Import all images from the highlights folder at build time
+const highlightImages = import.meta.glob('../resources/highlights/*', { eager: true });
 
-// Helper: resolve filename → imported URL
 const getImageSrc = (filename) => {
   if (!filename) return null;
   const key = `../resources/highlights/${filename}`;
   return highlightImages[key]?.default ?? null;
 };
 
-// Reusable photo card so both marquee sets share the same markup
+// Tape styles for the top of each polaroid snapshot
+const TAPE_STYLES = [
+  'navbar-checkered border border-pink-300/80 -rotate-2',
+  'bg-teal-200/90 border border-teal-300 rotate-2',
+  'bg-amber-200/90 border border-amber-300 -rotate-1',
+  'bg-purple-200/90 border border-purple-300 rotate-3',
+  'bg-orange-200/90 border border-orange-300 -rotate-2',
+];
+
 const PhotoCard = ({ highlight, index, keyProp }) => {
   const src = getImageSrc(highlight.image);
+  const tapeStyle = TAPE_STYLES[index % TAPE_STYLES.length];
+  const rotClass = index % 2 === 0 ? '-rotate-2' : 'rotate-2';
+
   return (
     <div
       key={keyProp}
-      className={`
-        bg-white p-2 pb-6 border-2 border-paper-dark/20 shadow-photo relative group hover:z-10 hover:scale-110 transition-transform flex-shrink-0 w-[260px]
-        ${index % 2 === 0 ? "rotate-[-3deg]" : "rotate-[3deg]"}
-      `}
+      className={`bg-white p-3.5 pb-8 rounded-sm shadow-md border border-neutral-200/70 relative group hover:z-20 hover:scale-105 hover:rotate-0 hover:shadow-xl transition-all duration-300 flex-shrink-0 w-[270px] select-none ${rotClass}`}
     >
-      {/* Tape strip */}
-      <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-9 h-3.5 bg-paper-dark/40 rotate-1"></div>
+      {/* Decorative Washi Tape strip on top */}
+      <div
+        className={`absolute -top-3.5 left-1/2 -translate-x-1/2 w-20 h-5 rounded-xs z-10 shadow-xs ${tapeStyle}`}
+      />
 
-      <div className="aspect-square bg-paper-dark/10 w-full mb-3 flex items-center justify-center overflow-hidden border border-paper-dark/10">
+      {/* Photo Frame */}
+      <div className="aspect-square bg-neutral-100 w-full mb-3 flex items-center justify-center overflow-hidden border border-neutral-200 rounded-xs">
         {src ? (
           <img
             src={src}
             alt={highlight.title}
             loading="lazy"
             decoding="async"
-            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
           />
         ) : (
-          <ImageIcon className="w-9 h-9 text-ink-light/40" />
+          <ImageIcon className="w-8 h-8 text-neutral-400" />
         )}
       </div>
 
-      <h3 className="font-bold text-ink-dark text-xs leading-tight text-center px-1">
+      {/* Snapshot Caption */}
+      <h3 className="font-semibold text-neutral-800 text-xs sm:text-sm leading-snug text-center px-1">
         {highlight.title}
       </h3>
     </div>
@@ -49,52 +59,44 @@ const PhotoCard = ({ highlight, index, keyProp }) => {
 };
 
 const Highlights = ({ highlights }) => {
-  // 2× duplication is enough for a seamless marquee loop
   const duplicatedHighlights = [...highlights, ...highlights];
 
   return (
-    <div className="py-8">
-      <div className="flex items-center gap-4 mb-8">
-        <h2 className="text-2xl font-bold text-ink-dark border-b-2 border-paper-dark pb-2">
-          Highlights &amp; Moments
-        </h2>
-        <div className="text-sm text-ink-light italic bg-white px-3 py-1 rounded shadow-sm border border-paper-dark/20 rotate-1">
-          "A few memorable snapshots..."
-        </div>
-      </div>
+    <section className="py-8">
+      <SectionHeader text="Moments" />
 
-      {/* Marquee Scrolling Container */}
+      {/* ── Marquee Scrolling Polaroid Strip ── */}
       <div className="relative w-full overflow-hidden pb-8 pt-4">
         <div
           className="flex w-max animate-marquee hover:[animation-play-state:paused]"
-          style={{ willChange: "transform" }}
+          style={{ willChange: 'transform' }}
         >
           {/* First set */}
-          <div className="flex gap-6 pr-6">
+          <div className="flex gap-8 pr-8">
             {duplicatedHighlights.map((highlight, index) => (
               <PhotoCard
                 key={index}
                 highlight={highlight}
                 index={index}
-                keyProp={index}
+                keyProp={`first-${index}`}
               />
             ))}
           </div>
 
-          {/* Second identical set for seamless looping */}
-          <div className="flex gap-6 pr-6">
+          {/* Second duplicate set for infinite seamless loop */}
+          <div className="flex gap-8 pr-8">
             {duplicatedHighlights.map((highlight, index) => (
               <PhotoCard
-                key={"dup-" + index}
+                key={`dup-${index}`}
                 highlight={highlight}
                 index={index}
-                keyProp={"dup-" + index}
+                keyProp={`second-${index}`}
               />
             ))}
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from 'react';
 import {
   Mail,
   Github,
@@ -10,34 +10,34 @@ import {
   Pencil,
   Type,
   Eraser,
-  Sparkles,
-} from "lucide-react";
+  Sparkles
+} from 'lucide-react';
 
 const Contact = ({ contactData, name, resumeData }) => {
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
   const [isDrawing, setIsDrawing] = useState(false);
-  const [penColor, setPenColor] = useState("#ff5e87");
+  const [penColor, setPenColor] = useState('#ff5e87');
   const [penSize, setPenSize] = useState(3);
-  const [mode, setMode] = useState("draw"); // 'draw' | 'type' | 'erase'
-  const [typedText, setTypedText] = useState("");
+  const [mode, setMode] = useState('draw'); // 'draw' | 'type' | 'erase'
+  const [typedText, setTypedText] = useState('');
   const [isFlipping, setIsFlipping] = useState(false);
   const [flippedImage, setFlippedImage] = useState(null);
 
   // Handwritten intro animation state: 'idle' | 'typing' | 'fainting' | 'done'
-  const [introText, setIntroText] = useState("");
-  const [introState, setIntroState] = useState("idle");
+  const [introText, setIntroText] = useState('');
+  const [introState, setIntroState] = useState('idle');
 
   // Trigger handwriting animation ONCE on scroll into view
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
         const [entry] = entries;
-        if (entry.isIntersecting && introState === "idle") {
-          setIntroState("typing");
+        if (entry.isIntersecting && introState === 'idle') {
+          setIntroState('typing');
         }
       },
-      { threshold: 0.25 },
+      { threshold: 0.25 }
     );
 
     if (containerRef.current) {
@@ -82,18 +82,18 @@ const Contact = ({ contactData, name, resumeData }) => {
     canvas.width = rect.width * dpr;
     canvas.height = rect.height * dpr;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     ctx.scale(dpr, dpr);
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
   }, []);
 
   // Drawing Handlers
   const startDrawing = (e) => {
-    if (mode === "type") return;
+    if (mode === 'type') return;
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     const rect = canvas.getBoundingClientRect();
 
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
@@ -107,16 +107,16 @@ const Contact = ({ contactData, name, resumeData }) => {
     setIsDrawing(true);
 
     // Hide intro if user interacts
-    if (introState !== "done") {
-      setIntroState("done");
+    if (introState !== 'done') {
+      setIntroState('done');
     }
   };
 
   const draw = (e) => {
-    if (!isDrawing || mode === "type") return;
+    if (!isDrawing || mode === 'type') return;
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     const rect = canvas.getBoundingClientRect();
 
     const clientX = e.touches ? e.touches[0].clientX : e.clientX;
@@ -125,11 +125,11 @@ const Contact = ({ contactData, name, resumeData }) => {
     const x = clientX - rect.left;
     const y = clientY - rect.top;
 
-    if (mode === "erase") {
-      ctx.globalCompositeOperation = "destination-out";
+    if (mode === 'erase') {
+      ctx.globalCompositeOperation = 'destination-out';
       ctx.lineWidth = 20;
     } else {
-      ctx.globalCompositeOperation = "source-over";
+      ctx.globalCompositeOperation = 'source-over';
       ctx.strokeStyle = penColor;
       ctx.lineWidth = penSize;
     }
@@ -145,9 +145,9 @@ const Contact = ({ contactData, name, resumeData }) => {
   const clearCanvas = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    setTypedText("");
+    setTypedText('');
   };
 
   // Turn page animation on Check click (Slower, realistic 1.6s duration)
@@ -175,23 +175,19 @@ const Contact = ({ contactData, name, resumeData }) => {
   // Map platform name to Lucide Icon
   const getPlatformIcon = (platform) => {
     const p = platform.toLowerCase();
-    if (p.includes("email") || p.includes("gmail")) return Mail;
-    if (p.includes("github")) return Github;
-    if (p.includes("linkedin")) return Linkedin;
-    if (p.includes("meet") || p.includes("calendar") || p.includes("schedule"))
-      return Calendar;
+    if (p.includes('email') || p.includes('gmail')) return Mail;
+    if (p.includes('github')) return Github;
+    if (p.includes('linkedin')) return Linkedin;
+    if (p.includes('meet') || p.includes('calendar') || p.includes('schedule')) return Calendar;
     return FileText;
   };
 
   return (
-    <footer
-      id="contact"
-      ref={containerRef}
-      className="mt-16 pb-6 scroll-mt-24 w-full"
-    >
+    <footer id="contact" ref={containerRef} className="mt-16 pb-6 scroll-mt-24 w-full">
       {/* Outer Lined Journal Container styled like notebook */}
       <div className="scrapbook-border p-6 md:p-8 bg-[#faf7f0] tape-pink shadow-scrapbook relative overflow-hidden">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
           {/* LEFT SIDE: Interactive Journal Page (7 cols) */}
           <div className="lg:col-span-7 flex flex-col gap-3">
             <div className="flex items-center justify-between">
@@ -207,24 +203,18 @@ const Contact = ({ contactData, name, resumeData }) => {
                 {/* Main mode buttons */}
                 <button
                   type="button"
-                  onClick={() => setMode("draw")}
-                  className={`flex items-center gap-1 px-3 py-1.5 rounded transition-colors ${
-                    mode === "draw"
-                      ? "bg-ink-dark text-white font-bold"
-                      : "hover:bg-paper-dark/10 text-ink"
-                  }`}
+                  onClick={() => setMode('draw')}
+                  className={`flex items-center gap-1 px-3 py-1.5 rounded transition-colors ${mode === 'draw' ? 'bg-ink-dark text-white font-bold' : 'hover:bg-paper-dark/10 text-ink'
+                    }`}
                 >
                   <Pencil className="w-3.5 h-3.5" />
                   Doodle
                 </button>
                 <button
                   type="button"
-                  onClick={() => setMode("type")}
-                  className={`flex items-center gap-1 px-3 py-1.5 rounded transition-colors ${
-                    mode === "type"
-                      ? "bg-ink-dark text-white font-bold"
-                      : "hover:bg-paper-dark/10 text-ink"
-                  }`}
+                  onClick={() => setMode('type')}
+                  className={`flex items-center gap-1 px-3 py-1.5 rounded transition-colors ${mode === 'type' ? 'bg-ink-dark text-white font-bold' : 'hover:bg-paper-dark/10 text-ink'
+                    }`}
                 >
                   <Type className="w-3.5 h-3.5" />
                   Type
@@ -232,14 +222,14 @@ const Contact = ({ contactData, name, resumeData }) => {
               </div>
 
               {/* Color pickers & Eraser — shown ONLY when Doodle mode is active */}
-              {(mode === "draw" || mode === "erase") && (
+              {(mode === 'draw' || mode === 'erase') && (
                 <div className="flex items-center gap-2 border-l border-paper-dark/20 pl-2">
                   <div className="flex items-center gap-1.5">
                     {[
-                      { color: "#ff5e87", label: "Blushing" },
-                      { color: "#3ac5f9", label: "Electric" },
-                      { color: "#ffe22b", label: "Mango" },
-                      { color: "#eab0fc", label: "Lavender Haze" },
+                      { color: '#ff5e87', label: 'Blushing' },
+                      { color: '#3ac5f9', label: 'Electric' },
+                      { color: '#ffe22b', label: 'Mango' },
+                      { color: '#eab0fc', label: 'Lavender Haze' }
                     ].map((c) => (
                       <button
                         key={c.color}
@@ -247,13 +237,10 @@ const Contact = ({ contactData, name, resumeData }) => {
                         title={c.label}
                         onClick={() => {
                           setPenColor(c.color);
-                          setMode("draw");
+                          setMode('draw');
                         }}
-                        className={`w-4 h-4 rounded-full border border-paper-dark/30 transition-transform ${
-                          mode === "draw" && penColor === c.color
-                            ? "scale-125 ring-2 ring-ink-dark ring-offset-1"
-                            : "hover:scale-110"
-                        }`}
+                        className={`w-4 h-4 rounded-full border border-paper-dark/30 transition-transform ${mode === 'draw' && penColor === c.color ? 'scale-125 ring-2 ring-ink-dark ring-offset-1' : 'hover:scale-110'
+                          }`}
                         style={{ backgroundColor: c.color }}
                       />
                     ))}
@@ -262,13 +249,12 @@ const Contact = ({ contactData, name, resumeData }) => {
                   {/* Eraser button displayed next to colors when doodle is active */}
                   <button
                     type="button"
-                    onClick={() => setMode(mode === "erase" ? "draw" : "erase")}
+                    onClick={() => setMode(mode === 'erase' ? 'draw' : 'erase')}
                     title="Eraser tool"
-                    className={`flex items-center gap-1 px-2.5 py-1 rounded border border-paper-dark/20 transition-all ${
-                      mode === "erase"
-                        ? "bg-rose-100 text-rose-800 font-bold border-rose-300 ring-1 ring-rose-400"
-                        : "bg-white hover:bg-rose-50 text-ink-dark"
-                    }`}
+                    className={`flex items-center gap-1 px-2.5 py-1 rounded border border-paper-dark/20 transition-all ${mode === 'erase'
+                      ? 'bg-rose-100 text-rose-800 font-bold border-rose-300 ring-1 ring-rose-400'
+                      : 'bg-white hover:bg-rose-50 text-ink-dark'
+                      }`}
                   >
                     <Eraser className="w-3.5 h-3.5 text-rose-600" />
                     <span className="text-[11px]">Eraser</span>
@@ -293,7 +279,7 @@ const Contact = ({ contactData, name, resumeData }) => {
                 className={`
                   relative w-full h-64 md:h-72 rounded-lg border-2 border-paper-dark/30 shadow-md
                   journal-lined-paper overflow-hidden transition-all duration-300
-                  ${mode === "draw" ? "cursor-crosshair" : mode === "erase" ? "cursor-cell" : "cursor-text"}
+                  ${mode === 'draw' ? 'cursor-crosshair' : mode === 'erase' ? 'cursor-cell' : 'cursor-text'}
                 `}
               >
                 {/* Red margin line on left */}
@@ -302,10 +288,7 @@ const Contact = ({ contactData, name, resumeData }) => {
                 {/* Spiral notebook holes on far left edge */}
                 <div className="absolute top-0 bottom-0 left-2 flex flex-col justify-around py-3 z-10 pointer-events-none">
                   {[...Array(6)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="w-2.5 h-2.5 rounded-full bg-paper-dark/30 border border-paper-dark/40 shadow-inner"
-                    ></div>
+                    <div key={i} className="w-2.5 h-2.5 rounded-full bg-paper-dark/30 border border-paper-dark/40 shadow-inner"></div>
                   ))}
                 </div>
 
@@ -337,7 +320,7 @@ const Contact = ({ contactData, name, resumeData }) => {
                 />
 
                 {/* Editable Text overlay if user toggles 'Type' mode */}
-                {mode === "type" && (
+                {mode === 'type' && (
                   <textarea
                     value={typedText}
                     onChange={(e) => setTypedText(e.target.value)}
@@ -357,7 +340,7 @@ const Contact = ({ contactData, name, resumeData }) => {
                     bg-ink-dark text-white flex items-center justify-center
                     shadow-lg border-2 border-white hover:bg-ink hover:scale-110 active:scale-95
                     transition-all group/tick cursor-pointer
-                    ${isFlipping ? "opacity-60 cursor-not-allowed" : ""}
+                    ${isFlipping ? 'opacity-60 cursor-not-allowed' : ''}
                   `}
                 >
                   <Check className="w-5 h-5 group-hover/tick:scale-125 transition-transform" />
@@ -367,16 +350,13 @@ const Contact = ({ contactData, name, resumeData }) => {
                 {isFlipping && (
                   <div className="absolute inset-0 z-50 animate-page-flip origin-left pointer-events-none bg-[#fdfbf7] border-l-2 border-paper-dark/20 shadow-2xl flex items-center justify-center">
                     {flippedImage && (
-                      <img
-                        src={flippedImage}
-                        alt="Turning page"
-                        className="w-full h-full object-cover opacity-80"
-                      />
+                      <img src={flippedImage} alt="Turning page" className="w-full h-full object-cover opacity-80" />
                     )}
                   </div>
                 )}
               </div>
             </div>
+
           </div>
 
           {/* RIGHT SIDE: Reach Me Here (5 cols) */}
@@ -385,14 +365,32 @@ const Contact = ({ contactData, name, resumeData }) => {
               and reach me here
             </h2>
 
+            {/* Teared colored paper banner with white pen text */}
+            <div className="my-1.5 self-start w-full">
+              <div className="relative inline-block -rotate-1 hover:rotate-0 transition-transform duration-300 w-full sm:w-auto">
+                <div
+                  style={{
+                    backgroundColor: '#e2436d',
+                    clipPath: 'polygon(0% 4%, 2% 0%, 98% 0%, 100% 5%, 98% 14%, 100% 22%, 98% 32%, 100% 42%, 98% 52%, 100% 62%, 98% 72%, 100% 82%, 98% 92%, 100% 98%, 98% 100%, 2% 100%, 0% 94%, 2% 84%, 0% 74%, 2% 64%, 0% 54%, 2% 44%, 0% 34%, 2% 24%, 0% 14%)',
+                    boxShadow: '0 4px 10px rgba(0,0,0,0.12)',
+                  }}
+                  className="px-4 sm:px-6 py-2.5 bg-gradient-to-r from-[#df3b67] via-[#ea4e7a] to-[#df3b67] text-white flex items-center justify-center gap-2 sm:gap-3 rounded-xs border-y border-white/25 shadow-sm"
+                >
+                  <span className="text-white/90 text-sm sm:text-base select-none">✧</span>
+                  <p className="font-['Caveat'] text-white text-lg sm:text-xl md:text-2xl font-bold tracking-wide text-center leading-tight drop-shadow-[0_1px_1px_rgba(0,0,0,0.25)] select-none">
+                    Available for full-time Product Manager roles
+                  </p>
+                  <span className="text-white/90 text-sm sm:text-base select-none">✧</span>
+                </div>
+              </div>
+            </div>
+
             {/* Contact list with custom notebook-styled bullet links */}
             <div className="flex flex-col gap-3.5 mt-2">
               {contactData?.methods?.map((method, index) => {
                 const IconComponent = getPlatformIcon(method.platform);
-                const isEmail = method.platform.toLowerCase().includes("email");
-                const linkHref = isEmail
-                  ? `mailto:${method.handle}`
-                  : method.handle;
+                const isEmail = method.platform.toLowerCase().includes('email');
+                const linkHref = isEmail ? `mailto:${method.handle}` : method.handle;
 
                 return (
                   <a
@@ -427,16 +425,16 @@ const Contact = ({ contactData, name, resumeData }) => {
                   </div>
                   <div className="flex flex-col">
                     <span className="text-xs font-bold text-ink-dark group-hover/link:text-[#8a4e54] transition-colors">
-                      {resumeData.label || "Resume"}
+                      {resumeData.label || 'Resume'}
                     </span>
-                    <span className="text-xs text-ink-light">
-                      View my resume
-                    </span>
+                    <span className="text-xs text-ink-light">View my resume</span>
                   </div>
                 </a>
               )}
             </div>
+
           </div>
+
         </div>
       </div>
     </footer>
