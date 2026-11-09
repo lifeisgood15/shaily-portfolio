@@ -71,13 +71,37 @@
   },
   "projects": [
     {
-      "title": "Giving relationship managers their time back",
+      "title": "Feature placement for AI solution",
+      "role": "@Digitomics | FinOps Platform",
+      "small-description": "Increased AI feature discoverablity  for FinOps platform used by MSMEs leading to 15% increase in WAUs for that feature",
+      "image": "Askorbit.gif",
+      "problem": "AI-first platform needs users to use right AI feature at the right time to see the real value of the product.",
+      "key decision": "Designed feature placement for AI chatbot involving icon to load after the page has completed loading.",
+      "impact": "15% increase in WAUs for that feature",
+      "show-demo": false,
+      "show-read-more": false,
+      "read-more-url": ""
+    },
+    {
+      "title": "Saving Relationship manager 40% time",
       "role": "@TCS | Global Banking Client",
-      "small-description": "Prioritized the usecases to be implemented in the MVP based on the time saved for RMs",
+      "small-description": "Prioritized the usecases to be implemented in the GenAI MVP based on the time saved for RMs leading to new $5M engagement",
       "image": "genaipoc.png",
       "problem": "RMs serving high-net-worth and senior clients lose hours to routine requests, which caps how many clients they can serve well.",
       "key decision": "Prioritized the usecases to be implemented in the MVP based on the time saved for RMs.",
       "impact": "PoC led to a new $5M engagement.",
+      "show-demo": false,
+      "show-read-more": false,
+      "read-more-url": ""
+    },
+    {
+      "title": "Designing reusable datatable",
+      "role": "@TCS | Global Banking Client",
+      "small-description": "Designed and developed one of the most complex custom reusable lightning-datatable allowing developers to use images/tags/buttons inline, leading to project expanding to other lines of businesses",
+      "image": "datatable.gif",
+      "problem": "Client required a highly-functional layout with a table displaying information consolidated from 6 different SF objects and 10+ fields meeting criteria. SF out-of-the-box datatable didn't allow this.",
+      "key decision": "I designed a custon datatypes data table component that could be used across differnt features throughout the project ensuring the right level of flexibility and maintainability.",
+      "impact": "Project was identified as a value maximizing project and was expanded to other lines of businesses.",
       "show-demo": false,
       "show-read-more": false,
       "read-more-url": ""
@@ -269,5 +293,27 @@
   "resume": {
     "label": "Resume",
     "url": "https://drive.google.com/drive/folders/1VcjpPcBJRPSTwluvAhofxSi669JvTg5f?usp=sharing"
-  }
+  },
+  "brain-made-of": [
+    {
+      "percentage": 40,
+      "item": "Overthinking"
+    },
+    {
+      "percentage": 20,
+      "item": "Books"
+    },
+    {
+      "percentage": 15,
+      "item": "Music"
+    },
+    {
+      "percentage": 15,
+      "item": "Family"
+    },
+    {
+      "percentage": 10,
+      "item": "Running"
+    }
+  ]
 }
