@@ -1,9 +1,15 @@
 {
   "name": "Shaily Pandey",
-  "role": "Product Manager",
-  "tagline": "I build epic products.",
   "about": {
-    "para": "I combine my deep user empathy with my problem-solving mindset to build products that I am proud of. I am complementing my background in IT with MBA, developing skills to bridge gap between business goals and user needs. ",
+    "greeting": "Namaste, I am",
+    "name": "Shaily",
+    "tagline": "I love building products that people and teams love.",
+    "para": [
+      "Currently an AI Product Manager Intern.",
+      "Formerly a Salesforce Developer.",
+      "7 times certified.",
+      "Now an MBA Candidate at IIM Lucknow."
+    ],
     "timeline": [
       {
         "org/school": "Digitomics.ai",
@@ -11,6 +17,13 @@
         "icon": "work",
         "year": "2026-present",
         "skill_gained": "Co-led founding team in launch of AI FinOps platform, owning the 0→1 product roadmap & UI/UX strategy. I am heavily involved in the feature discovery and prioritization of the efforts."
+      },
+      {
+        "org/school": "IIM Lucknow (Noida Campus)",
+        "role": "MBA-Sustainable Management",
+        "icon": "school",
+        "year": "2025-2027",
+        "skill_gained": "I understood how important sustainability is if we want to progress at the same speed with tech and AI innovations. I am learning business with a sustainability lens."
       },
       {
         "org/school": "Ernst&Young - Government and Public Sector",
@@ -25,13 +38,6 @@
         "icon": "work",
         "year": "2026-2026",
         "skill_gained": "Identified product opportunity to eliminate 5+ Lakhs of upfront feasibility cost that Carbon project developers bear, roadmapped a the product and conducted extensive research of methodologies and developed logical decision trees."
-      },
-      {
-        "org/school": "IIM Lucknow (Noida Campus)",
-        "role": "MBA-Sustainable Management",
-        "icon": "school",
-        "year": "2025-2027",
-        "skill_gained": "I understood how important sustainability is if we want to progress at the same speed with tech and AI innovations. I am learning business with a sustainability lens."
       },
       {
         "org/school": "Tata Consultancy Services (TCS)",
@@ -67,6 +73,7 @@
     {
       "title": "Giving relationship managers their time back",
       "role": "@TCS | Global Banking Client",
+      "small-description": "Prioritized the usecases to be implemented in the MVP based on the time saved for RMs",
       "image": "genaipoc.png",
       "problem": "RMs serving high-net-worth and senior clients lose hours to routine requests, which caps how many clients they can serve well.",
       "key decision": "Prioritized the usecases to be implemented in the MVP based on the time saved for RMs.",
@@ -77,6 +84,7 @@
     },
     {
       "title": "Students no longer miss deadlines",
+      "small-description": "Designed a Google Workspace Flow which automatically checks emails for deadlines and creates google calendar events to track effectively.",
       "role": "Personal Project",
       "image": "iiml-deadlines.png",
       "problem": "Missed deadlines and lack of visibility for assignment and test dates",
@@ -90,6 +98,7 @@
       "title": "Pay for what you eat",
       "role": "Group - Class Project",
       "image": "iiml-mess.png",
+      "small-description": "Created a prototype for a College Mess Management",
       "problem": "Students had to pay for mess food even if they didn't eat, leading to food wastage and paying for more.",
       "key decision": "Created a prototype for a College Mess Management portal where students only pay for what they want to eat. Mess management analyzes students' attendance data over time and plan better.",
       "impact": "Reduced food wastage.",
@@ -100,7 +109,7 @@
     }
   ],
   "toolkit": {
-    "title": "My Product Toolkit",
+    "title": "Primary skills",
     "list-of-tools": [
       {
         "name": "User journey mapping"
@@ -122,6 +131,9 @@
       },
       {
         "name": "JIRA"
+      },
+      {
+        "name": "Figma"
       },
       {
         "name": "Salesforce"
@@ -146,6 +158,48 @@
       },
       {
         "name": "Salesforce"
+      }
+    ]
+  },
+  "primary-skills": {
+    "title": "primary skills",
+    "skills": [
+      {
+        "title": "Product",
+        "details": [
+          "Product Discovery",
+          "Business goals ownership",
+          "Strategic impact"
+        ]
+      },
+      {
+        "title": "Process",
+        "details": [
+          "Software Development",
+          "Backlog refinement",
+          "Product vision and planning"
+        ]
+      },
+      {
+        "title": "Analytics",
+        "details": ["Measuring Progress and KPIs", "Data analytics"]
+      },
+      {
+        "title": "Customer",
+        "details": [
+          "User Journey and experience",
+          "Voice of customer",
+          "Product market fit"
+        ]
+      },
+      {
+        "title": "People",
+        "details": [
+          "Communication",
+          "Leadership",
+          "Mentorship",
+          "Stakeholder management"
+        ]
       }
     ]
   },
@@ -207,13 +261,13 @@
         "handle": "https://www.linkedin.com/in/shaily-pandey/"
       },
       {
-        "platform": "Schedule a Google meet",
+        "platform": "Meet",
         "handle": "https://calendar.app.google/kZVcQzn9Pgna8XDd7"
       }
     ]
   },
   "resume": {
-    "label": "Check out my resume",
+    "label": "Resume",
     "url": "https://drive.google.com/drive/folders/1VcjpPcBJRPSTwluvAhofxSi669JvTg5f?usp=sharing"
   }
 }
