@@ -1,22 +1,22 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { ChevronDown, ExternalLink } from 'lucide-react';
+import React, { useState, useEffect, useRef } from "react";
+import { ChevronDown, ExternalLink } from "lucide-react";
 
 const Navigation = ({ portfolioData, portfoliodata }) => {
   const data = portfolioData || portfoliodata;
-  const [activeSection, setActiveSection] = useState('about');
+  const [activeSection, setActiveSection] = useState("about");
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const targetSectionRef = useRef(null);
   const timeoutRef = useRef(null);
   const mobileMenuRef = useRef(null);
 
   const links = [
-    { name: 'About', id: 'about' },
-    { name: 'Skills', id: 'primary-skills' },
-    { name: 'Work', id: 'projects' },
-    { name: 'Moments', id: 'moments' },
-    { name: 'Journey', id: 'journey' },
-    { name: 'Contact', id: 'contact' },
-    { name: 'Resume', id: 'resume' },
+    { name: "About", id: "about" },
+    { name: "Skills", id: "toolkit" },
+    { name: "Work", id: "projects" },
+    { name: "Moments", id: "moments" },
+    { name: "Journey", id: "journey" },
+    { name: "Contact", id: "contact" },
+    { name: "Resume", id: "resume" },
   ];
 
   // Scroll spy to highlight current active section
@@ -45,9 +45,9 @@ const Navigation = ({ portfolioData, portfoliodata }) => {
       }
     };
 
-    window.addEventListener('scroll', handleScrollSpy, { passive: true });
+    window.addEventListener("scroll", handleScrollSpy, { passive: true });
     return () => {
-      window.removeEventListener('scroll', handleScrollSpy);
+      window.removeEventListener("scroll", handleScrollSpy);
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
     };
   }, [links]);
@@ -55,16 +55,19 @@ const Navigation = ({ portfolioData, portfoliodata }) => {
   // Close mobile dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target)
+      ) {
         setIsMobileOpen(false);
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('touchstart', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('touchstart', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
     };
   }, []);
 
@@ -79,8 +82,9 @@ const Navigation = ({ portfolioData, portfoliodata }) => {
     const element = document.getElementById(id);
     if (element) {
       const yOffset = -90;
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: 'smooth' });
+      const y =
+        element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: "smooth" });
     }
 
     // Safety timeout to release lock even if scroll was interrupted
@@ -98,8 +102,8 @@ const Navigation = ({ portfolioData, portfoliodata }) => {
       >
         {/* Left circular brand / monogram avatar */}
         <button
-          onClick={() => handleScroll('about')}
-          title={data?.name || 'Shaily Pandey'}
+          onClick={() => handleScroll("about")}
+          title={data?.name || "Shaily Pandey"}
           aria-label="Go to About / Home"
           className="w-8 h-8 rounded-full bg-white border border-pink-300 text-pink-900 font-bold text-xs flex items-center justify-center shadow-xs hover:scale-105 active:scale-95 transition-transform flex-shrink-0"
         >
@@ -110,17 +114,18 @@ const Navigation = ({ portfolioData, portfoliodata }) => {
         <div className="flex items-center gap-1.5">
           {links.map((link) => {
             const isActive = activeSection === link.id;
-            const isResume = link.id === 'resume';
-            const btnClass = `whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold select-none border inline-flex items-center gap-1 ${isActive
-                ? 'bg-[#fbcfe8] text-pink-950 border-pink-400 shadow-xs transition-colors duration-200'
-                : 'bg-white text-neutral-800 hover:text-pink-950 hover:bg-pink-50 border-neutral-200/90 hover:border-pink-300 transition-none'
-              }`;
+            const isResume = link.id === "resume";
+            const btnClass = `whitespace-nowrap px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-semibold select-none border inline-flex items-center gap-1 ${
+              isActive
+                ? "bg-[#fbcfe8] text-pink-950 border-pink-400 shadow-xs transition-colors duration-200"
+                : "bg-white text-neutral-800 hover:text-pink-950 hover:bg-pink-50 border-neutral-200/90 hover:border-pink-300 transition-none"
+            }`;
 
             if (isResume) {
               return (
                 <a
                   key={link.id}
-                  href={data?.resume?.url || '#'}
+                  href={data?.resume?.url || "#"}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={btnClass}
@@ -156,8 +161,9 @@ const Navigation = ({ portfolioData, portfoliodata }) => {
             <span>SP</span>
           </div>
           <ChevronDown
-            className={`w-3.5 h-3.5 text-pink-900 mr-1 transition-transform duration-200 ${isMobileOpen ? 'rotate-180' : ''
-              }`}
+            className={`w-3.5 h-3.5 text-pink-900 mr-1 transition-transform duration-200 ${
+              isMobileOpen ? "rotate-180" : ""
+            }`}
           />
         </button>
 
@@ -166,17 +172,18 @@ const Navigation = ({ portfolioData, portfoliodata }) => {
           <div className="absolute top-full left-0 mt-2 w-44 p-2 rounded-2xl navbar-checkered backdrop-blur-md shadow-xl border border-pink-300/60 z-50 flex flex-col gap-1.5 animate-in fade-in zoom-in-95 duration-150">
             {links.map((link) => {
               const isActive = activeSection === link.id;
-              const isResume = link.id === 'resume';
-              const mobileClass = `w-full text-left px-3.5 py-2 rounded-xl text-xs font-semibold select-none border transition-colors inline-flex items-center gap-1 ${isActive
-                  ? 'bg-[#fbcfe8] text-pink-950 border-pink-400 shadow-xs'
-                  : 'bg-white text-neutral-800 hover:text-pink-950 hover:bg-pink-50 border-neutral-200/90'
-                }`;
+              const isResume = link.id === "resume";
+              const mobileClass = `w-full text-left px-3.5 py-2 rounded-xl text-xs font-semibold select-none border transition-colors inline-flex items-center gap-1 ${
+                isActive
+                  ? "bg-[#fbcfe8] text-pink-950 border-pink-400 shadow-xs"
+                  : "bg-white text-neutral-800 hover:text-pink-950 hover:bg-pink-50 border-neutral-200/90"
+              }`;
 
               if (isResume) {
                 return (
                   <a
                     key={link.id}
-                    href={data?.resume?.url || '#'}
+                    href={data?.resume?.url || "#"}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={() => setIsMobileOpen(false)}
