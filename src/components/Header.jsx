@@ -1,5 +1,5 @@
 import React from "react";
-import shailyPhoto from "../resources/shaily.png";
+import shailyPhoto from "../resources/shailyimg.jpeg";
 
 import MagazineLetters from "./elements/MagazineLetters";
 import {
@@ -20,6 +20,21 @@ import snorlaxImg from "../resources/header-emogis/snorlax.png";
 import vscodeImg from "../resources/header-emogis/VSCode.png";
 import modelImg from "../resources/header-emogis/Model.png";
 import raceImg from "../resources/header-emogis/Race.png";
+import fcbarcelonaImg from "../resources/header-emogis/fcbarcelona.png";
+import hammerImg from "../resources/header-emogis/hammer-sticker.png";
+import localImg from "../resources/header-emogis/local.png";
+import marinedriveImg from "../resources/header-emogis/marine-drive-sticker.png";
+import cocktailImg from "../resources/header-emogis/passionfruit-cocktail-sticker.png";
+import pizzaImg from "../resources/header-emogis/pizza-sticker.png";
+import slytherinImg from "../resources/header-emogis/slytherin.png";
+import kayakImg from "../resources/header-emogis/kayak.png";
+import iimlogoImg from "../resources/header-emogis/IIMLogo.png";
+import lotrImg from "../resources/header-emogis/lotr.png";
+import shellImg from "../resources/header-emogis/shell.webp";
+import strava from "../resources/header-emogis/Strava.png";
+import capImg from "../resources/header-emogis/cap.png";
+import agentforceImg from "../resources/header-emogis/agentforce.png";
+import ramenImg from "../resources/header-emogis/ramen.png";
 
 // Map platform names to Lucide icons
 const getIcon = (platform) => {
@@ -127,7 +142,6 @@ const Header = ({ data }) => {
               <span className="w-1.5 h-1.5 rounded-full bg-pink-400/40" />
             </div>
 
-            {/* Polaroid frame card */}
             <div
               className="header-emoji-sticker header-emoji-crochet"
               title="Crochet & Crafting"
@@ -168,6 +182,110 @@ const Header = ({ data }) => {
             >
               <img src={raceImg} alt="Race" />
             </div>
+
+            <div
+              className="header-emoji-sticker header-emoji-fcb"
+              title="FC Barcelona"
+            >
+              <img src={fcbarcelonaImg} alt="fcb" />
+            </div>
+
+            <div
+              className="header-emoji-sticker header-emoji-hammer"
+              title="Thor's Hammer"
+            >
+              <img src={hammerImg} alt="Mjolinr" />
+            </div>
+
+            <div
+              className="header-emoji-sticker header-emoji-local"
+              title="Local train"
+            >
+              <img src={localImg} alt="Local train" />
+            </div>
+
+            <div
+              className="header-emoji-sticker header-emoji-marinedrive"
+              title="Marine drive"
+            >
+              <img src={marinedriveImg} alt="Marine drive" />
+            </div>
+            <div
+              className="header-emoji-sticker header-emoji-cocktail"
+              title="Cocktail"
+            >
+              <img src={cocktailImg} alt="Cocktail" />
+            </div>
+
+            <div
+              className="header-emoji-sticker header-emoji-pizza"
+              title="Pizza"
+            >
+              <img src={pizzaImg} alt="Pizza" />
+            </div>
+
+            <div
+              className="header-emoji-sticker header-emoji-slytherin"
+              title="Slytherin"
+            >
+              <img src={slytherinImg} alt="Slytherin" />
+            </div>
+
+            <div
+              className="header-emoji-sticker header-emoji-iimllogo"
+              title="IIM Lucknow"
+            >
+              <img src={iimlogoImg} alt="IIML Logo" />
+            </div>
+
+            <div
+              className="header-emoji-sticker header-emoji-kayak"
+              title="Kayaking"
+            >
+              <img src={kayakImg} alt="Kayaking" />
+            </div>
+            <div
+              className="header-emoji-sticker header-emoji-shell"
+              title="shells"
+            >
+              <img src={shellImg} alt="Shells at the beach" />
+            </div>
+
+            {/* <div className="header-emoji-sticker header-emoji-strava" title="Strava">
+              <img src={strava} alt="Strava" />
+            </div> */}
+
+            <div
+              className="header-emoji-sticker header-emoji-lotr"
+              title="LOTR"
+            >
+              <img src={lotrImg} alt="LOTR" />
+            </div>
+
+            <div
+              className="header-emoji-sticker header-emoji-snorlax"
+              title="Pokemon"
+            >
+              <img src={snorlaxImg} alt="snorlax" />
+            </div>
+
+            <div className="header-emoji-sticker header-emoji-cap" title="Cap">
+              <img src={capImg} alt="Cap" />
+            </div>
+
+            <div
+              className="header-emoji-sticker header-emoji-agentforce"
+              title="Agentforce"
+            >
+              <img src={agentforceImg} alt="agentforce" />
+            </div>
+            <div
+              className="header-emoji-sticker header-emoji-ramen"
+              title="Ramen"
+            >
+              <img src={ramenImg} alt="Veg ramen" />
+            </div>
+
             <div className="p-3.5 pb-6 bg-white shadow-photo rounded-xs rotate-[2deg] group-hover:rotate-0 transition-transform duration-300 border border-neutral-200">
               <div className="w-48 h-48 sm:w-56 sm:h-56 overflow-hidden bg-neutral-100 border border-neutral-200">
                 <img
@@ -182,33 +300,7 @@ const Header = ({ data }) => {
       </div>
 
       {/* ── Bottom Row: CTA Buttons (Contact, GitHub, Resume) aligned at bottom ── */}
-      <div className="self-start w-full">
-        <div className="relative inline-block hover:rotate--1 transition-transform duration-300 w-full sm:w-auto">
-          <div className="px-4 sm:px-6 flex items-center justify-center gap-2 sm:gap-3 rounded-sm">
-            <span
-              className="text-green-600 text-sm sm:text-base select-none"
-              style={{ textShadow: "0 1px 3px rgba(0,0,0,0.3)" }}
-            >
-              ✧
-            </span>
-            <p
-              className="font-sans text-pink-600 text-lg sm:text-xl md:text-2xl font-bold tracking-wide text-center leading-tight select-none"
-              style={{
-                textShadow:
-                  "0 1px 4px rgba(180,20,80,0.7), 0 0 12px rgba(180,20,80,0.3)",
-              }}
-            >
-              Available for full-time Product Manager roles
-            </p>
-            <span
-              className="text-green-600 text-sm sm:text-base select-none"
-              style={{ textShadow: "0 1px 3px rgba(0,0,0,0.3)" }}
-            >
-              ✧
-            </span>
-          </div>
-        </div>
-      </div>
+
       <div className="mt-auto pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-pink-200/50">
         <div className="flex flex-wrap items-center gap-3">
           {contactMethods.map((method, index) => {
