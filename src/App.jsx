@@ -8,14 +8,7 @@ import Highlights from "./components/Highlights";
 import Navigation from "./components/Navigation";
 import CustomCursor from "./components/CustomCursor";
 import Contact from "./components/Contact";
-
-import booksImg from "./resources/header-emogis/Books.png";
-import crochetImg from "./resources/header-emogis/Crochet.png";
-import iimlImg from "./resources/header-emogis/IIML.png";
-import snorlaxImg from "./resources/header-emogis/snorlax.png";
-import vscodeImg from "./resources/header-emogis/VSCode.png";
-import modelImg from "./resources/header-emogis/Model.png";
-import raceImg from "./resources/header-emogis/Race.png";
+import PrimarySkills from "./components/PrimarySkills";
 
 import { Heart } from "lucide-react";
 
@@ -31,56 +24,9 @@ function App() {
       <main className="space-y-16">
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
           {/* ── Journal Floating Emoji Stickers (Positioned & styled via CSS) ── */}
-          <div
-            className="header-emoji-sticker header-emoji-crochet"
-            title="Crochet & Crafting"
-          >
-            <img src={crochetImg} alt="Crochet" />
-          </div>
 
-          <div
-            className="header-emoji-sticker header-emoji-iiml"
-            title="IIM Lucknow"
-          >
-            <img src={iimlImg} alt="IIM Lucknow" />
-          </div>
-
-          <div
-            className="header-emoji-sticker header-emoji-vscode"
-            title="Coding & Development"
-          >
-            <img src={vscodeImg} alt="VS Code" />
-          </div>
-
-          <div
-            className="header-emoji-sticker header-emoji-books"
-            title="Reading & Continuous Learning"
-          >
-            <img src={booksImg} alt="Books" />
-          </div>
-
-          <div
-            className="header-emoji-sticker header-emoji-model"
-            title="Model"
-          >
-            <img src={modelImg} alt="Model" />
-          </div>
-          <div className="header-emoji-sticker header-emoji-race" title="Race">
-            <img src={raceImg} alt="Race" />
-          </div>
           <div id="about" className="scroll-mt-24">
             <Header data={portfolioData} />
-          </div>
-        </div>
-
-        {/* ── Primary Skills: Full screen width ── */}
-        {/* <div id="primary-skills" className="w-full scroll-mt-24 px-3 sm:px-6 md:px-10 lg:px-16">
-          <PrimarySkills data={portfolioData['primary-skills']} />
-        </div> */}
-
-        <div className="max-w-5xl mx-auto px-4 md:px-8 lg:px-16">
-          <div id="toolkit" className="scroll-mt-24">
-            <Toolkit toolkit={portfolioData.toolkit} />
           </div>
         </div>
 
@@ -90,7 +36,21 @@ function App() {
           </div>
         </div>
 
-        <div className="max-w-5xl mx-auto px-4 md:px-8 lg:px-16">
+        {/* ── Primary Skills: Full screen width ── */}
+        <div
+          id="primary-skills"
+          className="w-full scroll-mt-24 px-3 sm:px-6 md:px-10 lg:px-16"
+        >
+          <PrimarySkills data={portfolioData["primary-skills"]} />
+        </div>
+
+        {/* <div className="max-w-5xl mx-auto px-4 md:px-8 lg:px-16">
+          <div id="toolkit" className="scroll-mt-24">
+            <Toolkit toolkit={portfolioData.toolkit} />
+          </div>
+        </div> */}
+
+        <div className="w-full mx-auto px-4 md:px-8 lg:px-16">
           <div id="moments" className="scroll-mt-24">
             <Highlights highlights={portfolioData.highlights} />
           </div>

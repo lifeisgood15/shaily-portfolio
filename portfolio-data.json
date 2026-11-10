@@ -4,60 +4,54 @@
     "greeting": "Namaste, I am",
     "name": "Shaily",
     "tagline": "I love building products that people and teams love.",
-    "para": [
-      "Currently an AI Product Manager Intern.",
-      "Formerly a Salesforce Developer.",
-      "7 times certified.",
-      "Now an MBA Candidate at IIM Lucknow."
-    ],
     "timeline": [
-      {
-        "org/school": "Digitomics.ai",
-        "role": "AI Product Manager Intern",
-        "icon": "work",
-        "year": "2026-present",
-        "skill_gained": "Co-led founding team in launch of AI FinOps platform, owning the 0→1 product roadmap & UI/UX strategy. I am heavily involved in the feature discovery and prioritization of the efforts."
-      },
       {
         "org/school": "IIM Lucknow (Noida Campus)",
         "role": "MBA-Sustainable Management",
         "icon": "school",
-        "year": "2025-2027",
+        "year": "Jun 2025-Present",
         "skill_gained": "I understood how important sustainability is if we want to progress at the same speed with tech and AI innovations. I am learning business with a sustainability lens."
       },
       {
-        "org/school": "Ernst&Young - Government and Public Sector",
+        "org/school": "Digitomics.ai",
+        "role": "AI Product Manager Intern",
+        "icon": "work",
+        "year": "Jul 2026-Present",
+        "skill_gained": "Co-led founding team in launch of AI FinOps platform, owning the 0→1 product roadmap & UI/UX strategy. I am heavily involved in the feature discovery and prioritization of the efforts."
+      },
+      {
+        "org/school": "Ernst&Young(EY) - Government and Public Sector",
         "role": "Business Consulting Intern",
         "icon": "work",
-        "year": "2026-2026",
+        "year": "Apr 2026- Jun 2026",
         "skill_gained": "I worked on EY projects with the state government, calculating bankability of projects, building sample dashboards to show to our clients."
       },
       {
         "org/school": "Carbon Crunch - Carbon Markets",
         "role": "Product Management Intern",
         "icon": "work",
-        "year": "2026-2026",
+        "year": "Jan 2026- Mar 2026",
         "skill_gained": "Identified product opportunity to eliminate 5+ Lakhs of upfront feasibility cost that Carbon project developers bear, roadmapped a the product and conducted extensive research of methodologies and developed logical decision trees."
       },
       {
         "org/school": "Tata Consultancy Services (TCS)",
         "role": "IT Analyst",
         "icon": "work",
-        "year": "2020-2025",
+        "year": "Sept 2020- Jul 2025",
         "skill_gained": "Started as a junior salesforce developer working with a fortune 500 banking client to translate their user needs into creative salesforce solutions. I participated in product backlog refinement sessions, contributing my technical expertise and aligning development effort with business goals."
       },
       {
         "org/school": "Mastertech, Thane",
         "role": "Search Engine Optimization (SEO) Intern",
         "icon": "work",
-        "year": "2019-2019",
+        "year": "Jun 2019- Jul 2019",
         "skill_gained": "With epic product, you need an epic visibility. This is where I learned how to opmitize a website for SEO."
       },
       {
         "org/school": "Mumbai University, DMCE, Navi Mumbai",
         "role": "Bachelor of Engineering - Information Technology",
         "icon": "school",
-        "year": "2016-2020",
+        "year": "Aug 2016- Oct 2020",
         "skill_gained": "Engineering taught me a lot of things. I gained my theoretical knowledge from here and applied on multiple projects I worked on during this."
       },
       {
@@ -73,7 +67,7 @@
     {
       "title": "Feature placement for AI solution",
       "role": "@Digitomics | FinOps Platform",
-      "small-description": "Increased AI feature discoverablity  for FinOps platform used by MSMEs leading to 15% increase in WAUs for that feature",
+      "small-description": "Increased AI feature discoverability for FinOps platform used by MSMEs leading to 15% increase in WAUs for that feature",
       "image": "Askorbit.gif",
       "problem": "AI-first platform needs users to use right AI feature at the right time to see the real value of the product.",
       "key decision": "Designed feature placement for AI chatbot involving icon to load after the page has completed loading.",
@@ -179,9 +173,6 @@
       },
       {
         "name": "Data Analysis"
-      },
-      {
-        "name": "Salesforce"
       }
     ]
   },
@@ -189,36 +180,50 @@
     "title": "primary skills",
     "skills": [
       {
+        "id": "product",
         "title": "Product",
-        "details": [
-          "Product Discovery",
+        "className": "blob-product",
+        "items": [
+          "Product discovery",
           "Business goals ownership",
-          "Strategic impact"
+          "User journey mapping"
         ]
       },
       {
+        "id": "process",
         "title": "Process",
-        "details": [
-          "Software Development",
+        "className": "blob-process",
+        "items": [
+          "Software development",
           "Backlog refinement",
-          "Product vision and planning"
+          "Product vision & planning"
         ]
       },
       {
+        "id": "analytics",
         "title": "Analytics",
-        "details": ["Measuring Progress and KPIs", "Data analytics"]
-      },
-      {
-        "title": "Customer",
-        "details": [
-          "User Journey and experience",
-          "Voice of customer",
-          "Product market fit"
+        "className": "blob-analytics",
+        "items": [
+          "Measuring progress & KPIs",
+          "Data analytics",
+          "Experimentation & insights"
         ]
       },
       {
+        "id": "customer",
+        "title": "Customer",
+        "className": "blob-customer",
+        "items": [
+          "User journey & experience",
+          "Voice of customer",
+          "Product-market fit"
+        ]
+      },
+      {
+        "id": "people",
         "title": "People",
-        "details": [
+        "className": "blob-people",
+        "items": [
           "Communication",
           "Leadership",
           "Mentorship",

@@ -259,11 +259,6 @@ const ProjectCard = ({ project, index, candyStyle, onOpenModal }) => {
           : "opacity-0 translate-y-12 scale-[0.98]"
       }`}
     >
-      {/* ── Top Clamped Binder Clip ── */}
-      <div className="absolute -top-4 left-10 sm:left-14 z-30 select-none pointer-events-none">
-        <BinderClip className="w-8 h-10 drop-shadow-sm" />
-      </div>
-
       {/* ── Card Content Layout: Left Polaroid + Right Lined Note Sheet ── */}
       <div className="flex flex-col md:flex-row items-center md:items-stretch gap-6 sm:gap-8 flex-1">
         {/* Left Side: Ring-bound Scalloped Flashcard (Photo reference style) */}
@@ -453,9 +448,8 @@ const Projects = ({ projects }) => {
           <div
             onClick={(e) => e.stopPropagation()}
             style={{ backgroundColor: activeCandy.modalBg }}
-            className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl border-2 border-dashed border-white shadow-2xl p-6 sm:p-8 animate-in zoom-in-95 duration-200 flex flex-col gap-5"
+            className="relative w-full max-w-3xl max-h-[80vh] overflow-y-auto rounded-3xl border-2 border-dashed border-white shadow-2xl p-6 sm:p-8 animate-in zoom-in-95 duration-200 flex flex-col gap-5"
           >
-            {/* Top Close Button */}
             <button
               onClick={closeModal}
               aria-label="Close project modal"
@@ -476,33 +470,12 @@ const Projects = ({ projects }) => {
               </h2>
             </div>
 
-            {/* Image Preview: Full natural aspect ratio, not cropped */}
-            {selectedProject.image && (
-              <div className="w-full max-h-[460px] sm:max-h-[520px] rounded-2xl overflow-hidden bg-white/80 border border-black/10 shadow-sm relative p-2 sm:p-3 flex items-center justify-center">
-                <img
-                  src={getImageSrc(selectedProject.image)}
-                  alt={selectedProject.title}
-                  className="w-full h-auto max-h-[440px] sm:max-h-[500px] object-contain rounded-lg"
-                />
-              </div>
-            )}
-
-            {/* Small Description */}
-            {(selectedProject["small-description"] ||
-              selectedProject.smallDescription) && (
-              <p className="text-base sm:text-lg text-neutral-800 font-medium leading-relaxed bg-white/70 p-4 rounded-xl border border-black/5 font-serif">
-                {selectedProject["small-description"] ||
-                  selectedProject.smallDescription}
-              </p>
-            )}
-
             {/* Full Details Grid */}
             <div className="space-y-4">
               {/* Problem */}
               {selectedProject.problem && (
                 <div className="bg-white/85 p-4 sm:p-5 rounded-2xl border border-rose-200/80 shadow-2xs">
                   <div className="flex items-center gap-2 mb-1.5">
-                    <AlertCircle className="w-4 h-4 text-rose-500" />
                     <h3 className="text-xs font-bold uppercase tracking-wider text-rose-900">
                       Problem
                     </h3>
@@ -518,7 +491,6 @@ const Projects = ({ projects }) => {
                 selectedProject.keyDecision) && (
                 <div className="bg-white/85 p-4 sm:p-5 rounded-2xl border border-amber-200/80 shadow-2xs">
                   <div className="flex items-center gap-2 mb-1.5">
-                    <Lightbulb className="w-4 h-4 text-amber-500" />
                     <h3 className="text-xs font-bold uppercase tracking-wider text-amber-900">
                       Key Decision
                     </h3>
@@ -534,7 +506,6 @@ const Projects = ({ projects }) => {
               {selectedProject.impact && (
                 <div className="bg-white/85 p-4 sm:p-5 rounded-2xl border border-emerald-200/80 shadow-2xs">
                   <div className="flex items-center gap-2 mb-1.5">
-                    <TrendingUp className="w-4 h-4 text-emerald-600" />
                     <h3 className="text-xs font-bold uppercase tracking-wider text-emerald-900">
                       Impact
                     </h3>
