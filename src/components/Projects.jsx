@@ -285,9 +285,6 @@ const ProjectCard = ({ project, index, candyStyle, onOpenModal }) => {
               {/* Scalloped Border Frame */}
               <ScallopedBorder color={candyStyle.scallopColor} id={index} />
 
-              {/* Punched Ring Hole in Top-Left Corner */}
-              <div className="absolute top-2.5 left-2.5 w-4 h-4 rounded-full bg-[#261d17] border border-neutral-400 shadow-inner z-30" />
-
               {/* Image Container: Full natural height & width, NOT cropped or cut */}
               <div className="relative z-10 w-full flex items-center justify-center pt-2 sm:pt-3 px-1">
                 {imageSrc ? (
@@ -326,7 +323,9 @@ const ProjectCard = ({ project, index, candyStyle, onOpenModal }) => {
               </h3>
 
               {/* Subtle decorative wavy accent line */}
-              <div className="w-20 h-1 bg-pink-300/80 rounded-full mb-4" />
+              <div
+                className={`w-20 h-1  ${candyStyle.tagBg} rounded-full mb-4`}
+              />
 
               {/* Small Description in classy serif font */}
               <p className="text-base sm:text-lg text-neutral-800 leading-relaxed font-serif">
@@ -344,7 +343,7 @@ const ProjectCard = ({ project, index, candyStyle, onOpenModal }) => {
                     e.stopPropagation();
                     window.open(demoUrl, "_blank", "noopener,noreferrer");
                   }}
-                  className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-t-2xl sm:rounded-t-3xl border-2 border-b-0 border-dashed border-white/80 bg-[#facc15] hover:bg-[#facc15] text-[#2c241c] font-bold text-xs sm:text-sm shadow-xs hover:-translate-y-0.5 active:translate-y-0.5 transition-all select-none cursor-pointer"
+                  className={`inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-t-2xl sm:rounded-t-3xl border-2 border-b-0 border-dashed border-white/80  ${candyStyle.tagBg} hover:bg-[#facc15] text-[#2c241c] font-bold text-xs sm:text-sm shadow-xs hover:-translate-y-0.5 active:translate-y-0.5 transition-all select-none cursor-pointer`}
                 >
                   <PlayCircle className="w-4 h-4 text-rose-700" />
                   <span>Live Demo</span>
@@ -375,7 +374,7 @@ const ProjectCard = ({ project, index, candyStyle, onOpenModal }) => {
                   e.stopPropagation();
                   onOpenModal(project, candyStyle);
                 }}
-                className="inline-flex items-center justify-center px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl border-2 border-dashed border-white/80 bg-[#facc15] hover:bg-[#facc20] text-[#2c241c] font-bold text-xs sm:text-sm shadow-xs hover:-translate-y-0.5 active:translate-y-0.5 transition-all select-none cursor-pointer"
+                className={`inline-flex items-center justify-center px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl border-2 border-dashed border-white/80  ${candyStyle.tagBg} hover:bg-[#facc20] text-[#2c241c] font-bold text-xs sm:text-sm shadow-xs hover:-translate-y-0.5 active:translate-y-0.5 transition-all select-none cursor-pointer`}
               >
                 <span>Details</span>
               </button>

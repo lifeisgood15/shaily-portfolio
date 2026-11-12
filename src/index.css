@@ -1,3 +1,4 @@
+@import url("https://googleapis.com");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -28,17 +29,22 @@
   /* Lined Notebook Paper for Project Card */
   .lined-notebook-paper {
     background-color: #fdfbf7;
-    background-image: repeating-linear-gradient(transparent,
-        transparent 29px,
-        rgba(203, 186, 168, 0.45) 29px,
-        rgba(203, 186, 168, 0.45) 30px);
+    background-image: repeating-linear-gradient(
+      transparent,
+      transparent 29px,
+      rgba(203, 186, 168, 0.45) 29px,
+      rgba(203, 186, 168, 0.45) 30px
+    );
     line-height: 30px;
   }
 
   /* Torn Kraft Paper Backing */
   .torn-kraft-paper {
     background-color: #dec9b0;
-    background-image: radial-gradient(rgba(120, 80, 50, 0.1) 1px, transparent 1px);
+    background-image: radial-gradient(
+      rgba(120, 80, 50, 0.1) 1px,
+      transparent 1px
+    );
     background-size: 8px 8px;
     box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.08);
   }
@@ -55,7 +61,7 @@
   }
 
   .marker-text {
-    font-family: 'Permanent Marker', cursive, sans-serif;
+    font-family: "Permanent Marker", cursive, sans-serif;
     color: #475569;
     letter-spacing: 0.14em;
     transform: rotate(-1deg);
@@ -70,30 +76,34 @@
       linear-gradient(0deg, rgba(244, 114, 182, 0.28) 50%, transparent 50%);
     background-size: 10px 10px;
     border: 1.5px solid rgba(244, 114, 182, 0.45);
-    box-shadow: 0 4px 16px rgba(219, 39, 119, 0.12), 0 2px 4px rgba(0, 0, 0, 0.04);
+    box-shadow:
+      0 4px 16px rgba(219, 39, 119, 0.12),
+      0 2px 4px rgba(0, 0, 0, 0.04);
   }
 
   /* Bullet Journal dotted grid page */
   .bg-bullet-journal {
     background-color: #fdfbf7;
-    background-image: radial-gradient(rgba(148, 163, 184, 0.5) 1.5px, transparent 1.5px);
+    background-image: radial-gradient(
+      rgba(148, 163, 184, 0.5) 1.5px,
+      transparent 1.5px
+    );
     background-size: 18px 18px;
   }
 
   /* Hand-drawn hollow bubble letters — now using Caveat for accent role */
   .bubble-outline-text,
   .bubble-handwritten {
-    font-family: 'Caveat', cursive;
+    font-family: "Caveat", cursive;
     color: #1e293b;
     -webkit-text-stroke: 1.5px #1e293b;
-    text-shadow:
-      2px 2px 0px rgba(0, 0, 0, 0.08);
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.08);
     letter-spacing: 0.03em;
     display: inline-block;
   }
 
   .font-handwriting {
-    font-family: 'Caveat', cursive;
+    font-family: "Caveat", cursive;
   }
 
   /* Checked Ribbon Patterns */
@@ -187,7 +197,7 @@
     letter-spacing: 0.025em;
     white-space: nowrap;
     box-shadow:
-      0 2px 6px rgba(139, 90, 60, 0.10),
+      0 2px 6px rgba(139, 90, 60, 0.1),
       inset 0 1px 0 rgba(255, 255, 255, 0.7);
     /* jiggle animation — delay set inline per tile */
     animation: tile-jiggle 0.55s ease-in-out infinite alternate;
@@ -231,9 +241,11 @@
 /* Notebook lined paper texture */
 .journal-lined-paper {
   background-color: #fdfbf7;
-  background-image: repeating-linear-gradient(transparent,
-      transparent 27px,
-      #e5e0d4 28px);
+  background-image: repeating-linear-gradient(
+    transparent,
+    transparent 27px,
+    #e5e0d4 28px
+  );
   line-height: 28px;
 }
 
@@ -340,7 +352,9 @@
   position: absolute;
   user-select: none;
   cursor: pointer;
-  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+  transition:
+    transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter 0.3s ease;
   z-index: -20;
 }
 
@@ -368,10 +382,11 @@
   width: 4rem;
   height: 4rem;
   animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+  display: none;
 }
 
 .header-emoji-agentforce {
-  top: -28rem;
+  top: -24rem;
   left: 14rem;
   width: 4rem;
   height: 4rem;
@@ -384,11 +399,12 @@
   width: 4rem;
   height: 4rem;
   animation: sticker-sway-ccw 7.2s ease-in-out infinite;
+  display: none;
 }
 
 .header-emoji-crochet {
-  top: -24rem;
-  left: -5rem;
+  top: 1rem;
+  left: -4rem;
   width: 4rem;
   height: 4rem;
   animation: sticker-sway-ccw 6.2s ease-in-out infinite;
@@ -400,6 +416,7 @@
   width: 6rem;
   height: 6rem;
   animation: sticker-sway-ccw 5.5s ease-in-out infinite;
+  display: none;
 }
 
 .header-emoji-race {
@@ -417,13 +434,14 @@
   width: 4rem;
   height: 4rem;
   animation: sticker-sway-ccw 4.9s ease-in-out infinite;
+  display: none;
 }
 
 .header-emoji-vscode {
-  top: 4rem;
+  top: 3.5rem;
   left: 15rem;
-  width: 6rem;
-  height: 6rem;
+  width: 4rem;
+  height: 4rem;
   animation: sticker-sway-ccw 5.2s ease-in-out infinite;
 }
 
@@ -432,26 +450,27 @@
 }
 
 .header-emoji-iimllogo {
-  top: -25rem;
-  left: 5rem;
-  width: 5rem;
-  height: 5rem;
+  top: -2rem;
+  left: 15rem;
+  width: 4rem;
+  height: 4rem;
   animation: sticker-sway-cw 7.5s ease-in-out infinite;
 }
 
 .header-emoji-lotr {
-  top: 1rem;
-  left: -4rem;
-  width: 5rem;
-  height: 5rem;
+  top: -24rem;
+  left: -5rem;
+  width: 4rem;
+  height: 4rem;
   animation: sticker-sway-cw 9.2s ease-in-out infinite;
+  display: none;
 }
 
 .header-emoji-kayak {
   top: 7rem;
   left: -5.5rem;
-  width: 6rem;
-  height: 6rem;
+  width: 4rem;
+  height: 4rem;
   animation: sticker-sway-cw 6s ease-in-out infinite;
 }
 
@@ -461,14 +480,15 @@
   width: 3rem;
   height: 3rem;
   animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+  display: none;
 }
 
 .header-emoji-books {
   top: 60%;
   right: -36%;
   left: auto;
-  width: 6rem;
-  height: 6rem;
+  width: 4rem;
+  height: 4rem;
   animation: sticker-sway-ccw 6.2s ease-in-out infinite;
 }
 
@@ -496,6 +516,7 @@
   width: 6rem;
   height: 6rem;
   animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+  display: none;
 }
 
 .header-emoji-local {
@@ -504,6 +525,7 @@
   width: 6rem;
   height: 6rem;
   animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+  display: none;
 }
 
 .header-emoji-marinedrive {
@@ -516,6 +538,7 @@
   width: 4rem;
   height: 4rem;
   animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+  display: none;
 }
 
 .header-emoji-pizza {
@@ -524,6 +547,7 @@
   width: 6rem;
   height: 6rem;
   animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+  display: none;
 }
 
 .header-emoji-slytherin {
@@ -535,16 +559,15 @@
   display: none;
 }
 
-
-
 /* ── LAPTOP & DESKTOP SCREENS (>= 1024px) ── */
 @media (min-width: 1024px) {
   .header-emoji-agentforce {
-    top: -5rem;
-    left: -105%;
+    top: -1rem;
+    left: -125%;
     width: 5rem;
     height: 5rem;
     animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+    display: block;
   }
 
   .header-emoji-cap {
@@ -553,14 +576,17 @@
     width: 4rem;
     height: 4rem;
     animation: sticker-sway-cw 7.5s ease-in-out infinite;
+    display: block;
   }
 
   .header-emoji-ramen {
-    top: 83%;
-    left: -415%;
-    width: 5rem;
-    height: 5rem;
+    top: 320rem;
+    left: 10%;
+    width: 7rem;
+    height: 7rem;
     animation: sticker-sway-ccw 7.2s ease-in-out infinite;
+    display: block;
+    z-index: 20;
   }
 
   .header-emoji-crochet {
@@ -569,6 +595,7 @@
     width: 4rem;
     height: 4rem;
     animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+    display: block;
   }
 
   .header-emoji-model {
@@ -577,14 +604,17 @@
     width: 6rem;
     height: 6rem;
     animation: sticker-sway-ccw 5.5s ease-in-out infinite;
+    display: block;
   }
 
   .header-emoji-race {
-    top: 23%;
-    left: -25%;
+    top: 8rem;
+    left: 10%;
     width: 4rem;
     height: 4rem;
     animation: sticker-sway-ccw 7.2s ease-in-out infinite;
+    display: block;
+    z-index: 20;
   }
 
   .header-emoji-iiml {
@@ -593,6 +623,7 @@
     width: 6rem;
     height: 6rem;
     animation: sticker-sway-ccw 4.9s ease-in-out infinite;
+    display: block;
   }
 
   .header-emoji-vscode {
@@ -601,11 +632,12 @@
     width: 6rem;
     height: 6rem;
     animation: sticker-sway-ccw 5.2s ease-in-out infinite;
+    display: block;
   }
 
   .header-emoji-shell {
     top: 43%;
-    left: 385%;
+    left: -155%;
     width: 5rem;
     height: 5rem;
     animation: sticker-sway-ccw 7.2s ease-in-out infinite;
@@ -618,6 +650,7 @@
     width: 5rem;
     height: 5rem;
     animation: sticker-sway-cw 7.5s ease-in-out infinite;
+    display: block;
   }
 
   .header-emoji-kayak {
@@ -626,6 +659,7 @@
     width: 6rem;
     height: 6rem;
     animation: sticker-sway-cw 6s ease-in-out infinite;
+    display: block;
   }
 
   .header-emoji-lotr {
@@ -634,6 +668,7 @@
     width: 6rem;
     height: 6rem;
     animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+    display: block;
   }
 
   .header-emoji-books {
@@ -643,6 +678,7 @@
     width: 6rem;
     height: 6rem;
     animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+    display: block;
   }
 
   .header-emoji-snorlax {
@@ -664,11 +700,12 @@
   }
 
   .header-emoji-hammer {
-    top: 150%;
-    left: -80%;
-    width: 6rem;
-    height: 6rem;
+    top: 153%;
+    left: -415%;
+    width: 4rem;
+    height: 4rem;
     animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+    display: block;
   }
 
   .header-emoji-local {
@@ -677,6 +714,7 @@
     width: 6rem;
     height: 6rem;
     animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+    display: block;
   }
 
   .header-emoji-marinedrive {
@@ -685,22 +723,27 @@
     width: 6rem;
     height: 6rem;
     animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+    display: block;
   }
 
   .header-emoji-cocktail {
-    top: 10%;
-    left: -150%;
-    width: 6rem;
-    height: 6rem;
+    top: 320rem;
+    left: 85%;
+    width: 7rem;
+    height: 7rem;
     animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+    z-index: 20;
+    display: block;
   }
 
   .header-emoji-pizza {
-    top: 15%;
-    left: -80%;
+    top: 322rem;
+    left: 47%;
     width: 6rem;
     height: 6rem;
     animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+    display: block;
+    z-index: 20;
   }
 
   .header-emoji-slytherin {
@@ -711,18 +754,12 @@
     animation: sticker-sway-ccw 6.2s ease-in-out infinite;
     display: block;
   }
-
 }
-
-
-
-
 
 .skills-stage {
   width: 100%;
   min-height: 100vh;
   overflow: hidden;
-
 }
 
 .stage-heading {
@@ -735,7 +772,7 @@
   margin: 0 0 8px;
   color: #9b806c;
   text-transform: uppercase;
-  letter-spacing: .19em;
+  letter-spacing: 0.19em;
   font-size: 11px;
   font-weight: 700;
 }
@@ -743,8 +780,10 @@
 .stage-heading h1 {
   margin: 0;
   color: var(--ink);
-  font: 800 clamp(38px, 5.3vw, 68px)/1.04 'Manrope', sans-serif;
-  letter-spacing: -.065em;
+  font:
+    800 clamp(38px, 5.3vw, 68px)/1.04 "Manrope",
+    sans-serif;
+  letter-spacing: -0.065em;
 }
 
 .stage-heading h1 span {
@@ -774,8 +813,10 @@
   cursor: pointer;
   outline: none;
   isolation: isolate;
-  filter: drop-shadow(0 12px 18px rgba(72, 62, 50, .08));
-  transition: filter .25s ease, transform .25s ease;
+  filter: drop-shadow(0 12px 18px rgba(72, 62, 50, 0.08));
+  transition:
+    filter 0.25s ease,
+    transform 0.25s ease;
   animation: blob-float 7s ease-in-out infinite;
 }
 
@@ -787,13 +828,15 @@
   background: var(--blob-color);
   border-radius: var(--blob-shape);
   transform: rotate(var(--tilt, 0deg));
-  transition: transform .3s ease, filter .3s ease;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
 }
 
 .skill-blob:hover,
 .skill-blob:focus-visible,
 .skill-blob.is-active {
-  filter: drop-shadow(0 18px 24px rgba(72, 62, 50, .16));
+  filter: drop-shadow(0 18px 24px rgba(72, 62, 50, 0.16));
   z-index: 5;
 }
 
@@ -813,9 +856,11 @@
   display: inline-block;
   margin: 0 0 17px;
   padding-bottom: 4px;
-  border-bottom: 2px solid rgba(255, 255, 255, .85);
-  font: 700 clamp(18px, 1.7vw, 24px)/1.1 'Inter', sans-serif;
-  letter-spacing: -.025em;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.85);
+  font:
+    700 clamp(18px, 1.7vw, 24px)/1.1 "Inter",
+    sans-serif;
+  letter-spacing: -0.025em;
 }
 
 .blob-content ul {
@@ -831,7 +876,7 @@
   font-weight: 500;
   padding-left: 5%;
 
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
 }
 
 .blob-product {
@@ -842,7 +887,7 @@
   top: 3%;
   width: 29%;
   height: 41%;
-  animation-delay: -.5s;
+  animation-delay: -0.5s;
 }
 
 .blob-process {
@@ -898,8 +943,10 @@
   width: clamp(180px, 22vw, 285px);
   aspect-ratio: 1;
   border-radius: 50%;
-  background: rgba(255, 253, 248, .92);
-  box-shadow: 0 12px 38px rgba(91, 75, 62, .08), inset 0 0 0 1px rgba(255, 255, 255, .9);
+  background: rgba(255, 253, 248, 0.92);
+  box-shadow:
+    0 12px 38px rgba(91, 75, 62, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -910,16 +957,18 @@
 
 .center-note span {
   color: #988779;
-  font-size: clamp(9px, .85vw, 11px);
-  letter-spacing: .08em;
+  font-size: clamp(9px, 0.85vw, 11px);
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .center-note strong {
   margin: 9px 0;
   color: #34424a;
-  font: 800 clamp(25px, 3vw, 40px)/.98 'Permanent Marker', sans-serif;
-  letter-spacing: -.06em;
+  font:
+    800 clamp(25px, 3vw, 40px)/0.98 "Permanent Marker",
+    sans-serif;
+  letter-spacing: -0.06em;
 }
 
 .interaction-hint {
@@ -927,7 +976,7 @@
   text-align: center;
   color: #a39a90;
   font-size: 12px;
-  letter-spacing: .04em;
+  letter-spacing: 0.04em;
 }
 
 /* A single triggered wave: every blob moves in sequence, then settles. */
@@ -978,7 +1027,6 @@
 }
 
 @keyframes blob-float {
-
   0%,
   100% {
     translate: 0 0;
@@ -1072,12 +1120,336 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {
-    animation-duration: .01ms !important;
+    animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
+    transition-duration: 0.01ms !important;
   }
+}
+
+.pacifico-regular {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.section-header-grid {
+  /* Soft off-white base with subtle pastel pink grid lines */
+  background-color: #fdfafb;
+  background-image:
+    linear-gradient(to right, rgba(235, 185, 198, 0.35) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(235, 185, 198, 0.35) 1px, transparent 1px);
+  background-size: 14px 14px;
+
+  /* Delicate pink outline and soft paper shadow */
+  border: 2px solid #eeb7c6;
+  border-radius: 6px;
+  box-shadow: 0 3px 8px rgba(238, 183, 198, 0.25);
+
+  /* Header spacing and typography */
+  padding: 12px 24px;
+  display: inline-block;
+  color: #5c494e;
+  font-weight: 600;
+}
+
+.section-header-ribbon {
+  position: relative;
+  display: inline-block;
+
+  /* Soft off-white base with pastel pink grid lines */
+  background-color: #fdfafb;
+  background-image:
+    linear-gradient(to right, rgba(235, 185, 198, 0.35) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(235, 185, 198, 0.35) 1px, transparent 1px);
+  background-size: 14px 14px;
+
+  /* Delicate pink outline and shadow */
+  border: 2px solid #eeb7c6;
+  border-radius: 6px;
+  box-shadow: 0 3px 8px rgba(238, 183, 198, 0.25);
+
+  /* Spacing: extra left/right margin makes room for the ribbon tails */
+  padding: 12px 28px;
+  margin: 0 32px;
+  color: #5c494e;
+  font-weight: 600;
+}
+
+/* Shared styles for both left and right ribbon tails */
+.section-header-ribbon::before,
+.section-header-ribbon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 75%;
+  background-color: #f7cad6;
+  border: 2px solid #eeb7c6;
+  z-index: -1;
+  /* Places the ribbons slightly behind the main card */
+}
+
+/* Left ribbon with a V-notch cutout */
+.section-header-ribbon::before {
+  left: -22px;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 10px 50%);
+}
+
+/* Right ribbon with a V-notch cutout */
+.section-header-ribbon::after {
+  right: -22px;
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 50%, 100% 100%, 0 100%);
+}
+
+/* 1. Picnic Tablecloth Background */
+.picnic-table-section {
+  background-color: #fff8fa;
+  background-image:
+    linear-gradient(90deg, rgba(247, 202, 214, 0.35) 50%, transparent 50%),
+    linear-gradient(rgba(247, 202, 214, 0.35) 50%, transparent 50%);
+  background-size: 48px 48px;
+  padding: 60px 24px;
+  border-radius: 20px;
+  border: 3px solid #f2cbd6;
+  text-align: center;
+  overflow: hidden;
+}
+
+.header-wrapper {
+  margin-bottom: 48px;
+}
+
+/* 2. Responsive Tabletop Layout */
+.table-spread {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* 3. Base Dish Styling */
+.dish {
+  position: relative;
+  width: 280px;
+  min-height: 280px;
+  padding: 36px 28px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #4a3b3f;
+  transition: transform 0.25s ease;
+}
+
+.dish:hover {
+  transform: translateY(-6px) rotate(1deg);
+}
+
+.dish h3 {
+  margin: 0 0 12px 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-bottom: 2px dashed rgba(92, 73, 78, 0.2);
+  padding-bottom: 4px;
+}
+
+.dish ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.food-accent {
+  position: absolute;
+  top: -12px;
+  right: 18px;
+  font-size: 2rem;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.12));
+  transform: rotate(12deg);
+}
+
+/* 4. Ceramic Plates (Circular with Inner Rim) */
+.ceramic-plate {
+  border-radius: 50%;
+  background-color: #ffffff;
+  /* Creates the raised outer plate rim and inner food well */
+  box-shadow:
+    0 12px 24px rgba(92, 73, 78, 0.14),
+    inset 0 0 0 14px #fffcfd,
+    inset 0 0 0 16px #edd5dc,
+    inset 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.plate-blue {
+  border: 3px solid #b8e1f5;
+}
+
+.plate-green {
+  border: 3px solid #bce8c9;
+}
+
+.plate-pink {
+  border: 3px solid #f5c2d1;
+}
+
+/* 5. Wooden Charcuterie Board (Rounded Rectangle) */
+.wooden-board {
+  border-radius: 36px;
+  background-color: #f3d5b5;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(212, 163, 115, 0.15) 0px,
+    rgba(212, 163, 115, 0.15) 4px,
+    transparent 4px,
+    transparent 12px
+  );
+  border: 4px solid #d4a373;
+  box-shadow:
+    0 12px 20px rgba(111, 78, 55, 0.2),
+    inset 0 0 0 8px rgba(255, 248, 240, 0.35);
+}
+
+/* 6. Woven Picnic Basket Tray */
+.woven-basket {
+  border-radius: 42% 58% 48% 52% / 52% 45% 55% 48%;
+  background-color: #faf3e0;
+  border: 6px dashed #d5bdaf;
+  box-shadow:
+    0 12px 22px rgba(92, 73, 78, 0.15),
+    inset 0 0 0 6px #ede0d4;
+}
+
+/* 7. Centerpiece Bowl ("Primary Skills") */
+.centerpiece-bowl {
+  width: 16rem;
+  min-height: 16rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 60%, #fce8ee 100%);
+  border: 4px solid #eeb7c6;
+  box-shadow:
+    0 14px 28px rgba(238, 183, 198, 0.35),
+    inset 0 4px 12px rgba(238, 183, 198, 0.3);
+}
+
+.centerpiece-bowl h3 {
+  border-bottom: none;
+  font-size: 1.35rem;
+  letter-spacing: 0.5px;
+  color: #5c494e;
+}
+
+.font-handwriting {
+  font-family: "Patrick Hand", cursive;
+}
+
+.font-script {
+  font-family: "Caveat", cursive;
+}
+
+/* Horizontal Pink Notebook Lines (Image 1 Right Side) */
+.bg-pink-lined {
+  background-color: #fffcfd;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 23px,
+    #f6c5d3 24px
+  );
+}
+
+/* Dotted Bullet Journal Grid (Image 2 & 4) */
+.bg-dot-grid {
+  background-color: #fdfaf5;
+  background-image: radial-gradient(#cbbab5 1.25px, transparent 1.25px);
+  background-size: 16px 16px;
+}
+
+/* Graph Grid for Bingo Card (Image 4) */
+.bg-bingo-grid {
+  background-color: #fcf7f0;
+  background-image:
+    linear-gradient(to right, rgba(203, 186, 181, 0.35) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(203, 186, 181, 0.35) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Subtle paper grain & deckled torn-edge effect */
+.torn-paper-frame {
+  background-color: #fbfaf8;
+  box-shadow:
+    0 6px 18px rgba(74, 53, 59, 0.14),
+    0 1px 3px rgba(0, 0, 0, 0.08);
+  /* Irregular torn-paper outer edge */
+  clip-path: polygon(
+    0.5% 0.8%,
+    8% 0.2%,
+    19% 0.9%,
+    34% 0.1%,
+    52% 0.7%,
+    71% 0.2%,
+    88% 0.8%,
+    99.4% 0.3%,
+    99.8% 14%,
+    99.2% 31%,
+    99.9% 50%,
+    99.3% 69%,
+    99.8% 86%,
+    99.3% 99.4%,
+    87% 99.8%,
+    68% 99.2%,
+    49% 99.9%,
+    30% 99.2%,
+    12% 99.7%,
+    0.4% 99.2%,
+    0.1% 84%,
+    0.7% 66%,
+    0.2% 48%,
+    0.8% 28%,
+    0.2% 12%
+  );
+}
+
+/* Semi-transparent botanical washi tape */
+.washi-tape-floral {
+  background-color: rgba(246, 241, 235, 0.82);
+  background-image:
+    radial-gradient(circle at 20% 35%, #d68598 2px, transparent 2.5px),
+    radial-gradient(circle at 25% 65%, #b5838d 1.5px, transparent 2px),
+    radial-gradient(circle at 55% 40%, #c97b8e 2.2px, transparent 2.8px),
+    radial-gradient(circle at 80% 60%, #a39171 1.8px, transparent 2.2px),
+    radial-gradient(circle at 72% 28%, #e09f9f 2px, transparent 2.5px);
+  background-size: 48px 24px;
+  backdrop-filter: blur(1px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border-left: 1px dashed rgba(180, 165, 155, 0.45);
+  border-right: 1px dashed rgba(180, 165, 155, 0.45);
+}
+
+.bg-journal-lined {
+  background-color: #fbf6ee;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 27px,
+    rgba(168, 155, 142, 0.35) 28px
+  );
+  background-position: 0 12px;
+}
+
+.obsessions {
+  animation: sticker-sway-cw 7.5s ease-in-out infinite;
 }

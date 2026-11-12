@@ -9,64 +9,59 @@ import Navigation from "./components/Navigation";
 import CustomCursor from "./components/CustomCursor";
 import Contact from "./components/Contact";
 import PrimarySkills from "./components/PrimarySkills";
-
+import SectionHeader from "./components/elements/SectionHeader";
+// import "react-tooltip/dist/react-tooltip.css";
 import { Heart } from "lucide-react";
+import Testimonials from "./components/Testimonials";
 
 function App() {
   return (
     <div className="min-h-screen pb-12 pt-24 relative overflow-x-hidden">
       <CustomCursor />
-      <Navigation portfolioData={portfolioData} />
 
-      {/* Notebook binding accent on the left (desktop only) */}
-      <div className="hidden lg:block fixed left-4 top-0 bottom-0 w-8 border-r-2 border-paper-dark border-dashed opacity-50 z-[-1]"></div>
+      <Navigation portfolioData={portfolioData} />
 
       <main className="space-y-16">
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
-          {/* ── Journal Floating Emoji Stickers (Positioned & styled via CSS) ── */}
-
           <div id="about" className="scroll-mt-24">
             <Header data={portfolioData} />
           </div>
         </div>
 
+        {/* Projects */}
         <div className="max-w-7xl mx-auto px-4 md:px-8 lg:px-16">
           <div id="projects" className="scroll-mt-24">
             <Projects projects={portfolioData.projects} />
           </div>
         </div>
 
-        {/* ── Primary Skills: Full screen width ── */}
+        {/* Journey timeline*/}
+        <div id="journey" className="w-full scroll-mt-24">
+          <Timeline timeline={portfolioData.about.timeline} />
+        </div>
+
+        {/* ── Primary Skills */}
+        <SectionHeader text="What I bring to the table" />
         <div
           id="primary-skills"
-          className="w-full scroll-mt-24 px-3 sm:px-6 md:px-10 lg:px-16"
+          className="picnic-table-section w-full scroll-mt-24 px-3 sm:px-6 md:px-10 lg:px-16"
         >
           <PrimarySkills data={portfolioData["primary-skills"]} />
         </div>
 
-        {/* <div className="max-w-5xl mx-auto px-4 md:px-8 lg:px-16">
-          <div id="toolkit" className="scroll-mt-24">
-            <Toolkit toolkit={portfolioData.toolkit} />
-          </div>
-        </div> */}
-
-        <div className="w-full mx-auto px-4 md:px-8 lg:px-16">
-          <div id="moments" className="scroll-mt-24">
-            <Highlights highlights={portfolioData.highlights} />
-          </div>
-        </div>
-
-        {/* ── Journey: Full Screen Width ── */}
-        <div id="journey" className="w-full scroll-mt-24">
-          <Timeline timeline={portfolioData.about.timeline} />
+        {/* Testimonials */}
+        <div id="testimonials">
+          <Testimonials testimonials={portfolioData.testimonials} />
         </div>
       </main>
 
-      <div className="max-w-5xl mx-auto px-4 md:px-8 lg:px-16">
+      <div className="w-full mx-auto  px-3 sm:px-6 md:px-10 lg:px-16">
         <Contact
-          contactData={portfolioData.contact}
+          contactData={portfolioData.contact.methods}
           name={portfolioData.name}
           resumeData={portfolioData.resume}
+          bingoItems={portfolioData.bingo}
+          highlights={portfolioData.highlights}
         />
 
         {/* Copyright Footer (Outside of Contact Card) */}

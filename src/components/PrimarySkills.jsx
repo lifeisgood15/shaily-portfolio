@@ -176,28 +176,35 @@
 // export default PrimarySkills;
 
 import React, { useState } from "react";
-import SectionHeader from "./elements/SectionHeader";
+import pizzaImg from "../resources/header-emogis/pizza-sticker.png";
+import ramenImg from "../resources/header-emogis/ramen.png";
+import cocktailImg from "../resources/header-emogis/passionfruit-cocktail-sticker.png";
 
-function Blob({ group, onHover, onLeave, isActive }) {
+const classNames = [
+  "ceramic-plate plate-blue",
+  "wooden-board",
+  "ceramic-plate plate-green",
+  "centerpiece-bowl",
+  "woven-basket",
+  "ceramic-plate plate-pink",
+];
+const emogiList = ["🫐", "🥨", "🥝", "🍓", "🥐", "🍒"];
+
+function Blob({ group, index }) {
   return (
-    <article
-      className={`skill-blob ${group.className} ${isActive ? "is-active" : ""}`}
-      onMouseEnter={onHover}
-      onMouseLeave={onLeave}
-      onFocus={onHover}
-      onBlur={onLeave}
-      tabIndex={0}
-      aria-label={`${group.title}: ${group.items.join(", ")}`}
-    >
-      <div className="blob-content">
-        <h2>{group.title}</h2>
-        <ul>
-          {group.items.map((item) => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </div>
-    </article>
+    <div className={`dish ${classNames[index]}`}>
+      <span className="food-accent" aria-hidden="true">
+        {emogiList[index]}
+      </span>
+      <h2 className="pacifico-regular text-2xl sm:text-2xl md:text-2xl font-bold text-neutral-800">
+        {group.title}
+      </h2>
+      <ul>
+        {group.items?.map((item) => (
+          <li key={item}>{item}</li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
@@ -218,32 +225,37 @@ function PrimarySkills({ data }) {
   const stopWave = () => setActiveBlob(null);
 
   return (
-    <div
-      className={`skills-stage ${isWaving ? "wave-running" : ""}`}
-      key={waveId}
-    >
-      <header className="stage-heading">
-        <SectionHeader text="What I bring to the table" />
-      </header>
+    <div className="table-spread">
+      <div
+        className="header-emoji-sticker header-emoji-cocktail"
+        title="Cocktail"
+      >
+        <img src={cocktailImg} alt="Cocktail" />
+      </div>
 
-      <section className="blob-field" aria-label="Primary skills">
-        {skillGroups.map((group) => (
-          <Blob
-            key={group.id}
-            group={group}
-            isActive={activeBlob === group.id}
-            onHover={() => startWave(group.id)}
-            onLeave={stopWave}
-          />
-        ))}
-        <div className="center-note" aria-hidden="true">
-          <strong className="font-accent text-pink-600">
-            Primary
-            <br />
-            Skills
-          </strong>
-        </div>
-      </section>
+      <div className="header-emoji-sticker header-emoji-pizza" title="Pizza">
+        <img src={pizzaImg} alt="Pizza" />
+      </div>
+      <div className="header-emoji-sticker header-emoji-ramen" title="Ramen">
+        <img src={ramenImg} alt="Veg ramen" />
+      </div>
+      {skillGroups.map((group, index) => (
+        <Blob
+          key={group.id}
+          group={group}
+          isActive={activeBlob === group.id}
+          onHover={() => startWave(group.id)}
+          onLeave={stopWave}
+          index={index}
+        />
+      ))}
+      {/* <div className="wooden-board" aria-hidden="true">
+        <strong className="font-accent text-pink-600">
+          Primary
+          <br />
+          Skills
+        </strong>
+      </div> */}
     </div>
   );
 }

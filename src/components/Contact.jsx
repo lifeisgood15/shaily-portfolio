@@ -12,165 +12,14 @@ import {
   Eraser,
   Sparkles,
 } from "lucide-react";
+import SectionHeader from "./elements/SectionHeader";
+import raceImg from "../resources/header-emogis/Race.png";
+import Polaroid from "./elements/Polaroid";
+// import { Tooltip } from "react-tooltip";
 
-const Contact = ({ contactData, name, resumeData }) => {
+const Contact = ({ contactData, name, resumeData, bingoItems, highlights }) => {
   const containerRef = useRef(null);
-  const canvasRef = useRef(null);
-  const [isDrawing, setIsDrawing] = useState(false);
-  const [penColor, setPenColor] = useState("#ff5e87");
-  const [penSize, setPenSize] = useState(3);
-  const [mode, setMode] = useState("draw"); // 'draw' | 'type' | 'erase'
-  const [typedText, setTypedText] = useState("");
-  const [isFlipping, setIsFlipping] = useState(false);
-  const [flippedImage, setFlippedImage] = useState(null);
-
-  // Handwritten intro animation state: 'idle' | 'typing' | 'fainting' | 'done'
-  const [introText, setIntroText] = useState("");
-  const [introState, setIntroState] = useState("idle");
-
-  // Trigger handwriting animation ONCE on scroll into view
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const [entry] = entries;
-        if (entry.isIntersecting && introState === "idle") {
-          setIntroState("typing");
-        }
-      },
-      { threshold: 0.25 },
-    );
-
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, [introState]);
-
-  // Handwriting animation logic: types "Doodle here...", pauses, then fades
-  // useEffect(() => {
-  //   if (introState !== 'typing') return;
-  //   const fullText = "Doodle here...";
-  //   let index = 0;
-
-  //   const timer = setInterval(() => {
-  //     if (index < fullText.length) {
-  //       setIntroText(fullText.slice(0, index + 1));
-  //       index++;
-  //     } else {
-  //       clearInterval(timer);
-  //       // Pause then faint
-  //       setTimeout(() => {
-  //         setIntroState('fainting');
-  //         setTimeout(() => {
-  //           setIntroState('done');
-  //         }, 1200);
-  //       }, 1500);
-  //     }
-  //   }, 110);
-
-  //   return () => clearInterval(timer);
-  // }, [introState]);
-
-  // Setup canvas resolution and context
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
-    const rect = canvas.getBoundingClientRect();
-    const dpr = window.devicePixelRatio || 1;
-    canvas.width = rect.width * dpr;
-    canvas.height = rect.height * dpr;
-
-    const ctx = canvas.getContext("2d");
-    ctx.scale(dpr, dpr);
-    ctx.lineCap = "round";
-    ctx.lineJoin = "round";
-  }, []);
-
-  // Drawing Handlers
-  const startDrawing = (e) => {
-    if (mode === "type") return;
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    const rect = canvas.getBoundingClientRect();
-
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-
-    const x = clientX - rect.left;
-    const y = clientY - rect.top;
-
-    ctx.beginPath();
-    ctx.moveTo(x, y);
-    setIsDrawing(true);
-
-    // Hide intro if user interacts
-    if (introState !== "done") {
-      setIntroState("done");
-    }
-  };
-
-  const draw = (e) => {
-    if (!isDrawing || mode === "type") return;
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    const rect = canvas.getBoundingClientRect();
-
-    const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-    const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-
-    const x = clientX - rect.left;
-    const y = clientY - rect.top;
-
-    if (mode === "erase") {
-      ctx.globalCompositeOperation = "destination-out";
-      ctx.lineWidth = 20;
-    } else {
-      ctx.globalCompositeOperation = "source-over";
-      ctx.strokeStyle = penColor;
-      ctx.lineWidth = penSize;
-    }
-
-    ctx.lineTo(x, y);
-    ctx.stroke();
-  };
-
-  const stopDrawing = () => {
-    setIsDrawing(false);
-  };
-
-  const clearCanvas = () => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    setTypedText("");
-  };
-
-  // Turn page animation on Check click (Slower, realistic 1.6s duration)
-  const handlePageTurn = () => {
-    if (isFlipping) return;
-
-    const canvas = canvasRef.current;
-    if (canvas) {
-      setFlippedImage(canvas.toDataURL());
-    }
-
-    setIsFlipping(true);
-
-    // Clear canvas halfway through turn when page is facing away
-    setTimeout(() => {
-      clearCanvas();
-    }, 800);
-
-    // Complete animation state reset after 1.6s
-    setTimeout(() => {
-      setIsFlipping(false);
-    }, 1600);
-  };
+  const [displayTooltip, setDisplayTooltip] = useState(false);
 
   // Map platform name to Lucide Icon
   const getPlatformIcon = (platform) => {
@@ -187,283 +36,224 @@ const Contact = ({ contactData, name, resumeData }) => {
     <footer
       id="contact"
       ref={containerRef}
-      className="mt-16 pb-6 scroll-mt-24 w-full"
+      className="mx-auto my-12 rounded-3xl overflow-hidden shadow-xl border-4 border-[#f4c2d0] bg-[#f8d7e0]  text-[#4a353b]"
     >
-      {/* Outer Lined Journal Container styled like notebook */}
-      <div className="scrapbook-border p-6 md:p-8 bg-[#faf7f0] tape-pink shadow-scrapbook relative overflow-hidden">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* LEFT SIDE: Interactive Journal Page (7 cols) */}
-          <div className="lg:col-span-7 flex flex-col gap-3">
-            <div className="flex items-center justify-between">
-              <h2 className="text-xl md:text-2xl font-bold text-ink-dark border-b-2 border-paper-dark/30 pb-1 flex items-center gap-2">
-                <span>Write in my journal</span>
-                <Sparkles className="w-4 h-4 text-amber-600 animate-pulse" />
-              </h2>
-            </div>
+      {/* Top Washi Tape / Tapered Header Strip */}
+      <div className="relative w-full h-12 bg-[#f3b6c8]/80 border-b-2 border-dashed border-white flex items-center justify-center shadow-sm z-20 my-4">
+        <SectionHeader text="✿ Get To Know Me ✿" />
+      </div>
 
-            {/* Controls toolbar */}
-            <div className="flex flex-wrap items-center justify-between gap-2 bg-white/80 p-2 rounded-lg border border-paper-dark/20 text-xs">
-              <div className="flex items-center gap-1.5">
-                {/* Main mode buttons */}
-                <button
-                  type="button"
-                  onClick={() => setMode("draw")}
-                  className={`flex items-center gap-1 px-3 py-1.5 rounded transition-colors ${
-                    mode === "draw"
-                      ? "bg-ink-dark text-white font-bold"
-                      : "hover:bg-paper-dark/10 text-ink"
-                  }`}
-                >
-                  <Pencil className="w-3.5 h-3.5" />
-                  Doodle
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setMode("type")}
-                  className={`flex items-center gap-1 px-3 py-1.5 rounded transition-colors ${
-                    mode === "type"
-                      ? "bg-ink-dark text-white font-bold"
-                      : "hover:bg-paper-dark/10 text-ink"
-                  }`}
-                >
-                  <Type className="w-3.5 h-3.5" />
-                  Type
-                </button>
-              </div>
+      {/* Decorative Scalloped Divider & Pink Lined Paper Background */}
+      <div className="relative grid grid-cols-1 lg:grid-cols-12 min-h-[680px]">
+        {/* Left Side: Solid Soft Blush Scrapbook Zone (Cols 1-7) */}
+        <div className="lg:col-span-7 p-6 md:p-8 flex flex-col gap-6 relative z-10">
+          {/* Floating Stickers */}
+          <span
+            className="absolute top-3 left-4 text-2xl rotate-[-12deg] select-none"
+            aria-hidden="true"
+          >
+            🌸
+          </span>
+          <span
+            className="absolute top-6 right-8 text-xl rotate-12 select-none"
+            aria-hidden="true"
+          >
+            🩷
+          </span>
+          <span
+            className="absolute bottom-4 left-6 text-2xl rotate-6 select-none"
+            aria-hidden="true"
+          >
+            🍓
+          </span>
 
-              {/* Color pickers & Eraser — shown ONLY when Doodle mode is active */}
-              {(mode === "draw" || mode === "erase") && (
-                <div className="flex items-center gap-2 border-l border-paper-dark/20 pl-2">
-                  <div className="flex items-center gap-1.5">
-                    {[
-                      { color: "#ff5e87", label: "Blushing" },
-                      { color: "#3ac5f9", label: "Electric" },
-                      { color: "#ffe22b", label: "Mango" },
-                      { color: "#eab0fc", label: "Lavender Haze" },
-                    ].map((c) => (
-                      <button
-                        key={c.color}
-                        type="button"
-                        title={c.label}
-                        onClick={() => {
-                          setPenColor(c.color);
-                          setMode("draw");
-                        }}
-                        className={`w-4 h-4 rounded-full border border-paper-dark/30 transition-transform ${
-                          mode === "draw" && penColor === c.color
-                            ? "scale-125 ring-2 ring-ink-dark ring-offset-1"
-                            : "hover:scale-110"
-                        }`}
-                        style={{ backgroundColor: c.color }}
-                      />
-                    ))}
-                  </div>
+          {/* Top Row on Left: Brain Pie Chart + Current Obsessions */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {/* 1. "My Brain Is Made Up Of" Pie Chart (From Image 3) */}
+            <div className="bg-[#fdfaf5] p-5 rounded-2xl shadow-md border-2 border-[#ebd8d0] relative rotate-[-1deg]">
+              {/* Washi Tape Top */}
+              <div className="w-20 h-5 bg-[#f497b6]/70 mx-auto -mt-7 mb-2 rotate-2 rounded-xs" />
+              <h3 className="text-center text-xl font-bold mb-3">
+                My{" "}
+                <span className="text-[#d96b8a] pacifico-regular">Brain</span>{" "}
+                is made up of...
+              </h3>
 
-                  {/* Eraser button displayed next to colors when doodle is active */}
-                  <button
-                    type="button"
-                    onClick={() => setMode(mode === "erase" ? "draw" : "erase")}
-                    title="Eraser tool"
-                    className={`flex items-center gap-1 px-2.5 py-1 rounded border border-paper-dark/20 transition-all ${
-                      mode === "erase"
-                        ? "bg-rose-100 text-rose-800 font-bold border-rose-300 ring-1 ring-rose-400"
-                        : "bg-white hover:bg-rose-50 text-ink-dark"
-                    }`}
-                  >
-                    <Eraser className="w-3.5 h-3.5 text-rose-600" />
-                    <span className="text-[11px]">Eraser</span>
-                  </button>
-                </div>
-              )}
-
-              <button
-                type="button"
-                onClick={clearCanvas}
-                className="flex items-center gap-1 px-2 py-1 text-ink-light hover:text-red-600 transition-colors ml-auto"
-                title="Clear entire page"
-              >
-                <RotateCcw className="w-3.5 h-3.5" />
-                Clear
-              </button>
-            </div>
-
-            {/* Realistic Lined Diary Page Sheet */}
-            <div className="relative perspective-1000">
+              {/* Pure CSS Conic-Gradient Hand-Drawn Pie Chart */}
               <div
-                className={`
-                  relative w-full h-64 md:h-72 rounded-lg border-2 border-paper-dark/30 shadow-md
-                  journal-lined-paper overflow-hidden transition-all duration-300
-                  ${mode === "draw" ? "cursor-crosshair" : mode === "erase" ? "cursor-cell" : "cursor-text"}
-                `}
+                className="obsessions relative w-44 h-44 mx-auto rounded-full border-[3px] border-[#4a353b] shadow-inner flex items-center justify-center"
+                style={{
+                  background: `conic-gradient(
+                    #f5b5c8 0% 40%,
+                    #8ac6c1 40% 60%,
+                    #9ea7bd 60% 75%,
+                    #b5a3c7 75% 90%,
+                    #f7c59f 90% 100%
+                  )`,
+                }}
               >
-                {/* Red margin line on left */}
-                <div className="absolute top-0 bottom-0 left-10 w-0.5 bg-red-300/60 z-10 pointer-events-none"></div>
+                {/* Slice Labels */}
+                <span className="absolute top-13 right-1 text-xs font-bold rotate-[40deg]">
+                  Overthinking
+                </span>
+                <span className="absolute bottom-5 text-xs font-bold">
+                  Books
+                </span>
+                <span className="absolute bottom-11 left-3 text-[11px] font-bold -rotate-45">
+                  Music
+                </span>
+                <span className="absolute top-14 left-2 text-[11px] font-bold -rotate-12">
+                  Family
+                </span>
+                <span className="absolute top-6 left-10 text-[11px] font-bold rotate-45">
+                  Running
+                </span>
+              </div>
+            </div>
 
-                {/* Spiral notebook holes on far left edge */}
-                <div className="absolute top-0 bottom-0 left-2 flex flex-col justify-around py-3 z-10 pointer-events-none">
-                  {[...Array(6)].map((_, i) => (
-                    <div
-                      key={i}
-                      className="w-2.5 h-2.5 rounded-full bg-paper-dark/30 border border-paper-dark/40 shadow-inner"
-                    ></div>
-                  ))}
+            {/* 2. "Current Obsessions" Star Card (From Image 2) */}
+            <div className="bg-dot-grid p-5 rounded-2xl shadow-md border-2 border-[#e6dcd5] relative rotate-[1.5deg] flex flex-col justify-between">
+              <span className="absolute -top-3 -right-2 text-2xl">⭐</span>
+              <div
+                className="header-emoji-sticker header-emoji-race"
+                title="Race"
+              >
+                <img src={raceImg} alt="Race" />
+              </div>
+              {/* Decorative Pastel Star Outline Behind Text */}
+              <div className="relative my-auto py-4 text-center">
+                <svg
+                  viewBox="0 0 200 200"
+                  className="w-48 h-48 mx-auto opacity-45"
+                >
+                  <polygon
+                    points="100,10 126,74 195,78 142,122 158,190 100,152 42,190 58,122 5,78 74,74"
+                    fill="none"
+                    stroke="#f28ca8"
+                    strokeWidth="6"
+                    strokeLinejoin="round"
+                  />
+                  <polygon
+                    points="100,24 121,78 178,82 134,118 148,175 100,143 52,175 66,118 22,82 79,78"
+                    fill="none"
+                    stroke="#89cce0"
+                    strokeWidth="4"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+
+                {/* Center Obsessions Title */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+                  <span className="text-xs uppercase tracking-wider text-[#c99638] font-bold">
+                    My Current
+                  </span>
+                  <span className="text-2xl font-bold text-[#d66586] leading-none">
+                    OBSESSIONS
+                  </span>
                 </div>
 
-                {/* Animated "Doodle here..." handwriting overlay (triggers once on scroll) */}
-                {/* {introState !== 'done' && introText && (
-                  <div
-                    className={`
-                      absolute top-3 left-14 z-20 pointer-events-none select-none
-                      font-serif italic text-base text-ink-dark/80 transition-opacity duration-1000
-                      ${introState === 'fainting' ? 'opacity-0' : 'opacity-80'}
-                    `}
-                  >
-                    {introText}
-                    {introState === 'typing' && <span className="animate-pulse text-ink-dark">|</span>}
-                  </div>
-                )} */}
-
-                {/* Drawing Canvas */}
-                <canvas
-                  ref={canvasRef}
-                  onMouseDown={startDrawing}
-                  onMouseMove={draw}
-                  onMouseUp={stopDrawing}
-                  onMouseLeave={stopDrawing}
-                  onTouchStart={startDrawing}
-                  onTouchMove={draw}
-                  onTouchEnd={stopDrawing}
-                  className="absolute inset-0 w-full h-full z-20"
-                />
-
-                {/* Editable Text overlay if user toggles 'Type' mode */}
-                {mode === "type" && (
-                  <textarea
-                    value={typedText}
-                    onChange={(e) => setTypedText(e.target.value)}
-                    placeholder="Type your heart out here..."
-                    className="absolute inset-0 pl-14 pr-14 pt-3 bg-transparent resize-none border-none outline-none font-accent text-ink text-base leading-[28px] z-30"
-                  />
-                )}
-
-                {/* Interactive Check / Submit Tick button at bottom right corner */}
-                <button
-                  type="button"
-                  onClick={handlePageTurn}
-                  disabled={isFlipping}
-                  title="Turn page"
-                  className={`
-                    absolute bottom-3 right-3 z-40 w-10 h-10 rounded-full
-                    bg-ink-dark text-white flex items-center justify-center
-                    shadow-lg border-2 border-white hover:bg-ink hover:scale-110 active:scale-95
-                    transition-all group/tick cursor-pointer
-                    ${isFlipping ? "opacity-60 cursor-not-allowed" : ""}
-                  `}
-                >
-                  <Check className="w-5 h-5 group-hover/tick:scale-125 transition-transform" />
-                </button>
-
-                {/* Page turning animation overlay (slower 1.6s flip) */}
-                {isFlipping && (
-                  <div className="absolute inset-0 z-50 animate-page-flip origin-left pointer-events-none bg-[#fdfbf7] border-l-2 border-paper-dark/20 shadow-2xl flex items-center justify-center">
-                    {flippedImage && (
-                      <img
-                        src={flippedImage}
-                        alt="Turning page"
-                        className="w-full h-full object-cover opacity-80"
-                      />
-                    )}
-                  </div>
-                )}
+                {/* Star-point Callouts */}
+                <span className="obsessions absolute top-0 left-1/4 -translate-x-1/2 text-m bg-[#fef08a]/80 px-2 rounded-full pacifico-regular">
+                  Abbot Elementary
+                </span>
+                <span className="obsessions absolute top-16 -left-1 text-m bg-[#ff4d8d]/80 px-3 rounded-full pacifico-regular">
+                  Running
+                </span>
+                <span className="obsessions absolute top-16 -right-1 text-m bg-[#2dd4bf]/80 px-1.5 rounded-full pacifico-regular">
+                  Ramen
+                </span>
+                <span className="obsessions absolute bottom-1 left-7 text-m bg-[#c084fc]/80 px-2 rounded-full pacifico-regular">
+                  Crochet
+                </span>
+                <span className="obsessions absolute bottom-1 right-5 text-m bg-[#fb923c]/80 px-2 rounded-full pacifico-regular">
+                  Reading
+                </span>
               </div>
             </div>
           </div>
 
-          {/* RIGHT SIDE: Reach Me Here (5 cols) */}
-          <div className="lg:col-span-5 flex flex-col gap-4 pl-0 lg:pl-4 border-t lg:border-t-0 lg:border-l border-paper-dark/20 pt-6 lg:pt-0">
-            <h2 className="text-xl md:text-2xl font-bold text-ink-dark border-b-2 border-paper-dark/30 pb-1">
-              and reach me here
-            </h2>
-
-            {/* Teared colored paper banner with white pen text */}
-            <div className="my-1.5 self-start w-full">
-              <div className="relative inline-block -rotate-1 hover:rotate-0 transition-transform duration-300 w-full sm:w-auto">
-                <div className="navbar-checkered px-4 sm:px-6 py-2.5 flex items-center justify-center gap-2 sm:gap-3 rounded-sm">
-                  <span
-                    className="text-pink-600 text-sm sm:text-base select-none"
-                    style={{ textShadow: "0 1px 3px rgba(0,0,0,0.3)" }}
-                  >
-                    ✧
-                  </span>
-                  <p
-                    className="font-accent text-white text-lg sm:text-xl md:text-2xl font-bold tracking-wide text-center leading-tight select-none"
-                    style={{
-                      textShadow:
-                        "0 1px 4px rgba(180,20,80,0.7), 0 0 12px rgba(180,20,80,0.3)",
-                    }}
-                  >
-                    Available for full-time Product Manager roles
-                  </p>
-                  <span
-                    className="text-pink-600 text-sm sm:text-base select-none"
-                    style={{ textShadow: "0 1px 3px rgba(0,0,0,0.3)" }}
-                  >
-                    ✧
-                  </span>
-                </div>
-              </div>
+          {/* 3. Mini 2026 Bingo Card (From Image 4) */}
+          <div className="bg-bingo-grid p-5 rounded-2xl shadow-md border-2 border-[#dfd3c8] relative">
+            <div className="flex items-center justify-between mb-3">
+              <h3 className="text-2xl font-bold tracking-widest text-[#ec4899] pacifico-regular">
+                My Bingo Card
+              </h3>
+              <span className="text-lg">🌷 ✨ 🦋</span>
             </div>
 
-            {/* Contact list with custom notebook-styled bullet links */}
-            <div className="flex flex-col gap-3.5 mt-2">
-              {contactData?.methods?.map((method, index) => {
-                const IconComponent = getPlatformIcon(method.platform);
-                const isEmail = method.platform.toLowerCase().includes("email");
-                const linkHref = isEmail
-                  ? `mailto:${method.handle}`
-                  : method.handle;
-
-                return (
-                  <a
-                    key={index}
-                    href={linkHref}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-3 group/link p-1 rounded-lg hover:bg-white/80 border border-transparent hover:border-paper-dark/20 transition-all"
-                  >
-                    <div className="w-9 h-9 rounded-full bg-white border border-paper-dark/30 flex items-center justify-center text-ink-dark group-hover/link:bg-ink-dark group-hover/link:text-white group-hover/link:rotate-6 transition-all shadow-sm">
-                      <IconComponent className="w-4.5 h-4.5" />
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="text-xs font-bold text-ink-dark group-hover/link:text-[#8a4e54] transition-colors">
-                        {method.platform}
-                      </span>
-                    </div>
-                  </a>
-                );
-              })}
-
-              {/* Resume Link if available */}
-              {resumeData && (
-                <a
-                  href={resumeData.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-3 group/link p-1 rounded-lg hover:bg-white/80 border border-transparent hover:border-paper-dark/20 transition-all mt-1"
+            <div className="grid grid-cols-5 border-t-2 border-l-2 border-[#6e5d58] bg-white/60">
+              {bingoItems.map((item, idx) => (
+                <div
+                  key={idx}
+                  className={`relative border-r-2 border-b-2 border-[#6e5d58] p-2.5 text-center text-sm flex items-center justify-center min-h-[54px] font-handwriting ${
+                    item.done ? "bg-[#a3b899]/45 font-bold" : ""
+                  }`}
                 >
-                  <div className="w-9 h-9 rounded-full bg-amber-100 border border-amber-300 flex items-center justify-center text-amber-900 group-hover/link:bg-ink-dark group-hover/link:text-white group-hover/link:rotate-6 transition-all shadow-sm">
-                    <FileText className="w-4.5 h-4.5" />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-xs font-bold text-ink-dark group-hover/link:text-[#8a4e54] transition-colors">
-                      {resumeData.label || "Resume"}
+                  <span>{item.text}</span>
+                  {item.done && (
+                    <span
+                      className="absolute top-0.5 right-1 text-xs"
+                      aria-hidden="true"
+                    >
+                      🌸
                     </span>
-                    <span className="text-xs text-ink-light">
-                      View my resume
-                    </span>
-                  </div>
-                </a>
-              )}
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Right Side: Pink Lined Paper + Stitched Contact Card (Cols 8-12) */}
+        <div className="lg:col-span-5 bg-pink-lined p-6 md:p-8 border-t-4 lg:border-t-0 lg:border-l-4 border-dashed border-[#eba8bc] flex flex-col  relative">
+          {/* Pink Card with Dotted Stitched Inner Border (From Image 1 Right Cards) */}
+          <div className="bg-[#f49cb6] p-3 rounded-2xl shadow-lg rotate-[0.8deg]">
+            <Polaroid highlights={highlights} />
+            <div className="border-2 border-dashed border-[#8a334d]/70 rounded-xl p-5 bg-[#f6a6be]/60">
+              {/* Card Header */}
+              <div className="text-center border-b-2 border-dashed border-[#8a334d]/40 pb-3 mb-4">
+                <h2 className="text-xl font-bold text-[#471d2a] tracking-wide pacifico-regular">
+                  ◕‿‿◕ Reach me here ♡
+                </h2>
+              </div>
+
+              {/* Contact Links List (Styled from Image 5) */}
+              <div className="space-y-3">
+                {contactData.map((item) => {
+                  const IconComponent = getPlatformIcon(item.platform);
+                  // if (item.platform == 'Email') {
+                  //   return (
+                  //     <>
+
+                  //       <Tooltip id="my-tooltip" />
+                  //       <span
+                  //         key={item.platform}
+                  //         className="group flex items-center gap-3.5 bg-white/90 hover:bg-white p-3 rounded-xl border border-[#e37d9b] shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md" onClick={() => { navigator.clipboard.writeText(item.handle); setDisplayTooltip(true) }}
+                  //         data-tooltip-id="my-tooltip" data-tooltip-content={
+                  //           displayTooltip ? "Copied email to clipboard" : ""}>
+                  //         <IconComponent className="w-4.5 h-4.5" />
+                  //         {item.display}</span>
+                  //     </>
+                  //   )
+                  // }
+                  return (
+                    item.display && (
+                      <a
+                        key={item.platform}
+                        href={item.handle}
+                        target={
+                          item.handle.startsWith("http") ? "_blank" : undefined
+                        }
+                        rel="noreferrer"
+                        className="group flex items-center gap-3.5 bg-white/90 hover:bg-white p-3 rounded-xl border border-[#e37d9b] shadow-xs transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+                      >
+                        <IconComponent className="w-4.5 h-4.5" />
+                        {item.display}
+                      </a>
+                    )
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>

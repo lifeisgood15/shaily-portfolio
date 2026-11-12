@@ -1,7 +1,5 @@
-import React from "react";
 import shailyPhoto from "../resources/shailyimg.jpeg";
 
-import MagazineLetters from "./elements/MagazineLetters";
 import {
   Mail,
   Linkedin,
@@ -19,22 +17,17 @@ import iimlImg from "../resources/header-emogis/IIML.png";
 import snorlaxImg from "../resources/header-emogis/snorlax.png";
 import vscodeImg from "../resources/header-emogis/VSCode.png";
 import modelImg from "../resources/header-emogis/Model.png";
-import raceImg from "../resources/header-emogis/Race.png";
 import fcbarcelonaImg from "../resources/header-emogis/fcbarcelona.png";
 import hammerImg from "../resources/header-emogis/hammer-sticker.png";
 import localImg from "../resources/header-emogis/local.png";
 import marinedriveImg from "../resources/header-emogis/marine-drive-sticker.png";
-import cocktailImg from "../resources/header-emogis/passionfruit-cocktail-sticker.png";
-import pizzaImg from "../resources/header-emogis/pizza-sticker.png";
 import slytherinImg from "../resources/header-emogis/slytherin.png";
 import kayakImg from "../resources/header-emogis/kayak.png";
 import iimlogoImg from "../resources/header-emogis/IIMLogo.png";
 import lotrImg from "../resources/header-emogis/lotr.png";
 import shellImg from "../resources/header-emogis/shell.webp";
-import strava from "../resources/header-emogis/Strava.png";
 import capImg from "../resources/header-emogis/cap.png";
 import agentforceImg from "../resources/header-emogis/agentforce.png";
-import ramenImg from "../resources/header-emogis/ramen.png";
 
 // Map platform names to Lucide icons
 const getIcon = (platform) => {
@@ -92,7 +85,10 @@ const Header = ({ data }) => {
             <span className="text-2xl sm:text-3xl md:text-4xl font-bold text-neutral-800 tracking-tight">
               {greeting}
             </span>
-            <MagazineLetters text={aboutName} size="lg" />
+            {/* <MagazineLetters text={aboutName} size="lg" /> */}
+            <p className="pacifico-regular text-4xl sm:text-3xl md:text-4xl font-bold text-neutral-800">
+              {aboutName}
+            </p>
           </div>
 
           {/* Left-aligned Tagline */}
@@ -103,29 +99,53 @@ const Header = ({ data }) => {
           {/* Left-aligned Para List: Same font size as tagline, no borders */}
           <div className="space-y-2 mt-1 w-full max-w-xl">
             <div className="gap-1 text-lg sm:text-xl  leading-snug">
-              <p>
+              <p className="py-2">
                 Currently an{" "}
-                <span style={{ color: "#2dd4bf", fontWeight: "bolder" }}>
+                <span
+                  style={{
+                    fontWeight: "bolder",
+                    textDecoration: "underline wavy #2dd4bf 0.2rem",
+                    textUnderlineOffset: "0.3rem",
+                  }}
+                >
                   AI Product Manager Intern
                 </span>
                 .
               </p>
-              <p>
+              <p className="py-2">
                 Formerly a{" "}
-                <span style={{ color: "#38bdf8", fontWeight: "bolder" }}>
-                  Salesforce Developer
+                <span
+                  style={{
+                    fontWeight: "bolder",
+                    textDecoration: "underline wavy #38bdf8 0.2rem",
+                    textUnderlineOffset: "0.3rem",
+                  }}
+                >
+                  Senior Developer
                 </span>
                 .
               </p>
-              <p>
-                <span style={{ color: "#ec4899", fontWeight: "bolder" }}>
+              <p className="py-2">
+                <span
+                  style={{
+                    fontWeight: "bolder",
+                    textDecoration: "underline wavy #ec4899 0.2rem",
+                    textUnderlineOffset: "0.3rem",
+                  }}
+                >
                   7 times{" "}
                 </span>{" "}
                 certified.
               </p>
-              <p>
+              <p className="py-2">
                 Now an{" "}
-                <span style={{ color: "#a3e635", fontWeight: "bolder" }}>
+                <span
+                  style={{
+                    fontWeight: "bolder",
+                    textDecoration: "underline wavy #a3e635 0.2rem",
+                    textUnderlineOffset: "0.3rem",
+                  }}
+                >
                   MBA Candidate @ IIM Lucknow
                 </span>
                 .
@@ -176,12 +196,6 @@ const Header = ({ data }) => {
             >
               <img src={modelImg} alt="Model" />
             </div>
-            <div
-              className="header-emoji-sticker header-emoji-race"
-              title="Race"
-            >
-              <img src={raceImg} alt="Race" />
-            </div>
 
             <div
               className="header-emoji-sticker header-emoji-fcb"
@@ -209,19 +223,6 @@ const Header = ({ data }) => {
               title="Marine drive"
             >
               <img src={marinedriveImg} alt="Marine drive" />
-            </div>
-            <div
-              className="header-emoji-sticker header-emoji-cocktail"
-              title="Cocktail"
-            >
-              <img src={cocktailImg} alt="Cocktail" />
-            </div>
-
-            <div
-              className="header-emoji-sticker header-emoji-pizza"
-              title="Pizza"
-            >
-              <img src={pizzaImg} alt="Pizza" />
             </div>
 
             <div
@@ -279,12 +280,6 @@ const Header = ({ data }) => {
             >
               <img src={agentforceImg} alt="agentforce" />
             </div>
-            <div
-              className="header-emoji-sticker header-emoji-ramen"
-              title="Ramen"
-            >
-              <img src={ramenImg} alt="Veg ramen" />
-            </div>
 
             <div className="p-3.5 pb-6 bg-white shadow-photo rounded-xs rotate-[2deg] group-hover:rotate-0 transition-transform duration-300 border border-neutral-200">
               <div className="w-48 h-48 sm:w-56 sm:h-56 overflow-hidden bg-neutral-100 border border-neutral-200">
@@ -303,6 +298,13 @@ const Header = ({ data }) => {
 
       <div className="mt-auto pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-pink-200/50">
         <div className="flex flex-wrap items-center gap-3">
+          <div className="flex justify-between items-center mb-4 px-2 ">
+            <span className="bg-white/90 border border-[#a3e635] px-3 py-1 rounded-full text-sm text-[#38bdf8] shadow-xs mt-4 ">
+              <span className="text-xl -rotate-12 select-none">🌺</span>
+              <b>Available for full-time Product Manager roles </b>
+              <span className="text-md rotate-12 select-none">✅</span>
+            </span>
+          </div>
           {contactMethods.map((method, index) => {
             const isEmail = method.platform.toLowerCase() === "email";
             const href = isEmail ? `mailto:${method.handle}` : method.handle;
@@ -319,19 +321,6 @@ const Header = ({ data }) => {
               </a>
             );
           })}
-
-          {/* Resume CTA Button */}
-          {data.resume && data.resume.url && (
-            <a
-              href={data.resume.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-bold tracking-tight bg-[#f59f00] text-white border-2 border-[#f59f00] hover:bg-[#d97706] shadow-[3px_3px_0px_rgba(0,0,0,0.18)] hover:-translate-y-0.5 active:translate-y-0.5 transition-all select-none"
-            >
-              <FileText className="w-4 h-4" />
-              <span>{data.resume.label || "Resume"}</span>
-            </a>
-          )}
         </div>
       </div>
     </section>

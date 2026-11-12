@@ -6,8 +6,9 @@ import SectionHeader from "./elements/SectionHeader";
 const CANDY_COLORS = [
   { bg: "#fbcfe8", border: "#f472b6", badge: "#be185d", badgeText: "#fff" }, // Pink
   { bg: "#bbf7d0", border: "#4ade80", badge: "#15803d", badgeText: "#fff" }, // Mint
-  { bg: "#fef08a", border: "#facc15", badge: "#a16207", badgeText: "#fff" }, // Sunny
   { bg: "#e9d5ff", border: "#c084fc", badge: "#7e22ce", badgeText: "#fff" }, // Lilac
+  { bg: "#fef08a", border: "#facc15", badge: "#a16207", badgeText: "#fff" }, // Sunny
+
   { bg: "#fed7aa", border: "#fb923c", badge: "#c2410c", badgeText: "#fff" }, // Peach
   { bg: "#a5f3fc", border: "#22d3ee", badge: "#0e7490", badgeText: "#fff" }, // Cyan
   { bg: "#fca5a5", border: "#f87171", badge: "#b91c1c", badgeText: "#fff" }, // Red

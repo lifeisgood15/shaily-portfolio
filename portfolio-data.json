@@ -9,50 +9,57 @@
         "org/school": "IIM Lucknow (Noida Campus)",
         "role": "MBA-Sustainable Management",
         "icon": "school",
-        "year": "Jun 2025-Present",
-        "skill_gained": "I understood how important sustainability is if we want to progress at the same speed with tech and AI innovations. I am learning business with a sustainability lens."
+        "year": "Jun 2025 - Present",
+        "skill_gained": "Studying marketing, finance, communications, impact investing, etc. Placement mentor for 100+ students."
+      },
+      {
+        "org/school": "Sinngapore Management University",
+        "role": "Global Immersion Program",
+        "icon": "school",
+        "year": "Sept 2026 - Sept 2026",
+        "skill_gained": "Explored digital transformation, emotion economy, and startup ecosystems across Singapore."
       },
       {
         "org/school": "Digitomics.ai",
         "role": "AI Product Manager Intern",
         "icon": "work",
-        "year": "Jul 2026-Present",
-        "skill_gained": "Co-led founding team in launch of AI FinOps platform, owning the 0→1 product roadmap & UI/UX strategy. I am heavily involved in the feature discovery and prioritization of the efforts."
+        "year": "Jul 2026 - Present",
+        "skill_gained": "Co-led founding team in launch of AI FinOps platform, owning the 0→1 product roadmap & UI/UX strategy. I am heavily involved in the feature placement."
       },
       {
         "org/school": "Ernst&Young(EY) - Government and Public Sector",
         "role": "Business Consulting Intern",
         "icon": "work",
-        "year": "Apr 2026- Jun 2026",
-        "skill_gained": "I worked on EY projects with the state government, calculating bankability of projects, building sample dashboards to show to our clients."
+        "year": "Apr 2026 - Jun 2026",
+        "skill_gained": "I with on state government projects, calculating bankability of projects, building dashboards prototype for our clients."
       },
       {
-        "org/school": "Carbon Crunch - Carbon Markets",
+        "org/school": "Carbon Crunch",
         "role": "Product Management Intern",
         "icon": "work",
-        "year": "Jan 2026- Mar 2026",
-        "skill_gained": "Identified product opportunity to eliminate 5+ Lakhs of upfront feasibility cost that Carbon project developers bear, roadmapped a the product and conducted extensive research of methodologies and developed logical decision trees."
+        "year": "Jan 2026 - Mar 2026",
+        "skill_gained": "Identified product opportunity to eliminate 5+ Lakhs of upfront feasibility cost for Carbon markets project developers, created the  product roadmap & researched 100+ methodologies."
       },
       {
         "org/school": "Tata Consultancy Services (TCS)",
-        "role": "IT Analyst",
+        "role": "Senior Salesforce Developer/IT Analyst",
         "icon": "work",
-        "year": "Sept 2020- Jul 2025",
-        "skill_gained": "Started as a junior salesforce developer working with a fortune 500 banking client to translate their user needs into creative salesforce solutions. I participated in product backlog refinement sessions, contributing my technical expertise and aligning development effort with business goals."
+        "year": "Sept 2020 - Jul 2025",
+        "skill_gained": "Worked with a fortune 500 banking client to translate CRM needs into creative salesforce solutions. I participated in product backlog refinement sessions, contributing my technical expertise. Awarded Star-of-the-month 4 times"
       },
       {
         "org/school": "Mastertech, Thane",
         "role": "Search Engine Optimization (SEO) Intern",
         "icon": "work",
-        "year": "Jun 2019- Jul 2019",
-        "skill_gained": "With epic product, you need an epic visibility. This is where I learned how to opmitize a website for SEO."
+        "year": "Jun 2019 - Jul 2019",
+        "skill_gained": "As a Search engine optimization intern I was responsible to work on the site's on the site and off-site SEO."
       },
       {
-        "org/school": "Mumbai University, DMCE, Navi Mumbai",
+        "org/school": "DMCE, Mumbai University",
         "role": "Bachelor of Engineering - Information Technology",
         "icon": "school",
-        "year": "Aug 2016- Oct 2020",
-        "skill_gained": "Engineering taught me a lot of things. I gained my theoretical knowledge from here and applied on multiple projects I worked on during this."
+        "year": "Aug 2016 - Oct 2020",
+        "skill_gained": "Engineering exposed me to Database design, APIs, Data structures and algotrithms,  Big data analytics, Data mining, Business Intelligence, Mobile app development. "
       },
       {
         "org/school": "CBSE, DAV International School, Navi Mumbai",
@@ -190,6 +197,11 @@
         ]
       },
       {
+        "id": "primary-skills-header",
+        "title": "Primary Skills",
+        "className": "blob-process"
+      },
+      {
         "id": "process",
         "title": "Process",
         "className": "blob-process",
@@ -234,8 +246,16 @@
   },
   "highlights": [
     {
+      "title": "Winner - Intel",
+      "image": "intel.jpeg"
+    },
+    {
+      "title": "Singapore Management University",
+      "image": "smu.jpeg"
+    },
+    {
       "title": "Volunteering - Code Club @EY",
-      "image": "codeclubEY.jpeg"
+      "image": "codeclubEY2.jpeg"
     },
     {
       "title": "Volunteering - Career guidance @EY",
@@ -256,6 +276,10 @@
     {
       "title": "AI Summit",
       "image": "AISummit2026.jpeg"
+    },
+    {
+      "title": "Marathon",
+      "image": "vdhm26.jpeg"
     },
     {
       "title": "Vedanta Delhi Half Marathon",
@@ -279,19 +303,28 @@
     "methods": [
       {
         "platform": "Email",
-        "handle": "shailypandey414@gmail.com"
+        "display": "Email: shailypandey414@gmail.com",
+        "handle": "mailto:shailypandey414@gmail.com"
       },
       {
         "platform": "GitHub",
+        "display": "",
         "handle": "https://github.com/lifeisgood15"
       },
       {
         "platform": "LinkedIn",
+        "display": "LinkedIn: linkedin.com/in/shaily-pandey/",
         "handle": "https://www.linkedin.com/in/shaily-pandey/"
       },
       {
-        "platform": "Meet",
+        "platform": "15 min meet",
+        "display": "15 min Google Meet",
         "handle": "https://calendar.app.google/kZVcQzn9Pgna8XDd7"
+      },
+      {
+        "platform": "Download my resume",
+        "display": "Download my resume",
+        "handle": "https://drive.google.com/drive/folders/1VcjpPcBJRPSTwluvAhofxSi669JvTg5f?usp=sharing"
       }
     ]
   },
@@ -299,7 +332,7 @@
     "label": "Resume",
     "url": "https://drive.google.com/drive/folders/1VcjpPcBJRPSTwluvAhofxSi669JvTg5f?usp=sharing"
   },
-  "brain-made-of": [
+  "brainmadeof": [
     {
       "percentage": 40,
       "item": "Overthinking"
@@ -319,6 +352,149 @@
     {
       "percentage": 10,
       "item": "Running"
+    }
+  ],
+  "bingo": [
+    {
+      "text": "10K",
+      "done": true
+    },
+    {
+      "text": "Coldplay concert",
+      "done": true
+    },
+    {
+      "text": "Northern lights",
+      "done": false
+    },
+    {
+      "text": "Scuba diving license",
+      "done": false
+    },
+    {
+      "text": "Horror movies",
+      "done": true
+    },
+    {
+      "text": "Crochet scarf",
+      "done": false
+    },
+    {
+      "text": "Less sugar",
+      "done": false
+    },
+    {
+      "text": "Spa day",
+      "done": false
+    },
+    {
+      "text": "Runway model",
+      "done": false
+    },
+    {
+      "text": "Nose piercing",
+      "done": false
+    },
+    {
+      "text": "Try a new cafe",
+      "done": false
+    },
+    {
+      "text": "Learn morse code",
+      "done": false
+    },
+    {
+      "text": "Foreign trip",
+      "done": true
+    },
+    {
+      "text": "Spiti Valley",
+      "done": true
+    },
+    {
+      "text": "Driver's license",
+      "done": false
+    },
+    {
+      "text": "Sky diving",
+      "done": false
+    },
+    {
+      "text": "River rafting",
+      "done": true
+    },
+    {
+      "text": "Phi Phi Island",
+      "done": true
+    },
+    {
+      "text": "Go to a standup",
+      "done": false
+    },
+    {
+      "text": "Start a business",
+      "done": false
+    },
+    {
+      "text": "Learn italian",
+      "done": true
+    },
+    {
+      "text": "Do more runs",
+      "done": false
+    },
+    {
+      "text": "Learn cooking",
+      "done": false
+    },
+    {
+      "text": "Switzerland",
+      "done": false
+    },
+    {
+      "text": "Paint 5 pots",
+      "done": false
+    }
+  ],
+  "currentobsessions": [
+    "Abbott elementary",
+    "Running",
+    "Crochet",
+    "Sleeping",
+    "Studying"
+  ],
+  "testimonials": [
+    {
+      "name": "Shivani Pathekar",
+      "role": "Salesforce Technical Lead",
+      "company": "TCS",
+      "avatar": "../resources/testimonials/shivani.jpg",
+      "quote": "I have worked closely with Shaily and was consistently impressed by her strong technical expertise, deep domain knowledge.\nShe is very dedicated and has a thorough understanding of the technology and business processes. She can effectively solve complex problems and contribute meaningfully to the teams success.\nShe is dependable and proactive in taking ownership of her responsibilities.\nShe has the ability to learn quickly and collaborate effectively with stakeholders. Her way to handle challenging tasks makes her a valuable asset to any team.\nI would highly recommend her for any role that requires strong technical capabilities, domain expertise.",
+      "doodle": "stars"
+    },
+    {
+      "name": "Sanjay Dhareshwar",
+      "role": "Consultant Delivery Management",
+      "company": "TCS",
+      "avatar": "../resources/testimonials/user.png",
+      "quote": "I had the privilege of working with Shaily during our time together at TCS in the Salesforce development team. Shaily is hardworking, intelligent, and consistently demonstrated the ability to handle complex assignments with calmness and ease. She eagerly took on new responsibilities and additional roles, always going above and beyond expectations.\nWhat truly sets Shaily apart is her natural leadership and mentorship. She guided her team with clarity, marshalled resources effectively, and created an environment where collaboration thrived. Her dedication and smart approach made every project smoother and more successful.\nIt was a delight to be associated with Shaily, and I can confidently say she is an excellent asset to any organization.",
+      "doodle": "scallop"
+    },
+    {
+      "name": "Abdul Nawaz Khan",
+      "role": "Technical Lead",
+      "company": "TCS",
+      "avatar": "../resources/testimonials/abdul.jpg",
+      "quote": "I had the opportunity to work with Shaily Pandey at TCS as a Salesforce Developer. She is extremely hardworking, dedicated, and consistently delivered high-quality work.\nShaily handled complex tasks with great ownership and energy, always ensuring timely delivery and client satisfaction. Her strong technical skills, positive attitude, and commitment made her one of the top performers year after year.\nShe is a great team player and a valuable asset to any organization. I highly recommend her for future opportunities.",
+      "doodle": "swirls"
+    },
+    {
+      "name": "Ashish Mishra",
+      "role": "Colleague and friend",
+      "company": "TCS",
+      "avatar": "../resources/testimonials/ashish.jpg",
+      "quote": "I worked with Shaily during our time at TCS, and she has always been a talented, hardworking, and dependable professional. She brings a great attitude to the team, learns quickly, and handles responsibilities with confidence and dedication.\nShe is someone who is always willing to support others and take initiative whenever needed. Im sure her skills and determination will help her grow and succeed in every opportunity she takes on.",
+      "doodle": "stars"
     }
   ]
 }
