@@ -100,7 +100,7 @@ const Header = ({ data }) => {
           <div className="space-y-2 mt-1 w-full max-w-xl">
             <div className="gap-1 text-lg sm:text-xl  leading-snug">
               <p className="py-2">
-                Currently a
+                Currently a{" "}
                 <span
                   style={{
                     fontWeight: "bolder",
