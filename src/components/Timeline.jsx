@@ -1,17 +1,18 @@
-import React, { useRef } from 'react';
-import { GraduationCap, Briefcase, Star } from 'lucide-react';
-import SectionHeader from './elements/SectionHeader';
+import React, { useRef } from "react";
+import { GraduationCap, Briefcase, Star } from "lucide-react";
+import SectionHeader from "./elements/SectionHeader";
 
 // Bright candy colour palettes for timeline cards
 const CANDY_COLORS = [
-  { bg: '#fbcfe8', border: '#f472b6', badge: '#be185d', badgeText: '#fff' },   // Pink
-  { bg: '#bbf7d0', border: '#4ade80', badge: '#15803d', badgeText: '#fff' },   // Mint
-  { bg: '#fef08a', border: '#facc15', badge: '#a16207', badgeText: '#fff' },   // Sunny
-  { bg: '#e9d5ff', border: '#c084fc', badge: '#7e22ce', badgeText: '#fff' },   // Lilac
-  { bg: '#fed7aa', border: '#fb923c', badge: '#c2410c', badgeText: '#fff' },   // Peach
-  { bg: '#a5f3fc', border: '#22d3ee', badge: '#0e7490', badgeText: '#fff' },   // Cyan
-  { bg: '#fca5a5', border: '#f87171', badge: '#b91c1c', badgeText: '#fff' },   // Red
-  { bg: '#bfdbfe', border: '#60a5fa', badge: '#1d4ed8', badgeText: '#fff' },   // Blue
+  { bg: "#fbcfe8", border: "#f472b6", badge: "#be185d", badgeText: "#fff" }, // Pink
+  { bg: "#bbf7d0", border: "#4ade80", badge: "#15803d", badgeText: "#fff" }, // Mint
+  { bg: "#e9d5ff", border: "#c084fc", badge: "#7e22ce", badgeText: "#fff" }, // Lilac
+  { bg: "#fef08a", border: "#facc15", badge: "#a16207", badgeText: "#fff" }, // Sunny
+
+  { bg: "#fed7aa", border: "#fb923c", badge: "#c2410c", badgeText: "#fff" }, // Peach
+  { bg: "#a5f3fc", border: "#22d3ee", badge: "#0e7490", badgeText: "#fff" }, // Cyan
+  { bg: "#fca5a5", border: "#f87171", badge: "#b91c1c", badgeText: "#fff" }, // Red
+  { bg: "#bfdbfe", border: "#60a5fa", badge: "#1d4ed8", badgeText: "#fff" }, // Blue
 ];
 
 const CARD_WIDTH = 240;
@@ -20,9 +21,9 @@ const Timeline = ({ timeline }) => {
   const scrollRef = useRef(null);
 
   const renderIcon = (item) => {
-    if (item.icon.toLowerCase().includes('school')) {
+    if (item.icon.toLowerCase().includes("school")) {
       return <GraduationCap className="w-4 h-4" />;
-    } else if (item.icon.toLowerCase().includes('work')) {
+    } else if (item.icon.toLowerCase().includes("work")) {
       return <Star className="w-4 h-4" />;
     }
     return <Briefcase className="w-4 h-4" />;
@@ -43,19 +44,24 @@ const Timeline = ({ timeline }) => {
         {item.year}
       </span>
       <h3 className="font-bold text-neutral-900 text-sm leading-tight mb-1">
-        {item['org/school']}
+        <b>{item["org/school"]}</b>
       </h3>
-      <p className="text-xs font-medium text-neutral-700 mb-1">{item.role}</p>
+      <p className="text-xs font-medium text-neutral-700 mb-1">
+        <b>{item.role}</b>
+      </p>
       {/* Hide skill_gained on mobile */}
-      <p className="hidden md:block text-xs text-neutral-600 leading-relaxed">
+      <p className="hidden md:block text-xs leading-relaxed">
         {item.skill_gained}
       </p>
     </div>
   );
 
   // Washi tape strip (same checkered pattern used in navbar/projects)
-  const WashiTape = ({ rotate = '0deg' }) => (
-    <div className="flex justify-center" style={{ zIndex: 30, position: 'relative' }}>
+  const WashiTape = ({ rotate = "0deg" }) => (
+    <div
+      className="flex justify-center"
+      style={{ zIndex: 30, position: "relative" }}
+    >
       <div
         className="w-7 h-5 navbar-checkered rounded-xs shadow-xs border border-pink-300/70"
         style={{ transform: `rotate(${rotate})` }}
@@ -72,14 +78,16 @@ const Timeline = ({ timeline }) => {
           ref={scrollRef}
           className="overflow-x-auto pb-6 scrollbar-thin w-full"
           style={{
-            scrollbarWidth: 'thin',
-            scrollbarColor: '#f9a8d4 #fce7f3',
+            scrollbarWidth: "thin",
+            scrollbarColor: "#f9a8d4 #fce7f3",
           }}
         >
           <div className="w-full min-w-max px-6 sm:px-10 md:px-14 lg:px-16">
-
             {/* Row 1: Cards above the line (even indices) */}
-            <div className="flex w-full items-end justify-between" style={{ minHeight: '200px' }}>
+            <div
+              className="flex w-full items-end justify-between"
+              style={{ minHeight: "200px" }}
+            >
               {timeline.map((item, index) => {
                 const isAbove = index % 2 === 0;
                 const candy = CANDY_COLORS[index % CANDY_COLORS.length];
@@ -105,26 +113,30 @@ const Timeline = ({ timeline }) => {
             </div>
 
             {/* Row 2: Wide animated road with icons ON it — extended all the way across */}
-            <div className="relative flex w-full items-center" style={{ height: '48px' }}>
+            <div
+              className="relative flex w-full items-center"
+              style={{ height: "48px" }}
+            >
               {/* Wide road background extending past the screen edges */}
               <div
                 className="absolute -left-24 -right-24 rounded-full z-0"
                 style={{
-                  top: '50%',
-                  transform: 'translateY(-50%)',
-                  height: '14px',
-                  background: 'linear-gradient(to bottom, #2d3a47, #3b4c5c, #2d3a47)',
-                  boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
+                  top: "50%",
+                  transform: "translateY(-50%)",
+                  height: "14px",
+                  background:
+                    "linear-gradient(to bottom, #2d3a47, #3b4c5c, #2d3a47)",
+                  boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
                 }}
               >
                 {/* Center dashed lane marking */}
                 <div
                   className="absolute left-0 right-0"
                   style={{
-                    top: '50%',
-                    transform: 'translateY(-50%)',
-                    height: '2px',
-                    borderTop: '2px dashed rgba(255,255,255,0.6)',
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                    height: "2px",
+                    borderTop: "2px dashed rgba(255,255,255,0.6)",
                   }}
                 />
               </div>
@@ -154,7 +166,10 @@ const Timeline = ({ timeline }) => {
             </div>
 
             {/* Row 3: Cards below the line (odd indices) */}
-            <div className="flex w-full items-start justify-between" style={{ minHeight: '200px' }}>
+            <div
+              className="flex w-full items-start justify-between"
+              style={{ minHeight: "200px" }}
+            >
               {timeline.map((item, index) => {
                 const isAbove = index % 2 === 0;
                 const candy = CANDY_COLORS[index % CANDY_COLORS.length];
@@ -178,7 +193,6 @@ const Timeline = ({ timeline }) => {
                 );
               })}
             </div>
-
           </div>
         </div>
       </div>

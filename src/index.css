@@ -1,3 +1,4 @@
+@import url("https://googleapis.com");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -90,24 +91,19 @@
     background-size: 18px 18px;
   }
 
-  /* Hand-drawn hollow bubble letters (like Photo 2 "About me") */
+  /* Hand-drawn hollow bubble letters — now using Caveat for accent role */
   .bubble-outline-text,
   .bubble-handwritten {
-    font-family: "DynaPuff", cursive, sans-serif;
-    color: #ffffff;
-    -webkit-text-stroke: 2.6px #1e293b;
-    text-shadow:
-      3.5px 3.5px 0px #1e293b,
-      -1px -1px 0px #1e293b,
-      1px -1px 0px #1e293b,
-      -1px 1px 0px #1e293b,
-      1px 1px 0px #1e293b;
-    letter-spacing: 0.05em;
+    font-family: "Caveat", cursive;
+    color: #1e293b;
+    -webkit-text-stroke: 1.5px #1e293b;
+    text-shadow: 2px 2px 0px rgba(0, 0, 0, 0.08);
+    letter-spacing: 0.03em;
     display: inline-block;
   }
 
   .font-handwriting {
-    font-family: "Patrick Hand", cursive, sans-serif;
+    font-family: "Caveat", cursive;
   }
 
   /* Checked Ribbon Patterns */
@@ -359,7 +355,7 @@
   transition:
     transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
     filter 0.3s ease;
-  z-index: 20;
+  z-index: -20;
 }
 
 .header-emoji-sticker img {
@@ -379,159 +375,1081 @@
   transform: scale(0.95);
 }
 
-/* ── SMALL SCREENS / MOBILE (< 768px) ── */
+/* Smaller screens <768px */
+.header-emoji-cap {
+  top: -27rem;
+  left: 1rem;
+  width: 4rem;
+  height: 4rem;
+  animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+  display: none;
+}
+
+.header-emoji-agentforce {
+  top: -24rem;
+  left: 14rem;
+  width: 4rem;
+  height: 4rem;
+  animation: sticker-sway-ccw 5.5s ease-in-out infinite;
+}
+
+.header-emoji-ramen {
+  top: -30rem;
+  left: 7rem;
+  width: 4rem;
+  height: 4rem;
+  animation: sticker-sway-ccw 7.2s ease-in-out infinite;
+  display: none;
+}
+
 .header-emoji-crochet {
-  top: 9.5%;
-  right: 7%;
-  width: 4rem;
-  height: 4rem;
-  animation: sticker-sway-cw 5.5s ease-in-out infinite;
-}
-
-.header-emoji-model {
-  top: 9.5%;
-  left: 4%;
-  width: 5rem;
-  height: 5rem;
-  animation: sticker-sway-cw 5.5s ease-in-out infinite;
-}
-
-.header-emoji-race {
-  top: 8.5%;
-  right: 2%;
-  width: 4rem;
-  height: 4rem;
-  animation: sticker-sway-cw 5.5s ease-in-out infinite;
-}
-
-.header-emoji-iiml {
-  top: 7%;
-  left: 1%;
-  width: 4rem;
-  height: 4rem;
-  animation: sticker-sway-ccw 6.8s ease-in-out infinite;
-}
-
-.header-emoji-vscode {
-  top: 7%;
-  right: 3%;
+  top: 1rem;
+  left: -4rem;
   width: 4rem;
   height: 4rem;
   animation: sticker-sway-ccw 6.2s ease-in-out infinite;
 }
 
-.header-emoji-books {
-  top: 8.5%;
-  left: 4%;
+.header-emoji-model {
+  top: -22rem;
+  left: 14rem;
+  width: 6rem;
+  height: 6rem;
+  animation: sticker-sway-ccw 5.5s ease-in-out infinite;
+  display: none;
+}
+
+.header-emoji-race {
+  top: -21rem;
+  left: 7rem;
+  width: 4rem;
+  height: 4rem;
+  animation: sticker-sway-ccw 7.2s ease-in-out infinite;
+  display: none;
+}
+
+.header-emoji-iiml {
+  top: 20rem;
+  right: -5rem;
+  width: 4rem;
+  height: 4rem;
+  animation: sticker-sway-ccw 4.9s ease-in-out infinite;
+  display: none;
+}
+
+.header-emoji-vscode {
+  top: 3.5rem;
+  left: 15rem;
+  width: 4rem;
+  height: 4rem;
+  animation: sticker-sway-ccw 5.2s ease-in-out infinite;
+}
+
+.header-emoji-shell {
+  display: none;
+}
+
+.header-emoji-iimllogo {
+  top: -2rem;
+  left: 15rem;
   width: 4rem;
   height: 4rem;
   animation: sticker-sway-cw 7.5s ease-in-out infinite;
 }
 
-/* ── TABLET SCREENS (768px - 1023px) ── */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .header-emoji-crochet {
-    top: 9.5%;
-    left: 4%;
-    right: auto;
-    width: 5rem;
-    height: 5rem;
-  }
+.header-emoji-lotr {
+  top: -24rem;
+  left: -5rem;
+  width: 4rem;
+  height: 4rem;
+  animation: sticker-sway-cw 9.2s ease-in-out infinite;
+  display: none;
+}
 
-  /* .header-emoji-model {
-    top: 9.5%;
-    left: 15%;
-    width: 6rem;
-    height: 6rem;
-  } */
+.header-emoji-kayak {
+  top: 7rem;
+  left: -5.5rem;
+  width: 4rem;
+  height: 4rem;
+  animation: sticker-sway-cw 6s ease-in-out infinite;
+}
 
-  .header-emoji-race {
-    top: 9.5%;
-    left: 28%;
-    width: 5rem;
-    height: 5rem;
-  }
+.header-emoji-strava {
+  top: 7.5rem;
+  right: -40%;
+  width: 3rem;
+  height: 3rem;
+  animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+  display: none;
+}
 
-  .header-emoji-iiml {
-    top: 9.5%;
-    left: 40%;
-    width: 5rem;
-    height: 5rem;
-  }
+.header-emoji-books {
+  top: 60%;
+  right: -36%;
+  left: auto;
+  width: 4rem;
+  height: 4rem;
+  animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+}
 
-  .header-emoji-vscode {
-    top: 9.5%;
-    left: 55%;
-    width: 5rem;
-    height: 5rem;
-  }
+.header-emoji-snorlax {
+  top: 13rem;
+  left: -8rem;
+  width: 5rem;
+  height: 5rem;
+  animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+  display: none;
+}
 
-  .header-emoji-books {
-    top: 9.5%;
-    left: 70%;
-    width: 5rem;
-    height: 5rem;
-  }
+.header-emoji-fcb {
+  top: -4rem;
+  right: -7rem;
+  width: 5rem;
+  height: 5rem;
+  animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+  display: none;
+}
 
-  .header-emoji-snorlax {
-    bottom: -20px;
-    right: -20px;
-    width: 76px;
-    height: 76px;
-  }
+.header-emoji-hammer {
+  top: 18rem;
+  left: -5rem;
+  width: 6rem;
+  height: 6rem;
+  animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+  display: none;
+}
+
+.header-emoji-local {
+  top: 100%;
+  right: 70%;
+  width: 6rem;
+  height: 6rem;
+  animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+  display: none;
+}
+
+.header-emoji-marinedrive {
+  display: none;
+}
+
+.header-emoji-cocktail {
+  top: 2rem;
+  left: -8rem;
+  width: 4rem;
+  height: 4rem;
+  animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+  display: none;
+}
+
+.header-emoji-pizza {
+  top: 15rem;
+  left: 4rem;
+  width: 6rem;
+  height: 6rem;
+  animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+  display: none;
+}
+
+.header-emoji-slytherin {
+  top: 105%;
+  left: 70%;
+  width: 6rem;
+  height: 6rem;
+  animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+  display: none;
 }
 
 /* ── LAPTOP & DESKTOP SCREENS (>= 1024px) ── */
 @media (min-width: 1024px) {
+  .header-emoji-agentforce {
+    top: -1rem;
+    left: -125%;
+    width: 5rem;
+    height: 5rem;
+    animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+    display: block;
+  }
+
+  .header-emoji-cap {
+    top: 20%;
+    left: -400%;
+    width: 4rem;
+    height: 4rem;
+    animation: sticker-sway-cw 7.5s ease-in-out infinite;
+    display: block;
+  }
+
+  .header-emoji-ramen {
+    top: 320rem;
+    left: 10%;
+    width: 7rem;
+    height: 7rem;
+    animation: sticker-sway-ccw 7.2s ease-in-out infinite;
+    display: block;
+    z-index: 20;
+  }
+
   .header-emoji-crochet {
-    top: 8%;
-    right: 30%;
-    width: 6rem;
-    height: 6rem;
+    top: -9rem;
+    left: 5%;
+    width: 4rem;
+    height: 4rem;
+    animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+    display: block;
   }
 
   .header-emoji-model {
-    top: 3%;
-    left: 93%;
+    top: 20%;
+    left: 100%;
     width: 6rem;
     height: 6rem;
+    animation: sticker-sway-ccw 5.5s ease-in-out infinite;
+    display: block;
   }
 
   .header-emoji-race {
-    top: 3%;
-    right: 35%;
-    width: 6rem;
-    height: 6rem;
+    top: 8rem;
+    left: 10%;
+    width: 4rem;
+    height: 4rem;
+    animation: sticker-sway-ccw 7.2s ease-in-out infinite;
+    display: block;
+    z-index: 20;
   }
 
   .header-emoji-iiml {
-    top: 8%;
-    right: 5%;
-    left: auto;
+    top: 60%;
+    left: -55%;
     width: 6rem;
     height: 6rem;
+    animation: sticker-sway-ccw 4.9s ease-in-out infinite;
+    display: block;
   }
 
   .header-emoji-vscode {
-    top: 6%;
-    right: 5%;
+    top: -40%;
+    left: -400%;
     width: 6rem;
     height: 6rem;
+    animation: sticker-sway-ccw 5.2s ease-in-out infinite;
+    display: block;
+  }
+
+  .header-emoji-shell {
+    top: 43%;
+    left: -155%;
+    width: 5rem;
+    height: 5rem;
+    animation: sticker-sway-ccw 7.2s ease-in-out infinite;
+    display: block;
+  }
+
+  .header-emoji-iimllogo {
+    top: 120%;
+    left: -350%;
+    width: 5rem;
+    height: 5rem;
+    animation: sticker-sway-cw 7.5s ease-in-out infinite;
+    display: block;
+  }
+
+  .header-emoji-kayak {
+    top: 90%;
+    left: -200%;
+    width: 6rem;
+    height: 6rem;
+    animation: sticker-sway-cw 6s ease-in-out infinite;
+    display: block;
+  }
+
+  .header-emoji-lotr {
+    top: -50%;
+    left: -170%;
+    width: 6rem;
+    height: 6rem;
+    animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+    display: block;
   }
 
   .header-emoji-books {
-    top: 5%;
-    right: 36%;
+    top: 70%;
+    right: -36%;
     left: auto;
     width: 6rem;
     height: 6rem;
+    animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+    display: block;
   }
 
   .header-emoji-snorlax {
-    bottom: -24px;
-    right: -28px;
-    width: 96px;
-    height: 96px;
-    z-index: 30;
+    top: 100%;
+    left: -120%;
+    width: 5rem;
+    height: 5rem;
+    animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+    display: block;
   }
+
+  .header-emoji-fcb {
+    top: -50%;
+    right: -60%;
+    width: 5rem;
+    height: 5rem;
+    animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+    display: block;
+  }
+
+  .header-emoji-hammer {
+    top: 153%;
+    left: -415%;
+    width: 4rem;
+    height: 4rem;
+    animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+    display: block;
+  }
+
+  .header-emoji-local {
+    top: 100%;
+    right: 70%;
+    width: 6rem;
+    height: 6rem;
+    animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+    display: block;
+  }
+
+  .header-emoji-marinedrive {
+    top: -40%;
+    left: -75%;
+    width: 6rem;
+    height: 6rem;
+    animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+    display: block;
+  }
+
+  .header-emoji-cocktail {
+    top: 320rem;
+    left: 85%;
+    width: 7rem;
+    height: 7rem;
+    animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+    z-index: 20;
+    display: block;
+  }
+
+  .header-emoji-pizza {
+    top: 322rem;
+    left: 47%;
+    width: 6rem;
+    height: 6rem;
+    animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+    display: block;
+    z-index: 20;
+  }
+
+  .header-emoji-slytherin {
+    top: 125%;
+    left: 70%;
+    width: 6rem;
+    height: 6rem;
+    animation: sticker-sway-ccw 6.2s ease-in-out infinite;
+    display: block;
+  }
+}
+
+.skills-stage {
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.stage-heading {
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  color: #9b806c;
+  text-transform: uppercase;
+  letter-spacing: 0.19em;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.stage-heading h1 {
+  margin: 0;
+  color: var(--ink);
+  font:
+    800 clamp(38px, 5.3vw, 68px)/1.04 "Manrope",
+    sans-serif;
+  letter-spacing: -0.065em;
+}
+
+.stage-heading h1 span {
+  color: #b97863;
+}
+
+.intro {
+  margin: 13px auto 0;
+  color: #77736d;
+  font-size: clamp(13px, 1.2vw, 16px);
+}
+
+.blob-field {
+  position: relative;
+  width: min(100%, 1420px);
+  height: clamp(570px, 66vw, 760px);
+  margin: 10px auto 0;
+}
+
+.skill-blob {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(20px, 3vw, 42px);
+  color: #fff;
+  cursor: pointer;
+  outline: none;
+  isolation: isolate;
+  filter: drop-shadow(0 12px 18px rgba(72, 62, 50, 0.08));
+  transition:
+    filter 0.25s ease,
+    transform 0.25s ease;
+  animation: blob-float 7s ease-in-out infinite;
+}
+
+.skill-blob::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: var(--blob-color);
+  border-radius: var(--blob-shape);
+  transform: rotate(var(--tilt, 0deg));
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.skill-blob:hover,
+.skill-blob:focus-visible,
+.skill-blob.is-active {
+  filter: drop-shadow(0 18px 24px rgba(72, 62, 50, 0.16));
+  z-index: 5;
+}
+
+.skill-blob:hover::before,
+.skill-blob:focus-visible::before,
+.skill-blob.is-active::before {
+  transform: rotate(0deg) scale(1.035);
+  filter: saturate(1.08);
+}
+
+.blob-content {
+  width: 100%;
+  max-width: 340px;
+}
+
+.blob-content h2 {
+  display: inline-block;
+  margin: 0 0 17px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.85);
+  font:
+    700 clamp(18px, 1.7vw, 24px)/1.1 "Inter",
+    sans-serif;
+  letter-spacing: -0.025em;
+}
+
+.blob-content ul {
+  margin: 1%;
+  padding-left: 1%;
+  list-style: none;
+}
+
+.blob-content li {
+  margin: 6px 0;
+  font-size: clamp(13px, 1.25vw, 17px);
+  line-height: 1.28;
+  font-weight: 500;
+  padding-left: 5%;
+
+  font-family: "Inter", sans-serif;
+}
+
+.blob-product {
+  --blob-color: #38bdf8;
+  --blob-shape: 28% 72% 62% 38% / 40% 27% 73% 60%;
+  --tilt: -4deg;
+  left: 1%;
+  top: 3%;
+  width: 29%;
+  height: 41%;
+  animation-delay: -0.5s;
+}
+
+.blob-process {
+  --blob-color: #fb923c;
+  --blob-shape: 13% 87% 80% 20% / 17% 21% 79% 83%;
+  --tilt: 2deg;
+  left: 31%;
+  top: 0%;
+  width: 39%;
+  height: 34%;
+  animation-delay: -2s;
+}
+
+.blob-analytics {
+  --blob-color: #4ade80;
+  --blob-shape: 10% 90% 70% 30% / 13% 18% 82% 87%;
+  --tilt: 3deg;
+  right: 0%;
+  top: 1%;
+  width: 29%;
+  height: 62%;
+  animation-delay: -1.3s;
+}
+
+.blob-customer {
+  --blob-color: #22d3ee;
+  --blob-shape: 8% 92% 77% 23% / 15% 24% 76% 85%;
+  --tilt: -2deg;
+  left: 2%;
+  bottom: 5%;
+  width: 43%;
+  height: 48%;
+  animation-delay: -3s;
+}
+
+.blob-people {
+  --blob-color: #f472b6;
+  --blob-shape: 12% 88% 91% 9% / 28% 18% 82% 72%;
+  --tilt: 1deg;
+  right: 7%;
+  bottom: 0%;
+  width: 51%;
+  height: 43%;
+  animation-delay: -4s;
+}
+
+.center-note {
+  position: absolute;
+  left: 50%;
+  top: 49%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  width: clamp(180px, 22vw, 285px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(255, 253, 248, 0.92);
+  box-shadow:
+    0 12px 38px rgba(91, 75, 62, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.9);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+}
+
+.center-note span {
+  color: #988779;
+  font-size: clamp(9px, 0.85vw, 11px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.center-note strong {
+  margin: 9px 0;
+  color: #34424a;
+  font:
+    800 clamp(25px, 3vw, 40px)/0.98 "Permanent Marker",
+    sans-serif;
+  letter-spacing: -0.06em;
+}
+
+.interaction-hint {
+  margin: -2px 0 0;
+  text-align: center;
+  color: #a39a90;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+/* A single triggered wave: every blob moves in sequence, then settles. */
+.wave-running .skill-blob {
+  animation: none;
+}
+
+.wave-running .blob-product {
+  animation: nudge 440ms ease-in-out 0ms 1;
+}
+
+.wave-running .blob-process {
+  animation: nudge 440ms ease-in-out 150ms 1;
+}
+
+.wave-running .blob-analytics {
+  animation: nudge 440ms ease-in-out 300ms 1;
+}
+
+.wave-running .blob-customer {
+  animation: nudge 440ms ease-in-out 450ms 1;
+}
+
+.wave-running .blob-people {
+  animation: nudge 440ms ease-in-out 600ms 1;
+}
+
+@keyframes nudge {
+  0% {
+    translate: 0 0;
+  }
+
+  25% {
+    translate: -13px 0;
+  }
+
+  55% {
+    translate: 12px 0;
+  }
+
+  80% {
+    translate: -5px 0;
+  }
+
+  100% {
+    translate: 0 0;
+  }
+}
+
+@keyframes blob-float {
+  0%,
+  100% {
+    translate: 0 0;
+  }
+
+  50% {
+    translate: 0 -5px;
+  }
+}
+
+@media (max-width: 760px) {
+  .skills-stage {
+    padding: 34px 16px 26px;
+  }
+
+  .blob-field {
+    height: auto;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-top: 28px;
+  }
+
+  .skill-blob {
+    position: relative;
+    inset: auto;
+    width: auto;
+    height: auto;
+    min-height: 185px;
+    padding: 25px 20px;
+  }
+
+  .blob-content {
+    max-width: none;
+  }
+
+  .blob-content h2 {
+    margin-bottom: 12px;
+  }
+
+  .blob-content li {
+    font-size: 13px;
+  }
+
+  .blob-process {
+    grid-column: 1 / -1;
+    min-height: 160px;
+  }
+
+  .blob-analytics {
+    min-height: 205px;
+  }
+
+  .blob-customer {
+    min-height: 205px;
+  }
+
+  .blob-people {
+    grid-column: 1 / -1;
+    min-height: 175px;
+  }
+
+  .center-note {
+    display: none;
+  }
+
+  .interaction-hint {
+    margin-top: 20px;
+  }
+}
+
+@media (max-width: 440px) {
+  .blob-field {
+    grid-template-columns: 1fr;
+  }
+
+  .blob-process,
+  .blob-people {
+    grid-column: auto;
+  }
+
+  .skill-blob {
+    min-height: 150px;
+  }
+
+  .blob-analytics,
+  .blob-customer {
+    min-height: 165px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+.pacifico-regular {
+  font-family: "Pacifico", cursive;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.section-header-grid {
+  /* Soft off-white base with subtle pastel pink grid lines */
+  background-color: #fdfafb;
+  background-image:
+    linear-gradient(to right, rgba(235, 185, 198, 0.35) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(235, 185, 198, 0.35) 1px, transparent 1px);
+  background-size: 14px 14px;
+
+  /* Delicate pink outline and soft paper shadow */
+  border: 2px solid #eeb7c6;
+  border-radius: 6px;
+  box-shadow: 0 3px 8px rgba(238, 183, 198, 0.25);
+
+  /* Header spacing and typography */
+  padding: 12px 24px;
+  display: inline-block;
+  color: #5c494e;
+  font-weight: 600;
+}
+
+.section-header-ribbon {
+  position: relative;
+  display: inline-block;
+
+  /* Soft off-white base with pastel pink grid lines */
+  background-color: #fdfafb;
+  background-image:
+    linear-gradient(to right, rgba(235, 185, 198, 0.35) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(235, 185, 198, 0.35) 1px, transparent 1px);
+  background-size: 14px 14px;
+
+  /* Delicate pink outline and shadow */
+  border: 2px solid #eeb7c6;
+  border-radius: 6px;
+  box-shadow: 0 3px 8px rgba(238, 183, 198, 0.25);
+
+  /* Spacing: extra left/right margin makes room for the ribbon tails */
+  padding: 12px 28px;
+  margin: 0 32px;
+  color: #5c494e;
+  font-weight: 600;
+}
+
+/* Shared styles for both left and right ribbon tails */
+.section-header-ribbon::before,
+.section-header-ribbon::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 75%;
+  background-color: #f7cad6;
+  border: 2px solid #eeb7c6;
+  z-index: -1;
+  /* Places the ribbons slightly behind the main card */
+}
+
+/* Left ribbon with a V-notch cutout */
+.section-header-ribbon::before {
+  left: -22px;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 10px 50%);
+}
+
+/* Right ribbon with a V-notch cutout */
+.section-header-ribbon::after {
+  right: -22px;
+  border-left: none;
+  border-radius: 0 4px 4px 0;
+  clip-path: polygon(0 0, 100% 0, calc(100% - 10px) 50%, 100% 100%, 0 100%);
+}
+
+/* 1. Picnic Tablecloth Background */
+.picnic-table-section {
+  background-color: #fff8fa;
+  background-image:
+    linear-gradient(90deg, rgba(247, 202, 214, 0.35) 50%, transparent 50%),
+    linear-gradient(rgba(247, 202, 214, 0.35) 50%, transparent 50%);
+  background-size: 48px 48px;
+  padding: 60px 24px;
+  border-radius: 20px;
+  border: 3px solid #f2cbd6;
+  text-align: center;
+  overflow: hidden;
+}
+
+.header-wrapper {
+  margin-bottom: 48px;
+}
+
+/* 2. Responsive Tabletop Layout */
+.table-spread {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* 3. Base Dish Styling */
+.dish {
+  position: relative;
+  width: 280px;
+  min-height: 280px;
+  padding: 36px 28px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #4a3b3f;
+  transition: transform 0.25s ease;
+}
+
+.dish:hover {
+  transform: translateY(-6px) rotate(1deg);
+}
+
+.dish h3 {
+  margin: 0 0 12px 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  border-bottom: 2px dashed rgba(92, 73, 78, 0.2);
+  padding-bottom: 4px;
+}
+
+.dish ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.food-accent {
+  position: absolute;
+  top: -12px;
+  right: 18px;
+  font-size: 2rem;
+  filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.12));
+  transform: rotate(12deg);
+}
+
+/* 4. Ceramic Plates (Circular with Inner Rim) */
+.ceramic-plate {
+  border-radius: 50%;
+  background-color: #ffffff;
+  /* Creates the raised outer plate rim and inner food well */
+  box-shadow:
+    0 12px 24px rgba(92, 73, 78, 0.14),
+    inset 0 0 0 14px #fffcfd,
+    inset 0 0 0 16px #edd5dc,
+    inset 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.plate-blue {
+  border: 3px solid #b8e1f5;
+}
+
+.plate-green {
+  border: 3px solid #bce8c9;
+}
+
+.plate-pink {
+  border: 3px solid #f5c2d1;
+}
+
+/* 5. Wooden Charcuterie Board (Rounded Rectangle) */
+.wooden-board {
+  border-radius: 36px;
+  background-color: #f3d5b5;
+  background-image: repeating-linear-gradient(
+    90deg,
+    rgba(212, 163, 115, 0.15) 0px,
+    rgba(212, 163, 115, 0.15) 4px,
+    transparent 4px,
+    transparent 12px
+  );
+  border: 4px solid #d4a373;
+  box-shadow:
+    0 12px 20px rgba(111, 78, 55, 0.2),
+    inset 0 0 0 8px rgba(255, 248, 240, 0.35);
+}
+
+/* 6. Woven Picnic Basket Tray */
+.woven-basket {
+  border-radius: 42% 58% 48% 52% / 52% 45% 55% 48%;
+  background-color: #faf3e0;
+  border: 6px dashed #d5bdaf;
+  box-shadow:
+    0 12px 22px rgba(92, 73, 78, 0.15),
+    inset 0 0 0 6px #ede0d4;
+}
+
+/* 7. Centerpiece Bowl ("Primary Skills") */
+.centerpiece-bowl {
+  width: 16rem;
+  min-height: 16rem;
+  border-radius: 50%;
+  background: radial-gradient(circle, #ffffff 60%, #fce8ee 100%);
+  border: 4px solid #eeb7c6;
+  box-shadow:
+    0 14px 28px rgba(238, 183, 198, 0.35),
+    inset 0 4px 12px rgba(238, 183, 198, 0.3);
+}
+
+.centerpiece-bowl h3 {
+  border-bottom: none;
+  font-size: 1.35rem;
+  letter-spacing: 0.5px;
+  color: #5c494e;
+}
+
+.font-handwriting {
+  font-family: "Patrick Hand", cursive;
+}
+
+.font-script {
+  font-family: "Caveat", cursive;
+}
+
+/* Horizontal Pink Notebook Lines (Image 1 Right Side) */
+.bg-pink-lined {
+  background-color: #fffcfd;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 23px,
+    #f6c5d3 24px
+  );
+}
+
+/* Dotted Bullet Journal Grid (Image 2 & 4) */
+.bg-dot-grid {
+  background-color: #fdfaf5;
+  background-image: radial-gradient(#cbbab5 1.25px, transparent 1.25px);
+  background-size: 16px 16px;
+}
+
+/* Graph Grid for Bingo Card (Image 4) */
+.bg-bingo-grid {
+  background-color: #fcf7f0;
+  background-image:
+    linear-gradient(to right, rgba(203, 186, 181, 0.35) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(203, 186, 181, 0.35) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+
+/* Subtle paper grain & deckled torn-edge effect */
+.torn-paper-frame {
+  background-color: #fbfaf8;
+  box-shadow:
+    0 6px 18px rgba(74, 53, 59, 0.14),
+    0 1px 3px rgba(0, 0, 0, 0.08);
+  /* Irregular torn-paper outer edge */
+  clip-path: polygon(
+    0.5% 0.8%,
+    8% 0.2%,
+    19% 0.9%,
+    34% 0.1%,
+    52% 0.7%,
+    71% 0.2%,
+    88% 0.8%,
+    99.4% 0.3%,
+    99.8% 14%,
+    99.2% 31%,
+    99.9% 50%,
+    99.3% 69%,
+    99.8% 86%,
+    99.3% 99.4%,
+    87% 99.8%,
+    68% 99.2%,
+    49% 99.9%,
+    30% 99.2%,
+    12% 99.7%,
+    0.4% 99.2%,
+    0.1% 84%,
+    0.7% 66%,
+    0.2% 48%,
+    0.8% 28%,
+    0.2% 12%
+  );
+}
+
+/* Semi-transparent botanical washi tape */
+.washi-tape-floral {
+  background-color: rgba(246, 241, 235, 0.82);
+  background-image:
+    radial-gradient(circle at 20% 35%, #d68598 2px, transparent 2.5px),
+    radial-gradient(circle at 25% 65%, #b5838d 1.5px, transparent 2px),
+    radial-gradient(circle at 55% 40%, #c97b8e 2.2px, transparent 2.8px),
+    radial-gradient(circle at 80% 60%, #a39171 1.8px, transparent 2.2px),
+    radial-gradient(circle at 72% 28%, #e09f9f 2px, transparent 2.5px);
+  background-size: 48px 24px;
+  backdrop-filter: blur(1px);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  border-left: 1px dashed rgba(180, 165, 155, 0.45);
+  border-right: 1px dashed rgba(180, 165, 155, 0.45);
+}
+
+.bg-journal-lined {
+  background-color: #fbf6ee;
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent 27px,
+    rgba(168, 155, 142, 0.35) 28px
+  );
+  background-position: 0 12px;
+}
+
+.obsessions {
+  animation: sticker-sway-cw 7.5s ease-in-out infinite;
 }

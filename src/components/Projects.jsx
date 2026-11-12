@@ -259,11 +259,6 @@ const ProjectCard = ({ project, index, candyStyle, onOpenModal }) => {
           : "opacity-0 translate-y-12 scale-[0.98]"
       }`}
     >
-      {/* ── Top Clamped Binder Clip ── */}
-      <div className="absolute -top-4 left-10 sm:left-14 z-30 select-none pointer-events-none">
-        <BinderClip className="w-8 h-10 drop-shadow-sm" />
-      </div>
-
       {/* ── Card Content Layout: Left Polaroid + Right Lined Note Sheet ── */}
       <div className="flex flex-col md:flex-row items-center md:items-stretch gap-6 sm:gap-8 flex-1">
         {/* Left Side: Ring-bound Scalloped Flashcard (Photo reference style) */}
@@ -289,9 +284,6 @@ const ProjectCard = ({ project, index, candyStyle, onOpenModal }) => {
             <div className="relative bg-[#fefdfa] rounded-2xl p-3.5 sm:p-5 shadow-lg border-2 border-neutral-200/90 transition-transform duration-300 group-hover:scale-[1.01] overflow-hidden">
               {/* Scalloped Border Frame */}
               <ScallopedBorder color={candyStyle.scallopColor} id={index} />
-
-              {/* Punched Ring Hole in Top-Left Corner */}
-              <div className="absolute top-2.5 left-2.5 w-4 h-4 rounded-full bg-[#261d17] border border-neutral-400 shadow-inner z-30" />
 
               {/* Image Container: Full natural height & width, NOT cropped or cut */}
               <div className="relative z-10 w-full flex items-center justify-center pt-2 sm:pt-3 px-1">
@@ -331,7 +323,9 @@ const ProjectCard = ({ project, index, candyStyle, onOpenModal }) => {
               </h3>
 
               {/* Subtle decorative wavy accent line */}
-              <div className="w-20 h-1 bg-pink-300/80 rounded-full mb-4" />
+              <div
+                className={`w-20 h-1  ${candyStyle.tagBg} rounded-full mb-4`}
+              />
 
               {/* Small Description in classy serif font */}
               <p className="text-base sm:text-lg text-neutral-800 leading-relaxed font-serif">
@@ -349,7 +343,7 @@ const ProjectCard = ({ project, index, candyStyle, onOpenModal }) => {
                     e.stopPropagation();
                     window.open(demoUrl, "_blank", "noopener,noreferrer");
                   }}
-                  className="inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-t-2xl sm:rounded-t-3xl border-2 border-b-0 border-dashed border-white/80 bg-[#facc15] hover:bg-[#facc15] text-[#2c241c] font-bold text-xs sm:text-sm shadow-xs hover:-translate-y-0.5 active:translate-y-0.5 transition-all select-none cursor-pointer"
+                  className={`inline-flex items-center gap-1.5 px-4 sm:px-5 py-2 sm:py-2.5 rounded-t-2xl sm:rounded-t-3xl border-2 border-b-0 border-dashed border-white/80  ${candyStyle.tagBg} hover:bg-[#facc15] text-[#2c241c] font-bold text-xs sm:text-sm shadow-xs hover:-translate-y-0.5 active:translate-y-0.5 transition-all select-none cursor-pointer`}
                 >
                   <PlayCircle className="w-4 h-4 text-rose-700" />
                   <span>Live Demo</span>
@@ -380,7 +374,7 @@ const ProjectCard = ({ project, index, candyStyle, onOpenModal }) => {
                   e.stopPropagation();
                   onOpenModal(project, candyStyle);
                 }}
-                className="inline-flex items-center justify-center px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl border-2 border-dashed border-white/80 bg-[#facc15] hover:bg-[#facc20] text-[#2c241c] font-bold text-xs sm:text-sm shadow-xs hover:-translate-y-0.5 active:translate-y-0.5 transition-all select-none cursor-pointer"
+                className={`inline-flex items-center justify-center px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl border-2 border-dashed border-white/80  ${candyStyle.tagBg} hover:bg-[#facc20] text-[#2c241c] font-bold text-xs sm:text-sm shadow-xs hover:-translate-y-0.5 active:translate-y-0.5 transition-all select-none cursor-pointer`}
               >
                 <span>Details</span>
               </button>
@@ -453,9 +447,8 @@ const Projects = ({ projects }) => {
           <div
             onClick={(e) => e.stopPropagation()}
             style={{ backgroundColor: activeCandy.modalBg }}
-            className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-3xl border-2 border-dashed border-white shadow-2xl p-6 sm:p-8 animate-in zoom-in-95 duration-200 flex flex-col gap-5"
+            className="relative w-full max-w-3xl max-h-[80vh] overflow-y-auto rounded-3xl border-2 border-dashed border-white shadow-2xl p-6 sm:p-8 animate-in zoom-in-95 duration-200 flex flex-col gap-5"
           >
-            {/* Top Close Button */}
             <button
               onClick={closeModal}
               aria-label="Close project modal"
@@ -476,33 +469,12 @@ const Projects = ({ projects }) => {
               </h2>
             </div>
 
-            {/* Image Preview: Full natural aspect ratio, not cropped */}
-            {selectedProject.image && (
-              <div className="w-full max-h-[460px] sm:max-h-[520px] rounded-2xl overflow-hidden bg-white/80 border border-black/10 shadow-sm relative p-2 sm:p-3 flex items-center justify-center">
-                <img
-                  src={getImageSrc(selectedProject.image)}
-                  alt={selectedProject.title}
-                  className="w-full h-auto max-h-[440px] sm:max-h-[500px] object-contain rounded-lg"
-                />
-              </div>
-            )}
-
-            {/* Small Description */}
-            {(selectedProject["small-description"] ||
-              selectedProject.smallDescription) && (
-              <p className="text-base sm:text-lg text-neutral-800 font-medium leading-relaxed bg-white/70 p-4 rounded-xl border border-black/5 font-serif">
-                {selectedProject["small-description"] ||
-                  selectedProject.smallDescription}
-              </p>
-            )}
-
             {/* Full Details Grid */}
             <div className="space-y-4">
               {/* Problem */}
               {selectedProject.problem && (
                 <div className="bg-white/85 p-4 sm:p-5 rounded-2xl border border-rose-200/80 shadow-2xs">
                   <div className="flex items-center gap-2 mb-1.5">
-                    <AlertCircle className="w-4 h-4 text-rose-500" />
                     <h3 className="text-xs font-bold uppercase tracking-wider text-rose-900">
                       Problem
                     </h3>
@@ -518,7 +490,6 @@ const Projects = ({ projects }) => {
                 selectedProject.keyDecision) && (
                 <div className="bg-white/85 p-4 sm:p-5 rounded-2xl border border-amber-200/80 shadow-2xs">
                   <div className="flex items-center gap-2 mb-1.5">
-                    <Lightbulb className="w-4 h-4 text-amber-500" />
                     <h3 className="text-xs font-bold uppercase tracking-wider text-amber-900">
                       Key Decision
                     </h3>
@@ -534,7 +505,6 @@ const Projects = ({ projects }) => {
               {selectedProject.impact && (
                 <div className="bg-white/85 p-4 sm:p-5 rounded-2xl border border-emerald-200/80 shadow-2xs">
                   <div className="flex items-center gap-2 mb-1.5">
-                    <TrendingUp className="w-4 h-4 text-emerald-600" />
                     <h3 className="text-xs font-bold uppercase tracking-wider text-emerald-900">
                       Impact
                     </h3>

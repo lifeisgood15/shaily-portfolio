@@ -11,10 +11,10 @@ const Navigation = ({ portfolioData, portfoliodata }) => {
 
   const links = [
     { name: "About", id: "about" },
-    { name: "Skills", id: "toolkit" },
     { name: "Work", id: "projects" },
-    { name: "Moments", id: "moments" },
     { name: "Journey", id: "journey" },
+    { name: "Skills", id: "primary-skills" },
+    { name: "Testimonials", id: "testimonials" },
     { name: "Contact", id: "contact" },
     { name: "Resume", id: "resume" },
   ];
