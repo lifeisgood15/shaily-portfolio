@@ -108,7 +108,7 @@ const Header = ({ data }) => {
                     textUnderlineOffset: "0.3rem",
                   }}
                 >
-                  AI Product Manager Intern
+                  Product Manager Intern
                 </span>
                 .
               </p>
@@ -146,7 +146,7 @@ const Header = ({ data }) => {
                     textUnderlineOffset: "0.3rem",
                   }}
                 >
-                  MBA Candidate @ IIM Lucknow
+                  MBA Candidate @ IIML
                 </span>
                 .
               </p>
@@ -298,13 +298,13 @@ const Header = ({ data }) => {
 
       <div className="mt-auto pt-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-t border-pink-200/50">
         <div className="flex flex-wrap items-center gap-3">
-          <div className="flex justify-between items-center mb-4 px-2 ">
+          {/* <div className="flex justify-between items-center mb-4 px-2 ">
             <span className="bg-white/90 border border-[#a3e635] px-3 py-1 rounded-full text-sm text-[#38bdf8] shadow-xs mt-4 ">
               <span className="text-xl -rotate-12 select-none">🌺</span>
               <b>Available for full-time Product Manager roles </b>
               <span className="text-md rotate-12 select-none">✅</span>
             </span>
-          </div>
+          </div> */}
           {contactMethods.map((method, index) => {
             const isEmail = method.platform.toLowerCase() === "email";
             const href = isEmail ? `mailto:${method.handle}` : method.handle;
