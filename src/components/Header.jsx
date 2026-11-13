@@ -133,7 +133,7 @@ const Header = ({ data }) => {
                     textUnderlineOffset: "0.3rem",
                   }}
                 >
-                  7 times{" "}
+                  7 times salesforce{" "}
                 </span>{" "}
                 certified.
               </p>
